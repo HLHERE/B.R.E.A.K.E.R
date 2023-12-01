@@ -19,5 +19,15 @@ module.exports = {
   plugins: [
       require('flowbite/plugin')
   ],
+  theme : {
+    colors: {
+      transparent : 'transparent',
+      current : 'currentColor',
+      'navbar' : '#ED7D31',
+      'coklat' : '#6C5F65B',
+      'abu'    : '#4F4A45',
+      'putih'  : 'F6F1EE',
+    },
+  },
 }
 
