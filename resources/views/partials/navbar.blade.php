@@ -1,8 +1,8 @@
 <!-- component -->
-<div class="min-h-screen">
-
-    <style>
-        @media only screen and (min-width: 768px){
+<div class="container">   
+<nav class="flex px-4 border-b md:shadow-lg items-center relative bg-navbar">
+        <style>
+            @media only screen and (min-width: 768px){
             .parent:hover .child {
                 opacity:1;
                 height:auto;
@@ -14,14 +14,11 @@
                 height:0;
                 overflow:hidden;
                 transform: translateY(-10%);
+              }
             }
-        }
-        
-    </style>
-    
-        <nav class="flex px-4 border-b md:shadow-lg items-center relative bg-navbar">
+            </style>
             <div class="flex text-lg font-bold md:py-0 py-4">
-                <img src="/../img/GlamGroove.png" alt="GlamGroove" class="w-40">
+                <img src="/../img/GlamGroove.png" alt="GlamGroove" class="w-20">
             </div>
             <ul class="md:px-2 ml-auto md:flex md:space-x-2 absolute md:relative top-full left-0 right-0">
                 <li>
@@ -83,5 +80,3 @@
             </div>
         </nav>
     </div>
-    
-    
