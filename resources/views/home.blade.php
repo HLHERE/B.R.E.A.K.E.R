@@ -3,9 +3,20 @@
 @section('container')
 <!-- Halaman Atas -->
 <!-- component -->
-<div class="max-w-screen-xl mx-auto">
+<div class="max-w-screen-xl mx-auto ">
 
-    <main class="mt-10">
+  <section class="text-abu body-font mt-3  ">
+    <div class="container px-5 py-24 mx-auto">
+      <div class="flex flex-wrap w-full mb-20">
+        <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
+          <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-abu text-">Hot News</h1>
+          <div class="h-1 w-20 bg-coklat rounded"></div>
+        </div>
+        <p class="lg:w-1/2 w-full leading-relaxed text-gray-500">Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical gentrify, subway tile poke farm-to-table. Franzen you probably haven't heard of them man bun deep jianbing selfies heirloom prism food truck ugh squid celiac humblebrag.</p>
+      </div>
+  </section>
+
+    <main class="mt-0">
       <div class="block md:flex md:space-x-2 px-2 lg:p-0">
         <a 
           class="mb-4 md:mb-0 w-full md:w-2/3 relative rounded inline-block" 
@@ -16,7 +27,7 @@
             style="background-image: linear-gradient(180deg,transparent,rgba(0,0,0,.7));"></div>
           <img src="/../img/valor.jpg" class="absolute left-0 top-0 w-full h-full rounded z-0 object-cover" />
           <div class="p-4 absolute bottom-0 left-0 z-20">
-            <h2 class="text-4xl font-semibold text-gray-100 leading-tight">
+            <h2 class="text-4xl font-semibold text-gray-100 leading-tight ">
               Pellentesque a consectetur velit, ac molestie ipsum. Donec sodales, massa et auctor.
             </h2>
           </div>
@@ -49,7 +60,7 @@
               title="deit is very important"
             >
             </div>
-            <div class="bg-white rounded px-4 flex flex-col justify-between leading-normal">
+            <div class="bg-putih rounded px-4 flex flex-col justify-between leading-normal">
               <div>
                 <div class="mt-3 md:mt-0 text-gray-700 font-bold text-2xl mb-2">
                   Aliquam venenatis nisl id purus rhoncus, in efficitur sem hendrerit.
@@ -74,7 +85,7 @@
             <div class="h-48 lg:w-48 flex-none bg-cover text-center overflow-hidden opacity-75"
               style="background-image: url('https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80')" title="deit is very important">
             </div>
-            <div class="bg-white rounded px-4 flex flex-col justify-between leading-normal">
+            <div class="bg-putih rounded px-4 flex flex-col justify-between leading-normal">
               <div>
                 <div class="mt-3 md:mt-0 text-gray-700 font-bold text-2xl mb-2">
                   Integer commodo, sapien ut vulputate viverra
@@ -101,7 +112,7 @@
             <div class="h-48 lg:w-48 flex-none bg-cover text-center overflow-hidden opacity-75"
               style="background-image: url('https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80')" title="deit is very important">
             </div>
-            <div class="bg-white rounded px-4 flex flex-col justify-between leading-normal">
+            <div class="bg-putih rounded px-4 flex flex-col justify-between leading-normal">
               <div>
                 <div class="mt-3 md:mt-0 text-gray-700 font-bold text-2xl mb-2">
                   Suspendisse varius justo eu risus laoreet fermentum non aliquam dolor
@@ -128,12 +139,12 @@
         <div class="w-full lg:w-1/3 px-3">
           <!-- topics -->
           <div class="mb-4">
-            <h5 class="font-bold text-lg uppercase text-gray-700 px-1 mb-2"> Popular Topics </h5>
+            <h5 class="font-bold text-lg uppercase text-gray-700 px-1 mb-2"> Hot News </h5>
             <ul>
               <li class="px-1 py-4 border-b border-t border-white hover:border-gray-200 transition duration-300">
                 <a href="#" class="flex items-center text-gray-600 cursor-pointer">
                   <span class="inline-block h-4 w-4 bg-green-300 mr-3"></span>
-                  Nutrition
+                  Game
                   <span class="text-gray-500 ml-auto">23 articles</span>
                   <i class='text-gray-500 bx bx-right-arrow-alt ml-1'></i>
                 </a>
@@ -141,7 +152,7 @@
               <li class="px-1 py-4 border-b border-t border-white hover:border-gray-200 transition duration-300">
                 <a href="#" class="flex items-center text-gray-600 cursor-pointer">
                   <span class="inline-block h-4 w-4 bg-indigo-300 mr-3"></span>
-                  Food & Diet
+                  Anime
                   <span class="text-gray-500 ml-auto">18 articles</span>
                   <i class='text-gray-500 bx bx-right-arrow-alt ml-1'></i>
                 </a>

@@ -2,4 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: FunGhetto;
+    font-family: ArialRounded;
+    src: url(FunGhetto\ Trial.ttf);
+    src: url(arlrdbd.ttf);
+}
 
+body {
+    background-color: #F6F1EE;
+}
+
+
+nav {
+    font-family: 'ArialRounded';
+}
+
+.footer {
+    font-family: 'FunGhetto';
+}
