@@ -20,3 +20,10 @@ Route::get('/home', function () {
 Route::get('/posts', function () {
     return view ('posts');
 });
+
+Route::get('/post', function () {
+    return view ('post');
+});
+Route::get('/dashboard', function () {
+    return view ('dashboard.index');
+});

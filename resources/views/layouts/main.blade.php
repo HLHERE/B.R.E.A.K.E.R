@@ -6,10 +6,10 @@
     <title>GlamGroove Entertainment</title>
     @vite(['resources/css/app.css','resources/js/app.js'])
 </head>
-<body>
+<body >
     @include('partials.navbar')
 
-    <div class="container">
+    <div class="container bg-putih">
           @yield('container')
     </div>
     @include('partials.footer')

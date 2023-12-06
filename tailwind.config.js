@@ -22,9 +22,11 @@ module.exports = {
             transparent: "transparent",
             current: "currentColor",
             navbar: "#ED7D31",
-            coklat: "#6C5F65B",
+            coklat: "#6C5F5B",
             abu: "#4F4A45",
-            putih: "F6F1EE",
+            putih: "#F6F1EE",
+            hijau: "#898121",
         },
+
     },
 };

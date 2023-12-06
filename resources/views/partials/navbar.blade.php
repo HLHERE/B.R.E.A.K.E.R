@@ -1,6 +1,6 @@
 <!-- component -->
 <div class="container">   
-<nav class="flex px-4 border-b md:shadow-lg items-center relative bg-navbar">
+<nav class="flex px-10 border-b md:shadow-lg items-center relative bg-navbar z-10 ">
         <style>
             @media only screen and (min-width: 768px){
             .parent:hover .child {
@@ -34,21 +34,23 @@
                 <li class="relative parent">
                     <a href="#" class="flex justify-between md:inline-flex p-4 items-center  space-x-2">
                         <span class="text-white">News</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-current pt-1" viewBox="0 0 24 24"><path d="M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z"/></svg>
+                        <svg class="w-3 h-3 text-putih dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 8">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 5.326 5.7a.909.909 0 0 0 1.348 0L13 1"/>
+                          </svg>
                     </a>
-                    <ul class="child transition duration-300 md:absolute top-full right-0 md:w-48 bg-white md:shadow-lg md:rounded-b ">
+                    <ul class="child transition duration-300 md:absolute top-full right-0 md:w-48 bg-putih md:shadow-lg md:rounded-b ">
                         <li>
-                            <a href="#" class="flex px-4 py-3 hover:bg-gray-50">
+                            <a href="#" class="flex px-4 py-3 hover:bg-coklat ">    
                                 Technology
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="flex px-4 py-3 hover:bg-gray-50">
+                            <a href="#" class="flex px-4 py-3 hover:bg-coklat ">
                                 Game
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="flex px-4 py-3 hover:bg-gray-50">
+                            <a href="#" class="flex px-4 py-3 hover:bg-coklat ">
                                 Anime
                             </a>
                         </li>
@@ -58,20 +60,30 @@
                     <li class="relative parent">
                         <a href="#" class="flex justify-between md:inline-flex p-4 items-center space-x-2">
                             <span class="text-white">Self Development</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-current pt-1" viewBox="0 0 24 24"><path d="M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z"/></svg>
-                        </a>
-                        <ul class="child transition duration-300 md:absolute top-full right-0 md:w-48 bg-white md:shadow-lg md:rounded-b ">
+                            <svg class="w-3 h-3 text-putih dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 8">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 5.326 5.7a.909.909 0 0 0 1.348 0L13 1"/>
+                              </svg>
+                            </a>
+                        <ul class="child transition duration-300 md:absolute top-full right-0 md:w-48 bg-putih md:shadow-lg md:rounded-b ">
                             <li>
-                                <a href="#" class="flex px-4 py-3 hover:bg-gray-50">
+                                <a href="#" class="flex px-4 py-3 hover:bg-coklat ">
                                     Education
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="flex px-4 py-3 hover:bg-gray-50">
+                                <a href="#" class="flex px-4 py-3 hover:bg-coklat">
                                     Job
                                 </a>
                             </li>
                         </ul>
+                    </li>
+                    <li>
+                        <a href="#" class="flex md:inline-flex p-4 items-center">
+                            <span class="text-white">Login</span>
+                            <svg class="w-4 h-4 text-putih dark:text-white ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
+                                <path d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z"/>
+                              </svg>
+                        </a>
                     </li>
                 </li>
             </ul>
