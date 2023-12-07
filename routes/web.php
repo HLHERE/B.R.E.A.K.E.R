@@ -24,6 +24,11 @@ Route::get('/posts', function () {
 Route::get('/post', function () {
     return view ('post');
 });
+
 Route::get('/dashboard', function () {
     return view ('dashboard.index');
+});
+
+Route::get('/login', function () {
+    return view ('login.index');
 });
