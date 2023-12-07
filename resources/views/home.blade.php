@@ -178,8 +178,9 @@
         </div>
       </div>
     </main>
+    </div>
     <!-- main ends here -->
-  </div>
+  
 
   <!-- Halaman Tengah -->
   <h1 class="text-4xl font-semibold leading-9 text-center text-gray-800 dark:text-gray-50">Berita Terbaru Terkini</h1>
