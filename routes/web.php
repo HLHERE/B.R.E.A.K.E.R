@@ -24,6 +24,9 @@ Route::get('/posts', function () {
 Route::get('/post', function () {
     return view ('post');
 });
+Route::get('/merchandise', function () {
+    return view ('merchandise');
+});
 
 Route::get('/dashboard', function () {
     return view ('dashboard.index');
