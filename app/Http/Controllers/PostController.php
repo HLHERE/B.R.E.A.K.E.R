@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\User;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 
@@ -13,6 +14,9 @@ class PostController extends Controller
      */
     public function index()
     {
+        // Mengambil data author dari table users by username
+        $author = User::firstWhere('username', request('author'));
+
         // Tampilkan daftar sumber daya yang sering di lihat.
         $popular = Post::with('author')->orderBy('views', 'desc')->take(5)->get();
 
@@ -21,8 +25,7 @@ class PostController extends Controller
 
         return view('home', [
             "popular" => $popular,
-            "posts" => $posts
-            // 'posts' => $posts
+            "posts" => $posts, $author
         ]);
     }
 
@@ -49,16 +52,22 @@ class PostController extends Controller
     {
         // Temukan post berdasarkan ID
         $post = Post::find($post);
+        
         // Periksa apakah post ditemukan
         if (!$post) {
             abort(404); // atau lakukan penanganan ketika post tidak ditemukan
         }
+
         // Tingkatkan jumlah tampilan
         $post->views += 1;
+
         // Simpan perubahan ke database
         $post->save();
+
         // Tampilkan post dalam view
-        return view('posts.show', ['post' => $post]);
+        return view('posts.show', [
+            'post' => $post
+        ]);
     }
 
     /**
