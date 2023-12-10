@@ -13,26 +13,16 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
-        return view('posts.index', [
-            'posts' => $posts
-        ]);
-    }
+        // Tampilkan daftar sumber daya yang sering di lihat.
+        $popular = Post::with('author')->orderBy('views', 'desc')->take(5)->get();
 
-    /**
-     * Tampilkan daftar sumber daya yang sering di lihat.
-     */
-    public function popular()
-    {
-        // $posts = Post::orderBy('views', 'desc')->take(5)->get();
-        // return view('posts.popular', ['posts' => $posts]);
-        $posts = Post::with('author')
-            ->orderBy('views', 'desc')
-            ->take(5)
-            ->get();
+        // Tampilkan daftar sumber daya 7 saja
+        $posts = Post::with(['author'])->latest()->take(7)->get();
 
         return view('home', [
-            'posts' => $posts
+            "popular" => $popular,
+            "posts" => $posts
+            // 'posts' => $posts
         ]);
     }
 

@@ -7,6 +7,18 @@
 
 <!-- resources/views/posts/popular.blade.php -->
 <h1>Popular Posts</h1>
+@foreach($popular as $post)
+    <h2>{{ $post->title }}</h2>
+    <p>{{ $post->body }}</p>
+    <p>Views: {{ $post->views }}</p>
+@endforeach
+
+{{-- End popular --}}
+
+{{-- Contoh Menampilakan data berdasarkan yang sering di lihat --}}
+
+<!-- resources/views/posts/popular.blade.php -->
+<h1>Popular Posts</h1>
 @foreach($posts as $post)
     <h2>{{ $post->title }}</h2>
     <p>{{ $post->body }}</p>
