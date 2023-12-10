@@ -19,80 +19,32 @@
 CREATE DATABASE IF NOT EXISTS `db_glamgroove` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `db_glamgroove`;
 
--- Dumping structure for table db_glamgroove.failed_jobs
-CREATE TABLE IF NOT EXISTS `failed_jobs` (
+-- Dumping structure for table db_glamgroove.posts
+CREATE TABLE IF NOT EXISTS `posts` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- Dumping data for table db_glamgroove.failed_jobs: ~0 rows (approximately)
-
--- Dumping structure for table db_glamgroove.migrations
-CREATE TABLE IF NOT EXISTS `migrations` (
-  `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `batch` int NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- Dumping data for table db_glamgroove.migrations: ~4 rows (approximately)
-REPLACE INTO `migrations` (`id`, `migration`, `batch`) VALUES
-	(1, '2014_10_12_000000_create_users_table', 1),
-	(2, '2014_10_12_100000_create_password_reset_tokens_table', 1),
-	(3, '2019_08_19_000000_create_failed_jobs_table', 1),
-	(4, '2019_12_14_000001_create_personal_access_tokens_table', 1);
-
--- Dumping structure for table db_glamgroove.password_reset_tokens
-CREATE TABLE IF NOT EXISTS `password_reset_tokens` (
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- Dumping data for table db_glamgroove.password_reset_tokens: ~0 rows (approximately)
-
--- Dumping structure for table db_glamgroove.personal_access_tokens
-CREATE TABLE IF NOT EXISTS `personal_access_tokens` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tokenable_id` bigint unsigned NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `abilities` text COLLATE utf8mb4_unicode_ci,
-  `last_used_at` timestamp NULL DEFAULT NULL,
-  `expires_at` timestamp NULL DEFAULT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `body` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `views` int NOT NULL DEFAULT '0',
+  `published_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
-  KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  UNIQUE KEY `posts_slug_unique` (`slug`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table db_glamgroove.personal_access_tokens: ~0 rows (approximately)
-
--- Dumping structure for table db_glamgroove.users
-CREATE TABLE IF NOT EXISTS `users` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- Dumping data for table db_glamgroove.users: ~0 rows (approximately)
+-- Dumping data for table db_glamgroove.posts: ~10 rows (approximately)
+REPLACE INTO `posts` (`id`, `title`, `slug`, `body`, `views`, `published_at`, `created_at`, `updated_at`) VALUES
+	(1, 'Voluptas ducimus hic ipsum iure.', 'quos-aliquid-et-mollitia-distinctio', '<p>Tempore id voluptatem consequatur et officiis. Consequatur placeat quam soluta excepturi. Quidem ut officiis possimus dolorem illo quis quibusdam debitis.</p><p>Nihil sapiente quidem omnis soluta consequatur aliquid harum quisquam. Itaque voluptatibus magni doloribus non. Architecto numquam nulla vel laudantium sequi placeat.</p><p>Molestiae beatae eius voluptatem vel et mollitia aspernatur. Ut aperiam exercitationem corporis dolorem consequuntur laboriosam odit. Non similique sed nisi vitae est iure.</p><p>Totam sunt atque saepe similique quaerat voluptas numquam. Deserunt reiciendis sunt cupiditate tenetur consectetur. Eos in optio repellendus est cum enim. Sunt ad cupiditate earum laborum necessitatibus nisi consequuntur consequatur.</p><p>Sunt blanditiis aut laboriosam deleniti nulla. Odio laboriosam velit odit quam tempore. Qui eveniet possimus ipsum nesciunt ipsum distinctio nesciunt.</p><p>Nesciunt illum eius et. Est voluptate omnis consequatur possimus nisi rerum ad alias. Quod suscipit libero debitis praesentium et aut distinctio.</p><p>Unde est omnis hic modi nihil laudantium sed. Et vel ipsam eum ipsum porro commodi laboriosam. In esse et pariatur.</p><p>Enim voluptas voluptatem et vero vero doloremque ipsam. Sit qui esse totam. Exercitationem officia qui rerum est voluptatem sequi repellendus.</p><p>Aut qui ab quaerat quasi ratione. Ullam aperiam pariatur quaerat sint doloribus ab mollitia. Ut laborum ullam id odio repudiandae vel.</p><p>Quisquam at amet quis autem ut omnis. Aut porro nostrum quo omnis doloremque.</p>', 0, NULL, '2023-12-10 06:03:00', '2023-12-10 06:03:00'),
+	(2, 'Atque sint ut.', 'amet-voluptate-expedita-et-et', '<p>Beatae molestiae sed et sunt nemo corrupti ad quia. Eligendi molestias adipisci quas. Ea consequatur accusamus rem natus earum dolore temporibus. Assumenda laboriosam ducimus minus est nisi. Labore harum magni suscipit aspernatur est quis voluptas.</p><p>Quia ut fugit saepe ipsa quod debitis et. Magnam eveniet qui sint et molestiae. Ut eaque facilis eum omnis voluptatem saepe quae.</p><p>Similique debitis et ex tempora ut ratione. Reprehenderit nostrum iusto autem aut molestiae dolor. Dolore molestiae cupiditate mollitia deserunt magni similique qui. Voluptatem dolorem quis soluta sint.</p><p>Voluptates rerum sunt rerum porro modi. Beatae architecto dignissimos accusamus consequatur at. Excepturi ut non similique quis.</p><p>Enim debitis aut fugiat et exercitationem est. Voluptas repudiandae saepe voluptas aut vel quae. Earum debitis quia occaecati id placeat aut ut. Sapiente quod asperiores unde nostrum.</p><p>Qui dolore aut et quia alias occaecati eveniet. Vel incidunt harum iure aut. Vero magni quam qui earum. Est facilis consequatur tempora odit.</p>', 0, NULL, '2023-12-10 06:03:00', '2023-12-10 06:03:00'),
+	(3, 'Modi adipisci praesentium est ut eaque.', 'consequatur-perspiciatis-non-dolorum-unde-sint-sit', '<p>Iure facere iste voluptate. Eos quae magni distinctio. Et qui temporibus officia amet totam.</p><p>Minus id ut molestiae numquam molestiae. Quis suscipit in voluptatem et. Aliquam aut dolores autem ut ratione et. Quo quas sunt sit ducimus.</p><p>Omnis minima omnis error sed sed sit. Molestias perspiciatis ut possimus fugit sunt et. Est fuga saepe atque saepe.</p><p>Nihil quos quaerat corporis veniam voluptas dolorem earum. Veritatis voluptas earum nesciunt et non. Quisquam ea voluptas perferendis dolore. Dicta vel ratione autem ipsum maiores velit ut est.</p><p>Ratione nostrum quibusdam et temporibus voluptas. Dolor fugiat dolor reiciendis aspernatur sed in modi amet. Ipsa sit praesentium debitis a accusantium sequi rerum error. Dolore reprehenderit voluptas libero aut sit rerum.</p><p>Et illo temporibus veniam quia. Molestias deleniti officia ratione praesentium corrupti doloribus. Beatae sit facilis ut molestias voluptatem quia pariatur ut.</p><p>Aut quia rerum maxime. Dolor accusantium ipsam voluptas et aut odio.</p><p>Quo harum aliquid sequi consequuntur aliquid. Nihil quia adipisci praesentium ex ipsum repellendus asperiores. Ut ratione est illum consequatur repellendus. Qui vel minima non neque sapiente hic aspernatur.</p>', 0, NULL, '2023-12-10 06:03:01', '2023-12-10 06:03:01'),
+	(4, 'Excepturi ea voluptatem quam.', 'molestiae-aut-saepe-velit-nisi', '<p>Ut accusantium consequatur non libero voluptas. Quis nostrum tempora sit cupiditate blanditiis rerum eveniet. Ab dolorum hic consequuntur harum.</p><p>Praesentium ea aut est facere corporis. Unde et laudantium quaerat. Dicta atque architecto aut laudantium perspiciatis pariatur ullam quo.</p><p>Praesentium veniam assumenda nemo fugit animi vero assumenda dolore. Id animi corrupti sit maiores voluptatem provident. Quisquam qui quo dolore.</p><p>Possimus consectetur dicta consequuntur tempore sed aut ex. Dolor possimus excepturi expedita tempore. Quia quaerat debitis nobis animi. Deleniti error distinctio id quia ipsam iusto expedita.</p><p>Dicta totam quae exercitationem nihil eos. Voluptatem qui alias distinctio quaerat et. Esse est unde vero sunt provident consequatur ad.</p>', 0, NULL, '2023-12-10 06:03:01', '2023-12-10 06:03:01'),
+	(5, 'Quidem id quia repellendus mollitia.', 'quam-similique-officia-aut', '<p>Illo et ut asperiores id corrupti dicta. Harum atque quos sapiente possimus omnis corrupti. Magnam ut excepturi voluptas doloremque non sunt modi. Quo velit sint et nobis.</p><p>Iste architecto earum saepe aut. Et omnis facilis quae. Commodi nihil velit facilis dicta et. Officia deserunt tenetur dolor aspernatur. Consequuntur provident recusandae accusamus esse aut magnam quisquam.</p><p>Esse numquam magnam non officia explicabo et sed. Facilis ut placeat modi minus. Dicta non quaerat officiis perferendis minus.</p><p>Voluptates temporibus corrupti quia vitae. Voluptatem alias ipsam delectus aut suscipit. Facere culpa commodi hic voluptas eaque id.</p><p>Fugit et delectus animi blanditiis harum. Ea eum culpa nostrum error autem qui. Dolor hic maxime corporis facilis.</p>', 0, NULL, '2023-12-10 06:03:01', '2023-12-10 06:03:01'),
+	(6, 'Est impedit blanditiis quia modi et unde expedita voluptatum nam.', 'delectus-voluptas-magni-ut-perferendis', '<p>Esse officia est nostrum eaque ipsa. Earum et delectus deserunt provident. Libero animi omnis sunt tenetur. Et ipsum blanditiis officia quas.</p><p>Consequatur autem velit velit. Optio temporibus illo sed cumque et. Voluptatem beatae fugit fuga eius et. Ut et exercitationem quis eveniet officia et in.</p><p>Vel quas aut impedit quisquam quasi. Deleniti ducimus rerum qui eos pariatur. Eveniet dignissimos omnis qui consequatur. Doloremque nostrum consequatur excepturi qui nihil qui.</p><p>Consequatur qui ut ullam doloremque ea. Quidem eum ullam sunt nam dolor quae. Non dolor qui occaecati eos. Harum laboriosam ratione vitae.</p><p>Temporibus fuga quia quia labore aliquid. Totam reprehenderit voluptatum blanditiis nam sit quod aut.</p><p>Earum ipsum blanditiis ipsa eligendi quaerat accusantium. Omnis necessitatibus ab impedit. Facilis exercitationem officiis inventore fuga omnis ipsam saepe. Debitis cumque veritatis quaerat perspiciatis.</p><p>Quidem quo necessitatibus ea placeat. Aliquid ipsa quia voluptatem aspernatur. Consequatur asperiores officiis non hic eum veniam eveniet. Perferendis ab maiores officiis blanditiis impedit numquam sunt qui.</p><p>Maiores deleniti modi a quia nam cupiditate. Ad itaque exercitationem ipsam sit blanditiis voluptas sed aspernatur.</p><p>Quia enim quasi iure ut omnis. Nesciunt maxime corrupti nihil tempora est et voluptatum.</p><p>Repudiandae repellat ipsum quia a. Autem qui minima similique reiciendis. Dolor necessitatibus nihil consequatur sunt et quasi.</p>', 0, NULL, '2023-12-10 06:03:01', '2023-12-10 06:03:01'),
+	(7, 'Vel fuga.', 'omnis-fugiat-excepturi-rem-molestias-sit-quibusdam-ducimus', '<p>Commodi autem officiis excepturi ut libero sint. Quia occaecati qui molestias incidunt libero officia. Molestiae dolores ea et dolor et quas. Dolorem in tempora corporis aut.</p><p>Mollitia quo iusto et inventore amet est. Saepe laborum excepturi optio est voluptatum nobis neque. Delectus fuga sit deleniti eligendi cupiditate mollitia dolor.</p><p>Molestiae perferendis eius consequatur aut rerum. Sed blanditiis iure asperiores inventore deleniti. Eaque qui eum a quis. A aut laboriosam voluptatem nam officia reprehenderit.</p><p>Aut aut culpa voluptatem totam. Magnam consequatur et architecto est quam. Perspiciatis et ut vel. Commodi vitae amet repellat magni molestiae.</p><p>Doloremque eius architecto molestiae quia voluptatem sed. Distinctio sed quia consequatur nobis. Pariatur culpa et et vitae occaecati ut modi quae. Eum provident aut fugiat consequatur. Eos qui occaecati odit fugiat accusantium consequatur.</p><p>Asperiores dolorum hic ut perferendis. Est velit non dolorum occaecati molestias. Dolore earum nam dicta ipsa occaecati voluptatum placeat quibusdam. Sed tempora saepe et iste molestiae dolorum velit. Veritatis aut sunt ut quo sed.</p><p>Dolor omnis sint et aspernatur minus quia quo. Illo qui sit quia excepturi dolores itaque animi. Voluptates sint iure velit perferendis non mollitia qui quae. Commodi dolor vitae ea eligendi distinctio et.</p>', 0, NULL, '2023-12-10 06:03:01', '2023-12-10 06:03:01'),
+	(8, 'Quia esse et error voluptatum quia harum eum maiores nihil.', 'veniam-molestiae-quos-ea-eum-qui-error', '<p>Qui eaque neque vitae assumenda quas. Error voluptatibus et omnis qui impedit expedita. Dolor voluptates corrupti eveniet necessitatibus eius. Temporibus autem nam et excepturi.</p><p>Deserunt architecto quibusdam iste deleniti non consequatur tempore. Quia animi quasi quae praesentium qui. Aut et voluptatibus maxime aliquam dolore at rem. Vitae temporibus suscipit nihil qui quaerat non. Illo ut eius incidunt aspernatur aliquam vel.</p><p>Quos consequatur id debitis aut maiores est cupiditate qui. Dolores inventore eius ab architecto exercitationem. Blanditiis officiis minima ut ullam et ut occaecati.</p><p>Et dolor rerum quis asperiores autem accusantium maxime. Ea quia id nemo. Eligendi expedita suscipit ut eos. Fuga et aut blanditiis qui quos facere.</p><p>Perferendis consequatur minus sunt. Autem ab esse vel itaque deleniti atque. Odio ducimus qui dolores facere. Quaerat ratione optio hic eum aperiam unde corrupti quia.</p>', 0, NULL, '2023-12-10 06:03:01', '2023-12-10 06:03:01'),
+	(9, 'Dicta et dolor accusantium.', 'eos-at-veniam-dolorem-ipsa-sunt', '<p>Esse laborum qui enim maxime est. Exercitationem quas quo distinctio sapiente rerum reprehenderit enim. Tenetur hic incidunt id laudantium culpa et asperiores. Ullam placeat illum provident rerum ad aliquam. Dignissimos illo est doloremque officiis totam reiciendis.</p><p>Officiis natus corporis sapiente doloribus quis dicta. Ea dolores aut est beatae sint. Et nemo aperiam eum ut qui deleniti. Facere vero qui aut ea aut molestiae maiores. Ratione distinctio eum repellendus quia.</p><p>Beatae aut enim dolores aliquam autem quia rerum facere. Veritatis esse totam quidem rerum quaerat. Sunt commodi consequatur accusantium qui exercitationem cumque non delectus.</p><p>Culpa placeat saepe occaecati aut dolorem. Autem neque omnis alias. Provident quibusdam consequatur voluptatem nostrum doloribus tenetur placeat. Quidem tenetur est et voluptatibus commodi rerum pariatur in.</p><p>Ipsam assumenda enim et voluptatem non. Ea sit ut minima eligendi culpa voluptates. Sed et fugit rem.</p><p>Ea mollitia excepturi numquam provident. Ea non alias suscipit quos aut nam. Dolores nam quasi consequatur aut nobis. Dolores minus a et et harum sit aut consequatur.</p><p>Non vel sit sit quo autem. Laboriosam architecto ut qui officiis ut amet ut. Fugiat modi non sint eos voluptatem recusandae.</p><p>Reprehenderit maxime necessitatibus eos. Vero saepe nihil animi dolor quod et vero et.</p><p>Et soluta error facere quam. A ut autem eveniet aliquam. Incidunt quia aliquam reprehenderit maxime ut modi dolorum.</p><p>Sequi cumque deserunt velit praesentium facilis magnam aut. Placeat consequuntur similique nobis vero corporis dolorem. Quibusdam asperiores recusandae iure voluptatibus nam.</p>', 0, NULL, '2023-12-10 06:03:01', '2023-12-10 06:03:01'),
+	(10, 'A rerum expedita ut aut.', 'quibusdam-necessitatibus-cupiditate-soluta-quos-ullam-necessitatibus-praesentium', '<p>Assumenda et voluptatem non saepe. Quis quaerat aperiam facere ut inventore. Animi quibusdam qui a quam corporis quis vitae. Sed dolore quo dignissimos cum.</p><p>Voluptatem autem soluta ea. Recusandae cumque facilis ratione possimus molestias. Ut voluptas est sunt. Voluptatem et qui aut eveniet.</p><p>Sunt voluptatem in id harum. Eligendi velit quae consequuntur beatae quia atque velit magnam. Error in officia aut rerum. Occaecati praesentium perferendis dolores et.</p><p>In autem consequatur accusantium quis dicta. Officia dicta doloremque neque quasi. Dicta debitis ad repellendus rerum iste.</p><p>Itaque quis neque atque eaque illum. Ullam perferendis sint eos voluptas delectus. Qui facilis illo id ea voluptatibus hic.</p><p>Numquam expedita quae sed adipisci doloribus qui voluptatem corporis. Dolor rem veniam dolorem sunt. Sapiente autem minima magnam reprehenderit maxime praesentium nihil non. Ut provident saepe earum ullam non id.</p><p>Reprehenderit fugiat id dolores non recusandae expedita. Vitae ipsa amet ducimus accusamus sed molestias. Asperiores ipsam distinctio voluptas delectus et. Soluta voluptate nesciunt deleniti consequatur.</p>', 0, NULL, '2023-12-10 06:03:01', '2023-12-10 06:03:01');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
