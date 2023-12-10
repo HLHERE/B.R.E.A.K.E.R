@@ -3,6 +3,17 @@
 @section('container')
 <!-- Halaman Atas -->
 <!-- component -->
+{{-- Contoh Menampilakan data berdasarkan yang sering di lihat --}}
+
+<!-- resources/views/posts/popular.blade.php -->
+<h1>Popular Posts</h1>
+@foreach($posts as $post)
+    <h2>{{ $post->title }}</h2>
+    <p>{{ $post->body }}</p>
+    <p>Views: {{ $post->views }}</p>
+@endforeach
+
+{{-- End popular --}}
 <div class="max-w-screen-xl mx-auto ">
 
   <section class="text-abu body-font mt-3  ">
