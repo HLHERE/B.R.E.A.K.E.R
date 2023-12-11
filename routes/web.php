@@ -14,20 +14,18 @@ use App\Http\Controllers\PostController;
 |
 */
 
-Route::get('/', function () {
-    return view('home', [
-        "nama" => "lala"
-    ]);
-});
+// Route::get('/', function () {
+//     return view('home');
+// });
 
 Route::get('/', [PostController::class, 'index']);
-Route::get('/', [PostController::class, 'popular']);
+Route::get('/{post:slug}', [PostController::class, 'show']);
 
 Route::get('/posts', function () {
     return view ('posts');
 });
 
-Route::get('/posts', [PostController::class, 'index']);
+// Route::get('/posts', [PostController::class, 'index']);
 
 Route::get('/post', function () {
     return view ('post');

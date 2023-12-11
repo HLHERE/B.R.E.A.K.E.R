@@ -6,11 +6,33 @@
 {{-- Contoh Menampilakan data berdasarkan yang sering di lihat --}}
 
 <!-- resources/views/posts/popular.blade.php -->
-<h1>Popular Posts</h1>
+<h1><b> =========== Popular Posts =========== </b></h1>
+@foreach($popular as $post)
+    <hr>
+    <h2><b>Judul: </b>{{ $post->title }}</h2>
+    <p><b>Author: </b>{{ $post->author->name }}</p>
+    <p><b>Excerpt: </b>{!! Str::limit($post->body, 30, 'Read More...') !!}</p>
+    <p><b>Body: </b>{!! $post->body !!}</p>
+    <p><b>Terakhir update: </b>{{ $post->created_at->diffForHumans() }}</p>
+    <p><b>Banyak pengunjung: </b>Views: {{ $post->views }}</p>
+    <hr>
+@endforeach
+
+{{-- End popular --}}
+
+{{-- Contoh Menampilakan data berdasarkan yang sering di lihat --}}
+
+<!-- resources/views/posts/popular.blade.php -->
+<h1><b> =========== Hot Posts =========== </b></h1>
 @foreach($posts as $post)
-    <h2>{{ $post->title }}</h2>
-    <p>{{ $post->body }}</p>
-    <p>Views: {{ $post->views }}</p>
+  <hr>
+  <h2><b>Judul: </b>{{ $post->title }}</h2>
+  <p><b>Author: </b>{{ $post->author->name }}</p>
+  <p><b>Excerpt: </b>{!! Str::limit($post->body, 30, 'Read More...') !!}</p>
+  <p><b>Body: </b>{!! $post->body !!}</p>
+  <p><b>Terakhir update: </b>{{ $post->created_at->diffForHumans() }}</p>
+  <p><b>Banyak pengunjung: </b>Views: {{ $post->views }}</p>
+  <hr>
 @endforeach
 
 {{-- End popular --}}
