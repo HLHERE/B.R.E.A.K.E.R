@@ -42,7 +42,7 @@
       </div>
 
 
-      <div class="flex flex-col transition duration-300 bg-white rounded shadow-sm hover:shadow mb-4">
+      <div class="flex flex-col transition duration-300 bg-white rounded shadow-sm hover:shadow mb-4 ml-4">
         <div class="relative w-full h-48">
           <img src="https://images.pexels.com/photos/3183181/pexels-photo-3183181.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260" class="object-cover w-full h-full rounded-t" alt="Plan" />
         </div>
@@ -64,7 +64,7 @@
       </div>
 
 
-      <div class="flex flex-col transition duration-300 bg-white rounded shadow-sm hover:shadow mb-4">
+      <div class="flex flex-col transition duration-300 bg-white rounded shadow-sm hover:shadow mb-4 ml-4">
         <div class="relative w-full h-48">
           <img src="https://images.pexels.com/photos/3182743/pexels-photo-3182743.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260" class="object-cover w-full h-full rounded-t" alt="Plan" />
         </div>
@@ -85,7 +85,7 @@
         </div>
       </div>
 
-      <div class="flex flex-col transition duration-300 bg-white rounded shadow-sm hover:shadow mb-4">
+      <div class="flex flex-col transition duration-300 bg-white rounded shadow-sm hover:shadow mb-4 ml-4">
         <div class="relative w-full h-48">
           <img src="https://images.pexels.com/photos/3182743/pexels-photo-3182743.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260" class="object-cover w-full h-full rounded-t" alt="Plan" />
         </div>
@@ -106,13 +106,10 @@
         </div>
       </div>
 
-      <div class="flex flex-col transition duration-300 bg-white rounded shadow-sm hover:shadow mb-4">
+      <div class="flex flex-col transition duration-300 bg-white rounded shadow-sm hover:shadow mb-4 ml-4">
         <div class="relative w-full h-48">
-
-
           <img src="https://images.pexels.com/photos/3182743/pexels-photo-3182743.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260" class="object-cover w-full h-full rounded-t" alt="Plan" />
         </div>
-
         <div class="flex flex-col justify-between flex-grow p-8 border border-t-0 rounded-b">
           <div>
             <div class="text-lg font-semibold">Pro</div>
@@ -131,7 +128,7 @@
       </div>
 
 
-      <div class="flex flex-col transition duration-300 bg-white rounded shadow-sm hover:shadow mb-4">
+      <div class="flex flex-col transition duration-300 bg-white rounded shadow-sm hover:shadow mb-4 ml-4">
         <div class="relative w-full h-48">
 
           <img src="https://images.pexels.com/photos/3182743/pexels-photo-3182743.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260" class="object-cover w-full h-full rounded-t" alt="Plan" />
