@@ -247,7 +247,7 @@
               Alteration put use diminution can considered sentiments interested discretion.
             </p>
 
-            <a href="#" class="inline-block py-2 rounded hover:bg-blue-200 text-blue-900 mt-2 ml-auto"> Read more </a>
+            <a href="#" class="inline-block py-2 rounded  text-blue-900 mt-2 ml-auto"> Read more </a>
           </div>
         </div>
 
