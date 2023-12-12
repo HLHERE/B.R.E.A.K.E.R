@@ -10,8 +10,13 @@
 <body>
     @include('dashboard.layout.header')
 
+    @include('dashboard.layout.sidebar')
+    
     @yield('container')
 
-    @include('dashboard.layout.sidebar')
+  
+    
+
+    
 </body>
 </html>
