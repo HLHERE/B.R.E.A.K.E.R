@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardMerchandiseController;
 use App\Http\Controllers\DashboardPostController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
@@ -49,4 +50,5 @@ Route::get('/', [PostController::class, 'index']);
 Route::get('/{post:slug}', [PostController::class, 'show']);
 
 Route::resource('/dashboard/posts', DashboardPostController::class);
+Route::resource('/dashboard/merch', DashboardMerchandiseController::class);
 
