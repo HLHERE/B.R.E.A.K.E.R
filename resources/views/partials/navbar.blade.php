@@ -26,11 +26,6 @@
                         <span class="text-white">Home</span>
                     </a>
                 </li>
-                <li>
-                    <a href="#" class="flex md:inline-flex p-4 items-center">
-                        <span class="text-white">Hot News</span>
-                    </a>
-                </li>
                 <li class="relative parent">
                     <a href="#" class="flex justify-between md:inline-flex p-4 items-center  space-x-2">
                         <span class="text-white">News</span>

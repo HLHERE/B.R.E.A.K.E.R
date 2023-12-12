@@ -6,7 +6,7 @@
 {{-- Contoh Menampilakan data berdasarkan yang sering di lihat --}}
 
 <!-- resources/views/posts/popular.blade.php -->
-<h1><b> =========== Popular Posts =========== </b></h1>
+{{-- <h1><b> =========== Popular Posts =========== </b></h1>
 @foreach($popular as $post)
     <hr>
     <h2><b>Judul: </b>{{ $post->title }}</h2>
@@ -16,14 +16,14 @@
     <p><b>Terakhir update: </b>{{ $post->created_at->diffForHumans() }}</p>
     <p><b>Banyak pengunjung: </b>Views: {{ $post->views }}</p>
     <hr>
-@endforeach
+@endforeach --}}
 
 {{-- End popular --}}
 
 {{-- Contoh Menampilakan data berdasarkan yang sering di lihat --}}
 
 <!-- resources/views/posts/popular.blade.php -->
-<h1><b> =========== Hot Posts =========== </b></h1>
+{{-- <h1><b> =========== Hot Posts =========== </b></h1>
 @foreach($posts as $post)
   <hr>
   <h2><b>Judul: </b>{{ $post->title }}</h2>
@@ -33,7 +33,7 @@
   <p><b>Terakhir update: </b>{{ $post->created_at->diffForHumans() }}</p>
   <p><b>Banyak pengunjung: </b>Views: {{ $post->views }}</p>
   <hr>
-@endforeach
+@endforeach --}}
 
 {{-- End popular --}}
 <div class="max-w-screen-xl mx-auto ">
@@ -61,7 +61,7 @@
           <img src="/../img/valor.jpg" class="absolute left-0 top-0 w-full h-full rounded z-0 object-cover" />
           <div class="p-4 absolute bottom-0 left-0 z-20">
             <h2 class="text-4xl font-semibold text-gray-100 leading-tight ">
-              Pellentesque a consectetur velit, ac molestie ipsum. Donec sodales, massa et auctor.
+              {!! $posts[0]->title !!}
             </h2>
           </div>
         </a>
@@ -74,8 +74,7 @@
             style="background-image: linear-gradient(180deg,transparent,rgba(0,0,0,.7));"></div>
           <img src="/../img/teknologi.jpg" class="absolute left-0 top-0 w-full h-full rounded z-0 object-cover" />
           <div class="p-4 absolute bottom-0 left-0 z-20">
-            <h2 class="text-3xl font-semibold text-gray-100 leading-tight">Lorem ipsum dolor sit amet, consectetur
-              adipisicing elit.</h2>
+            <h2 class="text-3xl font-semibold text-gray-100 leading-tight">{!! $posts[0]->title !!}</h2>
           </div>
         </div>
       </a>
@@ -96,7 +95,7 @@
             <div class="bg-putih rounded px-4 flex flex-col justify-between leading-normal">
               <div>
                 <div class="mt-3 md:mt-0 text-gray-700 font-bold text-2xl mb-2">
-                  Aliquam venenatis nisl id purus rhoncus, in efficitur sem hendrerit.
+                  {!! $posts[0]->title !!}
                 </div>
                 <p class="text-gray-700 text-base">
                   Duis euismod est quis lacus elementum, eu laoreet dolor consectetur. 
@@ -121,7 +120,7 @@
             <div class="bg-putih rounded px-4 flex flex-col justify-between leading-normal">
               <div>
                 <div class="mt-3 md:mt-0 text-gray-700 font-bold text-2xl mb-2">
-                  Integer commodo, sapien ut vulputate viverra
+                  {!! $posts[0]->title !!}
                 </div>
                 <p class="text-gray-700 text-base">
                   Nam malesuada aliquet metus, ac commodo augue mollis sit amet. 
