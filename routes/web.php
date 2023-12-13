@@ -46,6 +46,10 @@ Route::get('/register', function () {
     return view ('register.index');
 });
 
+Route::get('/about', function () {
+    return view ('about');
+});
+
 Route::get('/', [PostController::class, 'index']);
 Route::get('/{post:slug}', [PostController::class, 'show']);
 
