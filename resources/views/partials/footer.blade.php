@@ -1,28 +1,62 @@
-<div class="w-full min-h-screen flex items-center justify-center bg-navbar ">
-	<div class="md:w-2/3 w-full px-4 text-white flex flex-col">
-		<div class="w-full text-7xl font-bold">
-			<h1 class="w-full md:w-2/3">All the news about tech . can be found! </h1>
-		</div>
-		<div class="flex mt-8 flex-col md:flex-row md:justify-between">
-			<p class="w-full md:w-2/3 text-putih">To ensure that all Wikipedia content is verifiable, anyone may question an uncited claim. If your work has been tagged</p>
-			<div class="w-44 pt-6 md:pt-0">
-				<a class="bg-abu justify-center text-center rounded-lg shadow px-10 py-3 flex items-center text-putih hover:bg-coklat">Contact US</a>
+<footer class="py-6 bg-navbar">
+	<div class="container px-6 mx-auto space-y-6 divide-y dark:divide-gray-400 md:space-y-12 divide-opacity-50">
+		<div class="grid grid-cols-12">
+			<div class="pb-6 col-span-full md:pb-0 md:col-span-6">
+				<a rel="noopener noreferrer" href="#" class="flex justify-center space-x-3 md:justify-start">
+					<div class="flex items-center justify-center w-[200px] h-[200px] rounded-full dark:bg-violet-400">
+						<img src="/../img/GlamGroove.png" alt="GlamGroove">
+					</div>
+					<span class="self-center text-5xl font-Ghetto text-putih"> GlamGroove</span>
+				</a>
+			</div>
+			<div class="col-span-6 text-center md:text-left md:col-span-3 text-putih">
+				<p class="pb-1 text-xl font-Arial">Features</p>
+				<ul>
+					<li>
+						<a rel="noopener noreferrer" href="#" class="hover:dark:text-violet-400">Hot News</a>
+					</li>
+					<li>
+						<a rel="noopener noreferrer" href="#" class="hover:dark:text-violet-400">News</a>
+					</li>
+					<li>
+						<a rel="noopener noreferrer" href="#" class="hover:dark:text-violet-400">About</a>
+					</li>
+				</ul>
+			</div>
+			<div class="col-span-6 text-center md:text-left md:col-span-3 text-putih">
+				<p class="pb-1 text-xl font-Arial">News</p>
+				<ul>
+					<li>
+						<a rel="noopener noreferrer" href="#" class="hover:dark:text-violet-400">Anime</a>
+					</li>
+					<li>
+						<a rel="noopener noreferrer" href="#" class="hover:dark:text-violet-400">film</a>
+					</li>
+					<li>
+						<a rel="noopener noreferrer" href="#" class="hover:dark:text-violet-400">Gadgets</a>
+					</li>
+					<li>
+						<a rel="noopener noreferrer" href="#" class="hover:dark:text-violet-400">Games</a>
+					</li>
+					<li>
+						<a rel="noopener noreferrer" href="#" class="hover:dark:text-violet-400">Music</a>
+					</li>
+					<li>
+						<a rel="noopener noreferrer" href="#" class="hover:dark:text-violet-400">Technology</a>
+					</li>
+				</ul>
 			</div>
 		</div>
-		<div class="flex flex-col">
-			<div class="flex mt-24 mb-12 flex-row justify-between">
-				<div class="footer text-3xl text-putih  hover:text-coklat" >
-					<a href="/home" >Glam Groove</a>    
-				</div>
-				<a class="hidden md:block cursor-pointer text-putih hover:text-coklat uppercase">Hot News</a>
-				<a class="hidden md:block cursor-pointer text-putih hover:text-coklat uppercase">News</a>
-				<a class="hidden md:block cursor-pointer text-putih hover:text-coklat uppercase">Self Development</a>
-				<a class="hidden md:block cursor-pointer text-putih hover:text-coklat uppercase">Merchandise</a>
-				<div class="flex flex-row space-x-8 items-center justify-between">	
-				</div>
+		<div class="grid justify-center pt-6 lg:justify-between text-putih">
+			<div class="flex flex-col self-center text-sm text-center md:block lg:col-start-1 md:space-x-6">
+				<span>GlamGroove 2023 All rights reserved</span>
+				<a rel="noopener noreferrer" href="#">
+					<span>Privacy policy</span>
+				</a>
+				<a rel="noopener noreferrer" href="#">
+					<span>Terms of service</span>
+				</a>
 			</div>
-			<hr class="border-abu"/>
-			<p class="w-full text-center my-12 text-putih">Copyright © 2023 Glam Groove</p>
 		</div>
 	</div>
-</div>
+</footer>
