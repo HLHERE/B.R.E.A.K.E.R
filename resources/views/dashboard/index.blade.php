@@ -13,7 +13,7 @@
               <div class="text-putih text-xs">Admin<br>terhubung</div>
               <div class="h-100 border-l mx-4"></div>
               <div class="flex flex-nowrap -space-x-3">
-                <div class="font-bold text-xl text-putih leading-none">Hallo , <br>Kristin
+                <div class="font-bold text-xl text-putih leading-none">Hallo , <br>admin
                 </div>
               </div>
             </div>

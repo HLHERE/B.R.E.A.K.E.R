@@ -1,6 +1,6 @@
 <!-- component -->
-<div class="container">   
-<nav class="flex px-10 border-b md:shadow-lg items-center relative bg-navbar z-10 ">
+<div class="container shadow-md">   
+<nav class="flex px-[50px] md:shadow-lg items-center relative bg-navbar">
         <style>
             @media only screen and (min-width: 768px){
             .parent:hover .child {
@@ -13,22 +13,27 @@
                 opacity:0;
                 height:0;
                 overflow:hidden;
-                transform: translateY(-10%);
+                transform: translateY(-15%);
               }
             }
             </style>
             <div class="flex text-lg font-bold md:py-0 py-4">
-                <img src="/../img/GlamGroove.png" alt="GlamGroove" class="w-20">
+                <img src="/../img/GlamGroove.png" alt="GlamGroove" class="w-[25%] ">
             </div>
             <ul class="md:px-2 ml-auto md:flex md:space-x-2 absolute md:relative top-full left-0 right-0">
                 <li>
                     <a href="#" class="flex md:inline-flex p-4 items-center">
-                        <span class="text-white">Home</span>
+                        <span class="text-putih">Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="flex md:inline-flex p-4 items-center">
+                        <span class="text-putih">About</span>
                     </a>
                 </li>
                 <li class="relative parent">
-                    <a href="#" class="flex justify-between md:inline-flex p-4 items-center  space-x-2">
-                        <span class="text-white">News</span>
+                    <a href="#" class="flex justify-between md:inline-flex p-4 items-center space-x-2   ">
+                        <span class="text-putih">News</span>
                         <svg class="w-3 h-3 text-putih dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 8">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 5.326 5.7a.909.909 0 0 0 1.348 0L13 1"/>
                           </svg>
@@ -36,46 +41,37 @@
                     <ul class="child transition duration-300 md:absolute top-full right-0 md:w-48 bg-putih md:shadow-lg md:rounded-b ">
                         <li>
                             <a href="#" class="flex px-4 py-3 hover:bg-coklat ">    
-                                Technology
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="flex px-4 py-3 hover:bg-coklat ">
-                                Game
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="flex px-4 py-3 hover:bg-coklat ">
                                 Anime
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex px-4 py-3 hover:bg-coklat ">
+                                Film
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex px-4 py-3 hover:bg-coklat ">
+                                Gadgets
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex px-4 py-3 hover:bg-coklat ">
+                                Games
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex px-4 py-3 hover:bg-coklat ">
+                                Music
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex px-4 py-3 hover:bg-coklat ">
+                                Technology
                             </a>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <li class="relative parent">
-                        <a href="#" class="flex justify-between md:inline-flex p-4 items-center space-x-2">
-                            <span class="text-white">Self Development</span>
-                            <svg class="w-3 h-3 text-putih dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 8">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 5.326 5.7a.909.909 0 0 0 1.348 0L13 1"/>
-                              </svg>
-                            </a>
-                        <ul class="child transition duration-300 md:absolute top-full right-0 md:w-48 bg-putih md:shadow-lg md:rounded-b ">
-                            <li>
-                                <a href="#" class="flex px-4 py-3 hover:bg-coklat ">
-                                    Education
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="flex px-4 py-3 hover:bg-coklat">
-                                    Job
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#" class="flex md:inline-flex p-4 items-center">
-                            <span class="text-white">Merchandise</span>
-                        </a>
                     </li>
                     <li>
                         <a href="#" class="flex md:inline-flex p-4 items-center">
