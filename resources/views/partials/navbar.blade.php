@@ -77,15 +77,43 @@
                             <span class="text-white">Merchandise</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="#" class="flex md:inline-flex p-4 items-center">
-                            <span class="text-white">Login</span>
-                            <svg class="w-4 h-4 text-putih dark:text-white ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
-                                <path d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z"/>
-                              </svg>
+                {{-- @auth
+                <li class="relative parent">
+                    <a href="#" class="flex justify-between md:inline-flex p-4 items-center space-x-2">
+                        <span class="text-white">Welcome</span>
+                        <svg class="w-3 h-3 text-putih dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 8">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 5.326 5.7a.909.909 0 0 0 1.348 0L13 1"/>
+                          </svg>
                         </a>
-                    </li>
+                    <ul class="child transition duration-300 md:absolute top-full right-0 md:w-48 bg-putih md:shadow-lg md:rounded-b ">
+                        <li>
+                            <a href="#" class="flex px-4 py-3 hover:bg-coklat ">
+                                Logout
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex px-4 py-3 hover:bg-coklat">
+                                Job
+                            </a>
+                        </li>
+                    </ul>
                 </li>
+
+
+                @else
+                
+                
+                @endauth --}}
+                
+                <li>
+                    <a href="/login" class="flex md:inline-flex p-4 items-center">
+                        <span class="text-white">Login</span>
+                        <svg class="w-4 h-4 text-putih dark:text-white ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
+                            <path d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z"/>
+                          </svg>
+                    </a>
+                </li>
+            </li>
             </ul>
             <div class="ml-auto md:hidden text-gray-500 cursor-pointer">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"/></svg>

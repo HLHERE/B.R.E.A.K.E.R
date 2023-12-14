@@ -1,9 +1,11 @@
 <?php
 
-use App\Http\Controllers\DashboardMerchandiseController;
-use App\Http\Controllers\DashboardPostController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\DashboardPostController;
+use App\Http\Controllers\DashboardMerchandiseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,13 +40,21 @@ Route::get('/dashboard', function () {
     return view ('dashboard.index');
 });
 
-Route::get('/login', function () {
-    return view ('login.index');
-});
 
-Route::get('/register', function () {
-    return view ('register.index');
-});
+// Route::get('/login', function () {
+//     return view ('login.index');
+// });
+
+Route::get('/login', [LoginController::class, 'index']);
+Route::post('/login', [LoginController::class, 'authenticate']);
+
+// Route::get('/register', function () {
+//     return view ('register.index');
+// });
+
+Route::get('/register', [RegisterController::class, 'index']);
+Route::post('/register', [RegisterController::class, 'store']);
+
 
 Route::get('/about', function () {
     return view ('about');
