@@ -7,16 +7,16 @@
     @vite(['resources/css/app.css','resources/js/app.js'])
     <title>Document</title>
 </head>
-<body>
+<body class="flex flex-col min-h-screen">
     @include('dashboard.layout.header')
 
-    @include('dashboard.layout.sidebar')
-    
-    @yield('container')
+    <div class="flex-1 flex">
+        @include('dashboard.layout.sidebar')
 
-  
-    
-
-    
+        <div class="flex-1 flex flex-col items-center justify-center pb-8">
+            @yield('container')
+        </div>
+    </div>
 </body>
+
 </html>
