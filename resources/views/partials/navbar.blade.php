@@ -17,10 +17,10 @@
               }
             }
             </style>
-            <div class="flex text-lg font-bold md:py-0 py-4">
+            <div class="flex text-lg font-bold md:py-0 py-4 ">
                 <img src="/../img/GlamGroove.png" alt="GlamGroove" class="w-[25%] ">
             </div>
-            <ul class="md:px-2 ml-auto md:flex md:space-x-2 absolute md:relative top-full left-0 right-0">
+            <ul class="md:px-2 ml-auto md:flex md:space-x-2 absolute md:relative top-full left-0 right-0 ">
                 <li>
                     <a href="#" class="flex md:inline-flex p-4 items-center">
                         <span class="text-putih">Home</span>
