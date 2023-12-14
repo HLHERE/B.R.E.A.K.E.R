@@ -54,5 +54,4 @@ Route::get('/', [PostController::class, 'index']);
 Route::get('/{post:slug}', [PostController::class, 'show']);
 
 Route::resource('/dashboard/posts', DashboardPostController::class);
-Route::resource('/dashboard/merch', DashboardMerchandiseController::class);
 

@@ -3,7 +3,7 @@
 @section('container')
 
 
-<main class="ml-60 pt-16  overflow-auto text-putih ">
+<main class="ml-60 pt-36  overflow-auto text-putih ">
     <div class="px-6 py-8">
       <div class="max-w-4xl mx-auto">
         <div class="bg-navbar rounded-3xl p-8 mb-5">
