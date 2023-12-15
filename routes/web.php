@@ -46,8 +46,9 @@ Route::get('/dashboard', function () {
 //     return view ('login.index');
 // });
 
-Route::get('/login', [LoginController::class, 'index']);
+Route::get('/login', [LoginController::class, 'index'])->middleware('auth');
 Route::post('/login', [LoginController::class, 'authenticate']);
+Route::post('/logout', [LoginController::class, 'logout']);
 
 // Route::get('/register', function () {
 //     return view ('register.index');

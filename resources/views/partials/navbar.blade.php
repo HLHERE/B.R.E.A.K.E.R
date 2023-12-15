@@ -76,31 +76,30 @@
                 {{-- @auth
                 <li class="relative parent">
                     <a href="#" class="flex justify-between md:inline-flex p-4 items-center space-x-2">
-                        <span class="text-white">Welcome</span>
+                        <span class="text-white">Welcome {{ auth()->user()->name }}</span>
                         <svg class="w-3 h-3 text-putih dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 8">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 5.326 5.7a.909.909 0 0 0 1.348 0L13 1"/>
                           </svg>
                         </a>
                     <ul class="child transition duration-300 md:absolute top-full right-0 md:w-48 bg-putih md:shadow-lg md:rounded-b ">
                         <li>
-                            <a href="#" class="flex px-4 py-3 hover:bg-coklat ">
+                            <a href="/dashboard" class="flex px-4 py-3 hover:bg-coklat ">
+                                Dashboard
+                            </a>
+                        <form action="/logout" method="post">
+                            @csrf
+                            <a href="" class="flex px-4 py-3 hover:bg-coklat ">
                                 Logout
                             </a>
-                        </li>
-                        <li>
-                            <a href="#" class="flex px-4 py-3 hover:bg-coklat">
-                                Job
-                            </a>
+                        </form>
                         </li>
                     </ul>
                 </li>
-
 
                 @else
                 
                 
                 @endauth --}}
-                
                 <li>
                     <a href="/login" class="flex md:inline-flex p-4 items-center">
                         <span class="text-white">Login</span>
@@ -109,6 +108,7 @@
                           </svg>
                     </a>
                 </li>
+                
             </li>
             </ul>
             <div class="ml-auto md:hidden text-gray-500 cursor-pointer">
