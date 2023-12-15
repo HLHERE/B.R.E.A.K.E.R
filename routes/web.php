@@ -5,7 +5,8 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardPostController;
-use App\Http\Controllers\DashboardMerchandiseController;
+use App\Http\Controllers\DashboardAdminController;
+use App\Http\Controllers\DashboardUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,4 +65,5 @@ Route::get('/', [PostController::class, 'index']);
 Route::get('/{post:slug}', [PostController::class, 'show']);
 
 Route::resource('/dashboard/posts', DashboardPostController::class);
-
+Route::resource('/dashboard/admin', DashboardAdminController::class);
+Route::resource('/dashboard/user',DashboardUserController::class);
