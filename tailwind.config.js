@@ -28,7 +28,8 @@ module.exports = {
             abu: "#4F4A45",
             abu_muda:"#6B6663",
             putih: "#F6F1EE",
-            hijau: "#898121",
+            for_card:"#D9D4D0",
+            hijau: "#219C90",
         },
         fontFamily: {
             Ghetto : ['FunGhetto'] ,
