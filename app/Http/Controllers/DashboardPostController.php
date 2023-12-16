@@ -12,7 +12,10 @@ class DashboardPostController extends Controller
      */
     public function index()
     {
-        return view('dashboard.posts.index');
+        return view('dashboard.posts.index',[
+            // 'posts' => Post::where('id' ,auth()->user()->id)->get()
+            'posts' => Post::all()
+        ]);
     }
 
     /**

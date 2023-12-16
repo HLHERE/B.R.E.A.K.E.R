@@ -30,20 +30,20 @@
                 
             </tr>
         </thead>
-        
+        @foreach ($users as $user )
         <tbody>
             <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
                 <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                    1
+                    {{$user->id}}
                 </td>
                 <td class="px-6 py-4">
-                    Haykal
+                    {{$user->name}}
                 </td>
                 <td class="px-6 py-4">
-                    HLhere
+                    {{$user->username}}
                 </td>
                 <td class="px-6 py-4">
-                    Laptop@gmail.com
+                    {{$user->email}}
                 </td>   
                 <td class="px-6 py-4 flex items-center ">
                     <a href="#" class="font-medium text-yellow-400 dark:text-blue-500 hover:underline w-8">Edit</a>
@@ -55,6 +55,8 @@
             </tr>
             <!-- Add more rows as needed -->
         </tbody>
+            
+        @endforeach
     </table>
 </div>
 @endsection

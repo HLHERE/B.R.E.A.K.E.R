@@ -5,7 +5,7 @@
 <main class="flex ml-60 pt-36 overflow-auto text-navbar">
   <div class="flex px-6 py-16"> <!-- Menyesuaikan padding untuk memperbesar kartu -->
     <div class="flex max-w-4xl mx-auto space-x-4"> <!-- Menambahkan class 'space-x-4' untuk memberi jarak antar elemen -->
-      <div class="w-[850px] h-[500px] bg-white/50 rounded-3xl p-8 mb-5 shadow-2xl relative"> <!-- Menyesuaikan padding kartu dan menambahkan class 'relative' -->
+      <div class="w-[850px] h-[500px] bg-white/50 rounded-3xl p-8 mb-5 shadow-md relative"> <!-- Menyesuaikan padding kartu dan menambahkan class 'relative' -->
         <h1 class="text-4xl font-bold mb-10">Selamat datang di GlamGroove!</h1>
         <div class="flex items-center justify-between">
           <div class="flex items-stretch">
