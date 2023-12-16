@@ -26,7 +26,7 @@ More info: https://beyondco.de/blog/tailwind-jit-compiler-via-cdn
             <a class="relative block group">
                 <div class="absolute inset-0 bg-abu hidden md:block transform md:translate-y-2 md:translate-x-4 xl:translate-y-4 xl:translate-x-8 group-hover:translate-x-0 group-hover:translate-y-0 transition duration-700 ease-out pointer-events-none" aria-hidden="true"></div>
                 <figure class="relative h-0 pb-[56.25%] md:pb-[75%] lg:pb-[56.25%] overflow-hidden transform md:-translate-y-2 xl:-translate-y-4 group-hover:translate-x-0 group-hover:translate-y-0 transition duration-700 ease-out">
-                    <img class="absolute inset-0 w-full h-full object-cover transform hover:scale-105 transition duration-700 ease-out" src="/../img/GlamGroove.png" alt="Blog post">
+                    <img class="absolute inset-0 w-full h-full object-cover transform hover:scale-105 transition duration-700 ease-out" src="/../img/gojo.jpg" alt="Blog post">
                 </figure>
             </a>
             <div>
@@ -35,7 +35,7 @@ More info: https://beyondco.de/blog/tailwind-jit-compiler-via-cdn
                         <a class="text-navbar transition duration-150 ease-in-out">GlamGroove Entertainment.</a>
                     </h3>
                 </header>
-                <p class="text-lg text-abu flex-grow">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupx.</p>
+                <p class="text-lg text-abu flex-grow">"Glam Groove Entertainment" bisa diartikan sebagai perusahaan atau entitas yang berfokus pada penyediaan hiburan dengan sentuhan glamor dan groove. Web ini berisi konten tentang Teknologi, Game, Anime, Musik, Film, dan Gadgets.</p>
             </div>
         </article>    
     </div>
@@ -44,6 +44,7 @@ More info: https://beyondco.de/blog/tailwind-jit-compiler-via-cdn
 <!-- Created By -->
 <div class="-mt-6 text-center">
     <h2 class="text-3xl text-abu font-bold">Created By</h2>
+    <h2 class="text-3xl text-abu font-bold">B.R.E.A.K.E.R</h2>
 </div>
 
 <!-- Content -->
@@ -52,23 +53,23 @@ More info: https://beyondco.de/blog/tailwind-jit-compiler-via-cdn
   <div class="container px-16 py-16 mx-auto">
     <div class="flex flex-wrap -m-4">
       <div class="xl:w-1/4 md:w-1/2 p-4">
-        <div class="bg-gray-100 p-6 rounded-lg">
+        <div class="bg-gray-300 p-6 rounded-lg">
           <img class="h-40 rounded w-full object-cover object-center mb-6" src="/../img/gojo.jpg" alt="content">
           <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font">Front End & Back End</h3>
-          <h2 class="text-lg text-gray-900 font-medium title-font mb-4">Mochamad Haykal Alvegio Hadian</h2>
+          <h2 class="text-lg text-gray-900 font-medium title-font mb-4">M Haykal Alvegio H</h2>
         </div>
       </div>
 
       <div class="xl:w-1/4 md:w-1/2 p-4">
-        <div class="bg-gray-100 p-6 rounded-lg">
+        <div class="bg-gray-300 p-6 rounded-lg">
           <img class="h-40 rounded w-full object-cover object-center mb-6" src="/../img/gojo.jpg" alt="content">
           <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font">Front End</h3>
-          <h2 class="text-lg text-gray-900 font-medium title-font mb-4">Mohammad Deandra Adhitya</h2>
+          <h2 class="text-lg text-gray-900 font-medium title-font mb-4">M Deandra Adhitya</h2>
         </div>
       </div>
 
       <div class="xl:w-1/4 md:w-1/2 p-4">
-        <div class="bg-gray-100 p-6 rounded-lg">
+        <div class="bg-gray-300 p-6 rounded-lg">
           <img class="h-40 rounded w-full object-cover object-center mb-6" src="/../img/gojo.jpg" alt="content">
           <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font">Back End</h3>
           <h2 class="text-lg text-gray-900 font-medium title-font mb-4">Muhammad Ridho Fauzan</h2>
@@ -76,7 +77,7 @@ More info: https://beyondco.de/blog/tailwind-jit-compiler-via-cdn
       </div>
 
       <div class="xl:w-1/4 md:w-1/2 p-4">
-        <div class="bg-gray-100 p-6 rounded-lg">
+        <div class="bg-gray-300 p-6 rounded-lg">
           <img class="h-40 rounded w-full object-cover object-center mb-6" src="/../img/gojo.jpg" alt="content">
           <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font">Back End</h3>
           <h2 class="text-lg text-gray-900 font-medium title-font mb-4">Syahidan Fitrah</h2>
