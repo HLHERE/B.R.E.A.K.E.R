@@ -8,7 +8,7 @@
   <div class="container px-5 py-24 mx-auto">
     <div class="flex flex-wrap w-full mb-20">
       <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
-        <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">Hot News</h1>
+        <h1 class="sm:text-5xl text-2xl  font-Ghetto title-font mb-2 text-gray-900">Hot News</h1>
         <div class="h-1 w-20 bg-coklat rounded"></div>
       </div>
       <p class="lg:w-1/2 w-full leading-relaxed text-gray-500">Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical gentrify, subway tile poke farm-to-table. Franzen you probably haven't heard of them man bun deep jianbing selfies heirloom prism food truck ugh squid celiac humblebrag.</p>
@@ -153,9 +153,6 @@
       <!-- recent posts -->
       <div class="flex mt-16 mb-4 px-4 lg:px-0 items-center justify-between">
         <h2 class="font-bold text-3xl">Latest news</h2>
-        <a class="bg-gray-200 hover:bg-blue-200 text-gray-800 px-3 py-1 rounded cursor-pointer">
-          View all
-        </a>
       </div>  
       <div class="block space-x-0 lg:flex lg:space-x-6">
 
@@ -205,9 +202,6 @@
       <!-- popular posts -->
       <div class="flex mt-16 mb-4 px-4 lg:px-0 items-center justify-between">
         <h2 class="font-bold text-3xl">Hot News</h2>
-        <a class="bg-gray-200 hover:bg-blue-200 text-gray-800 px-3 py-1 rounded cursor-pointer">
-          View all
-        </a>
       </div>
       <div class="block space-x-0 lg:flex lg:space-x-6">
 
