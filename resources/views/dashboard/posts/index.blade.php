@@ -40,11 +40,14 @@
                 <td class="px-6 py-4">
                    {{$post->category}}
                 </td>   
-                <td class="px-6 py-4 flex items-center ">
-                    <a href="#" class="font-medium text-yellow-400 dark:text-blue-500 hover:underline w-8">Edit</a>
+                <td class="px-6 py-4 flex items-center space-x-1">
+                    <a href="/dashboard/posts/{{$post->slug}}" class="font-Arial text-blue-700 dark:text-blue-500 hover:underline w-8">view</a>
                     <span class="mx-1">|</span>
-                    <a href="#" class="font-medium text-red-500 dark:text-red-500 hover:underline w-8">Delete</a>
+                    <a href="#" class="font-Arial text-yellow-400 dark:text-blue-500 hover:underline w-8">Edit</a>
+                    <span class="mx-1">|</span>
+                    <a href="#" class="font-Arial text-red-500 dark:text-red-500 hover:underline w-8">Delete</a>
                 </td>
+                
             </tr>
             <!-- Add more rows as needed -->
         </tbody>
