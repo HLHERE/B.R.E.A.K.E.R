@@ -35,7 +35,23 @@
                 Admin
               </a>
             </li>
-          </ul>
+          
+          <br>
+          <br>
+          <br>
+          <li>
+            @if(isset($showButton) && $showButton)
+            <li class="mt-2">
+              <a href="/dashboard" class="flex items-center text-xs bg-putih text-gray-900 hover:text-white hover:bg-coklat rounded-md py-1 px-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-3 h-3 mr-1">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" />
+                  </svg>
+                  Menu
+              </a>
+          </li>
+          
+        @endif
+          </li>
         </div>
       </div>
     </div>

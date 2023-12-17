@@ -12,9 +12,12 @@ class DashboardPostController extends Controller
      */
     public function index()
     {
+        $showButton = true;
+
         return view('dashboard.posts.index',[
             // 'posts' => Post::where('id' ,auth()->user()->id)->get()
-            'posts' => Post::all()
+            'posts' => Post::all(),
+            'showButton' => $showButton,
         ]);
     }
 
@@ -39,8 +42,10 @@ class DashboardPostController extends Controller
      */
     public function show(Post $post)
     {
+        $showButton = true;
         return view ('dashboard.posts.show' , [
-            'post' => $post
+            'post' => $post,
+            'showButton' => $showButton,
         ]);
     }
 
