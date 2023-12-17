@@ -65,6 +65,7 @@ Route::get('/about', function () {
 Route::get('/', [PostController::class, 'index']);
 Route::get('/{post:slug}', [PostController::class, 'show']);
 
+
 Route::resource('/dashboard/posts', DashboardPostController::class);
 Route::resource('/dashboard/admin', DashboardAdminController::class);
 Route::resource('/dashboard/user',DashboardUserController::class);
