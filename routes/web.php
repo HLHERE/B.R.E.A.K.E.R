@@ -7,6 +7,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\DashboardAdminController;
 use App\Http\Controllers\DashboardUserController;
+use App\Http\Controllers\GoogleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,7 +47,7 @@ Route::get('/dashboard', function () {
 //     return view ('login.index');
 // });
 
-Route::get('/login', [LoginController::class, 'index'])->middleware('auth');
+Route::get('/login', [LoginController::class, 'index']);
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
@@ -61,6 +62,9 @@ Route::post('/register', [RegisterController::class, 'store']);
 Route::get('/about', function () {
     return view ('about');
 });
+
+Route::get('/google', [GoogleController::class, 'redirectToGoogle'])->name('google.login');
+Route::get('/login/google', [GoogleController::class, 'handleGoogleCallback'])->name('google.callback');
 
 Route::get('/', [PostController::class, 'index']);
 Route::get('/{post:slug}', [PostController::class, 'show']);
