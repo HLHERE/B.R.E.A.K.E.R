@@ -27,7 +27,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="flex md:inline-flex p-4 items-center">
+                    <a href="" class="flex md:inline-flex p-4 items-center">
                         <span class="text-putih">About</span>
                     </a>
                 </li>
@@ -41,17 +41,17 @@
                     <ul class="child transition duration-300 md:absolute top-full right-0 md:w-48 bg-putih md:shadow-lg md:rounded-b ">
                         <li>
                             <a href="#" class="flex px-4 py-3 hover:bg-coklat ">    
-                                Anime
+                                Art & Design
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex px-4 py-3 hover:bg-coklat ">
+                                Cartoons
                             </a>
                         </li>
                         <li>
                             <a href="#" class="flex px-4 py-3 hover:bg-coklat ">
                                 Film
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="flex px-4 py-3 hover:bg-coklat ">
-                                Gadgets
                             </a>
                         </li>
                         <li>

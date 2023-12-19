@@ -2,9 +2,8 @@
 
 @section('container')
 
-
-<div class="relative top-[50px]  overflow-x-auto shadow-md sm:rounded-lg px-4 ">
-    <table class="w-full table-auto">
+<div class="relative top-[125px] w-[900px]  overflow-x-auto shadow-md sm:rounded-lg table-auto"> <!-- Tambahkan class 'mx-auto' di sini -->
+    <table class="relative w-full overflow-x-auto shadow-md sm:rounded-lg ">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
                 <th scope="col" class="px-6 py-3 text-left">
