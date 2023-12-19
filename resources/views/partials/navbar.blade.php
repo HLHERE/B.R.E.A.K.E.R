@@ -73,7 +73,7 @@
                 </li>
                 <li>
                     </li>
-                {{-- @auth
+                @auth
                 <li class="relative parent">
                     <a href="#" class="flex justify-between md:inline-flex p-4 items-center space-x-2">
                         <span class="text-white">Welcome {{ auth()->user()->name }}</span>
@@ -88,9 +88,7 @@
                             </a>
                         <form action="/logout" method="post">
                             @csrf
-                            <a href="" class="flex px-4 py-3 hover:bg-coklat ">
-                                Logout
-                            </a>
+                                <button type="submit" class="text-left pl-5 pr-32 py-2.5 hover:bg-coklat " >Logout</button>
                         </form>
                         </li>
                     </ul>
@@ -98,8 +96,6 @@
 
                 @else
                 
-                
-                @endauth --}}
                 <li>
                     <a href="/login" class="flex md:inline-flex p-4 items-center">
                         <span class="text-white">Login</span>
@@ -108,6 +104,8 @@
                           </svg>
                     </a>
                 </li>
+                
+                @endauth
                 
             </li>
             </ul>
