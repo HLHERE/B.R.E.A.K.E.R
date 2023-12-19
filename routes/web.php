@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\DashboardAdminController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardUserController;
 use App\Http\Controllers\GoogleController;
 
@@ -38,16 +39,16 @@ Route::get('/merchandise', function () {
     return view ('merchandise');
 });
 
-Route::get('/dashboard', function () {
-    return view ('dashboard.index');
-});
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 
 
 // Route::get('/login', function () {
 //     return view ('login.index');
 // });
 
-Route::get('/login', [LoginController::class, 'index']);
+
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
@@ -55,7 +56,7 @@ Route::post('/logout', [LoginController::class, 'logout']);
 //     return view ('register.index');
 // });
 
-Route::get('/register', [RegisterController::class, 'index']);
+Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
 
 
@@ -70,6 +71,6 @@ Route::get('/', [PostController::class, 'index']);
 Route::get('/{post:slug}', [PostController::class, 'show']);
 
 
-Route::resource('/dashboard/posts', DashboardPostController::class);
-Route::resource('/dashboard/admin', DashboardAdminController::class);
-Route::resource('/dashboard/user',DashboardUserController::class);
+Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('auth');
+Route::resource('/dashboard/admin', DashboardAdminController::class)->middleware('auth');
+Route::resource('/dashboard/user',DashboardUserController::class)->middleware('auth');
