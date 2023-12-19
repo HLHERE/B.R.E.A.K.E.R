@@ -1,5 +1,4 @@
-<aside class="fixed inset-y-0 left-0 bg-abu max-h-screen w-60 shadow-xl">
-    <div class="flex flex-col justify-between h-full">
+<aside class="fixed inset-y-0 left-0 bg-abu w-60 md:w-1/4 lg:w-1/5 xl:w-1/6 shadow-xl overflow-y-auto">
       <div class="flex-grow">
         <div class="w-[125px] ml-12">
         <img src="/../img/GlamGroove.png" alt="">
@@ -35,11 +34,10 @@
                 Admin
               </a>
             </li>
-          
-          <br>
-          <br>
-          <br>
-          <li>
+            <br>
+            <br>
+            <br>
+            <li>
             @if(isset($showButton) && $showButton)
             <li class="mt-2">
               <a href="/dashboard" class="flex items-center text-xs bg-putih text-gray-900 hover:text-white hover:bg-coklat rounded-md py-1 px-2">

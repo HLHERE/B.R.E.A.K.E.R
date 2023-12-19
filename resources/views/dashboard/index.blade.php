@@ -24,7 +24,7 @@
         
         <!-- Menggunakan 'ml-auto' dan 'space-x-3' untuk membuat jarak spasi -->
         <div class="flex space-x-3 m-5">
-          <a href="#" class="flex flex-col items-center bg-putih border border-white rounded-lg shadow md:flex-row md:max-w-md hover:bg-white dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+          <a href="/dashboard/posts/create/" class="flex flex-col items-center bg-putih border border-white rounded-lg shadow md:flex-row md:max-w-md hover:bg-white dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
             <img class="object-cover w-full rounded-t-lg h-40 md:h-auto md:w-20 md:rounded-none md:rounded-s-lg" src="/docs/images/blog/image-4.jpg" alt="">
             <div class="flex flex-col justify-start p-5 ">
               <h5 class="mb-1 text-lg font-Arial tracking-tight text-navbar dark:text-white">Mari Post Artikel !</h5>
