@@ -64,9 +64,7 @@ Route::get('/about', function () {
 Route::get('/', [PostController::class, 'index']);
 Route::get('/{post:slug}', [PostController::class, 'show']);
 
-Route::get('/dashboard/posts/checkSlug' , [DashboardPostController::class,'checkSlug'])->middleware('auth');
+
 Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('auth');
 Route::resource('/dashboard/admin', DashboardAdminController::class)->middleware('auth');
 Route::resource('/dashboard/user',DashboardUserController::class)->middleware('auth');
-
-
