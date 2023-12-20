@@ -2,7 +2,7 @@
 <section class="bg-putih dark:bg-gray-900">
   <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
       <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
-          <img class="w-[200px] -ml-4 mt-25" src="/../img/GlamGroove.png" alt="logo">    
+          <img class="w-[200px] -ml-4 mt-52" src="/../img/GlamGroove.png" alt="logo">    
       </a>
       <div class="w-full dark:border md:mt-0 sm:max-w-md xl:p-0 text-abu dark:bg-gray-800 dark:border-gray-700">
           <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
