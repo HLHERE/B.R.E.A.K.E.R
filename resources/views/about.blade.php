@@ -52,7 +52,7 @@ More info: https://beyondco.de/blog/tailwind-jit-compiler-via-cdn
       <div class="xl:w-1/4 md:w-1/2 p-4">
         <div class="bg-gray-300 p-6 rounded-lg">
           <img class="h-40 rounded w-full object-cover object-center mb-6" src="/../img/gojo.jpg" alt="content">
-          <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font">Project Manager</h3>
+          <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font">Front End & Back End</h3>
           <h2 class="text-lg text-gray-900 font-medium title-font mb-4">M Haykal Alvegio H</h2>
         </div>
       </div>

@@ -9,10 +9,9 @@
 <body >
     @include('partials.navbar')
 
-    <div class=" bg-putih ">
+    <div class="container bg-putih">
           @yield('container')
     </div>
-
     @include('partials.footer')
 </body>
 </html>
