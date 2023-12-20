@@ -3,7 +3,7 @@
 @section('container')
 
 <div class="max-w-screen-lg mx-auto">
-    <main class="mt-24">
+    <main class="ml-20 mt-24">
         <main class="mt-10">
     
           <div class="mb-4 md:mb-0 w-full mx-auto relative">

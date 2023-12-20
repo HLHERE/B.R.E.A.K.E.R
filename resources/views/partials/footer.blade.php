@@ -1,5 +1,5 @@
 <footer class="py-6 bg-navbar">
-	<div class="container px-6 mx-auto space-y-6 divide-y dark:divide-gray-400 md:space-y-12 divide-opacity-50">
+    <div class="container mx-auto px-4 md:px-6 lg:px-8 space-y-6 divide-y dark:divide-gray-400 md:space-y-12 divide-opacity-50">
 		<div class="grid grid-cols-12">
 			<div class="pb-6 col-span-full md:pb-0 md:col-span-6">
 				<a rel="noopener noreferrer" href="#" class="flex justify-center space-x-3 md:justify-start">
