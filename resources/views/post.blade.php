@@ -11,7 +11,7 @@
       <div class="container px-5 py-24 mx-auto">
         <div class="flex flex-wrap w-full mb-20">
           <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
-            <h1 class="sm:text-5xl text-2xl title-font text-gray-900 font-Ghetto">Game</h1>
+            <h1 class="sm:text-5xl text-2xl title-font text-abu font-Ghetto">Game</h1>
             <div class="h-1 w-20 bg-coklat rounded"></div>
           </div>
         </div>
