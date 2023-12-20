@@ -12,6 +12,7 @@ class DashboardAdminController extends Controller
      */
     public function index()
     {
+        $showButton = true;
        return view('dashboard.admin.index');
     }
 

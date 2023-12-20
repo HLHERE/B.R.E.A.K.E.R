@@ -27,13 +27,13 @@
 				<p class="pb-1 text-xl font-Arial">News</p>
 				<ul>
 					<li>
-						<a rel="noopener noreferrer" href="#" class="hover:dark:text-violet-400">Anime</a>
+						<a rel="noopener noreferrer" href="#" class="hover:dark:text-violet-400">Art & Design</a>
 					</li>
 					<li>
-						<a rel="noopener noreferrer" href="#" class="hover:dark:text-violet-400">film</a>
+						<a rel="noopener noreferrer" href="#" class="hover:dark:text-violet-400">Cartoons</a>
 					</li>
 					<li>
-						<a rel="noopener noreferrer" href="#" class="hover:dark:text-violet-400">Gadgets</a>
+						<a rel="noopener noreferrer" href="#" class="hover:dark:text-violet-400">Film</a>
 					</li>
 					<li>
 						<a rel="noopener noreferrer" href="#" class="hover:dark:text-violet-400">Games</a>

@@ -12,7 +12,12 @@ class DashboardUserController extends Controller
      */
     public function index()
     {
-        return view('dashboard.user.index');
+        $showButton = true;
+        return view('dashboard.user.index' , [
+            // 'posts' => Post::where('id' ,auth()->user()->id)->get()
+            'users' => User::all(),
+            'showButton' => $showButton,
+        ]);
     }
 
     /**

@@ -12,7 +12,15 @@ class DashboardPostController extends Controller
      */
     public function index()
     {
-        return view('dashboard.posts.index');
+        $tampilButton = true;
+        $showButton = true;
+
+        return view('dashboard.posts.index',[
+            // 'posts' => Post::where('id' ,auth()->user()->id)->get()
+            'posts' => Post::all(),
+            'tampilButton' => $tampilButton,
+            'showButton' => $showButton,
+        ]);
     }
 
     /**
@@ -20,7 +28,7 @@ class DashboardPostController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.posts.create');
     }
 
     /**
@@ -36,7 +44,11 @@ class DashboardPostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        $showButton = true;
+        return view ('dashboard.posts.show' , [
+            'post' => $post,
+            'showButton' => $showButton,
+        ]);
     }
 
     /**

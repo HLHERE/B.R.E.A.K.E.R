@@ -5,7 +5,7 @@
 <main class="flex ml-60 pt-36 overflow-auto text-navbar">
   <div class="flex px-6 py-16"> <!-- Menyesuaikan padding untuk memperbesar kartu -->
     <div class="flex max-w-4xl mx-auto space-x-4"> <!-- Menambahkan class 'space-x-4' untuk memberi jarak antar elemen -->
-      <div class="w-[850px] h-[500px] bg-white/50 rounded-3xl p-8 mb-5 shadow-2xl relative"> <!-- Menyesuaikan padding kartu dan menambahkan class 'relative' -->
+      <div class="w-[850px] h-[500px] bg-white/50 rounded-3xl p-8 mb-5 shadow-md relative"> <!-- Menyesuaikan padding kartu dan menambahkan class 'relative' -->
         <h1 class="text-4xl font-bold mb-10">Selamat datang di GlamGroove!</h1>
         <div class="flex items-center justify-between">
           <div class="flex items-stretch">
@@ -24,7 +24,7 @@
         
         <!-- Menggunakan 'ml-auto' dan 'space-x-3' untuk membuat jarak spasi -->
         <div class="flex space-x-3 m-5">
-          <a href="#" class="flex flex-col items-center bg-putih border border-white rounded-lg shadow md:flex-row md:max-w-md hover:bg-white dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+          <a href="/dashboard/posts/create/" class="flex flex-col items-center bg-putih border border-white rounded-lg shadow md:flex-row md:max-w-md hover:bg-white dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
             <img class="object-cover w-full rounded-t-lg h-40 md:h-auto md:w-20 md:rounded-none md:rounded-s-lg" src="/docs/images/blog/image-4.jpg" alt="">
             <div class="flex flex-col justify-start p-5 ">
               <h5 class="mb-1 text-lg font-Arial tracking-tight text-navbar dark:text-white">Mari Post Artikel !</h5>

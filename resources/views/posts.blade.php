@@ -4,14 +4,13 @@
 <!-- component -->
 <div class="max-w-screen-lg mx-auto">
 
-  <section class="text-gray-600 body-font">
-    <div class="container px-5 py-24 mx-auto">
-      <div class="flex flex-wrap w-full mb-20">
-        <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
-          <h1 class="sm:text-5xl text-2xl  font-Ghetto title-font mb-2 text-gray-900">Hot News</h1>
-          <div class="h-1 w-20 bg-coklat rounded"></div>
-        </div>
-        <p class="lg:w-1/2 w-full leading-relaxed text-gray-500">Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical gentrify, subway tile poke farm-to-table. Franzen you probably haven't heard of them man bun deep jianbing selfies heirloom prism food truck ugh squid celiac humblebrag.</p>
+
+<section class="text-gray-600 body-font">
+  <div class="container px-5 py-24 mx-auto">
+    <div class="flex flex-wrap w-full mb-20">
+      <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
+        <h1 class="sm:text-5xl text-2xl  font-Ghetto title-font mb-2 text-abu">Hot News</h1>
+        <div class="h-1 w-20 bg-coklat rounded"></div>
       </div>
   </section>
 
