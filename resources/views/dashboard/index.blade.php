@@ -12,7 +12,7 @@
             <div class="text-2abu text-xs py-3">Admin<br>terhubung</div>
             <div class="h-100 border-l mx-4"></div>
             <div class="flex flex-nowrap -space-x-3">
-              <div class="font-bold text-2xl text-abu leading-none">hallo <br> admin</div>
+              <div class="font-bold text-2xl text-abu leading-none">hallo <br> nama admin </div>
             </div>
           </div>
         </div>
