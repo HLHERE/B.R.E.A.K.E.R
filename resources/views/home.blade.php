@@ -209,22 +209,66 @@
 
                 </div>
 
-                <!-- right sidebar -->
                 <div class="w-full lg:w-1/3 px-3">
                     <!-- topics -->
                     <div class="mb-4">
-                        <h5 class="font-bold text-lg uppercase text-gray-700 px-1 mb-2"> Hot News </h5>
-                        <ul>
-                            <li
-                                class="px-1 py-4 border-b border-t border-white hover:border-gray-200 transition duration-300">
-                                <a href="#" class="flex items-center text-gray-600 cursor-pointer">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42" />
-                                    </svg>
-
-
+                    <h5 class="font-bold text-lg uppercase text-gray-700 px-1 mb-2"> Hot News </h5>
+                    <ul>
+                        <li class="px-1 py-4 border-b border-t border-white hover:border-gray-200 transition duration-300">
+                        <a href="#" class="flex items-center text-gray-600 cursor-pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="16" width="18" class='mr-1' viewBox="0 0 576 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
+                            <path d="M339.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L568.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S517.7-4.4 499.1 9.6L262.4 187.2c-24 18-38.2 46.1-38.4 76.1L339.3 367.1zm-19.6 25.4l-116-104.4C143.9 290.3 96 339.6 96 400c0 3.9 .2 7.8 .6 11.6C98.4 429.1 86.4 448 68.8 448H64c-17.7 0-32 14.3-32 32s14.3 32 32 32H208c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg>
+                            Art & Design
+                            <span class="text-gray-500 ml-auto">23 articles</span>
+                            <i class='text-gray-500 bx bx-right-arrow-alt ml-1'></i>
+                        </a>
+                        </li>
+                        <li class="px-1 py-4 border-b border-t border-white hover:border-gray-200 transition duration-300">
+                        <a href="#" class="flex items-center text-gray-600 cursor-pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="17" width="17" class='mr-1' viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
+                            <path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm130.7 57.9c-4.2-13.6 7.1-25.9 21.3-25.9H364.5c14.2 0 25.5 12.4 21.3 25.9C369 368.4 318.2 408 258.2 408s-110.8-39.6-127.5-94.1zm2.8-183.3l89.9 47.9c10.7 5.7 10.7 21.1 0 26.8l-89.9 47.9c-7.9 4.2-17.5-1.5-17.5-10.5c0-2.8 1-5.5 2.8-7.6l36-43.2-36-43.2c-1.8-2.1-2.8-4.8-2.8-7.6c0-9 9.6-14.7 17.5-10.5zM396 141.1c0 2.8-1 5.5-2.8 7.6l-36 43.2 36 43.2c1.8 2.1 2.8 4.8 2.8 7.6c0 9-9.6 14.7-17.5 10.5l-89.9-47.9c-10.7-5.7-10.7-21.1 0-26.8l89.9-47.9c7.9-4.2 17.5 1.5 17.5 10.5z"/></svg>                 
+                            Cartoons
+                            <span class="text-gray-500 ml-auto">18 articles</span>
+                            <i class='text-gray-500 bx bx-right-arrow-alt ml-1'></i>
+                        </a>
+                        </li>
+                        <li class="px-1 py-4 border-b border-t border-white hover:border-gray-200 transition duration-300">
+                        <a href="#" class="flex items-center text-gray-600 cursor-pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="17" width="17" class='mr-2  ' viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path d="M0 96C0 60.7 28.7 32 64 32H448c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96zM48 368v32c0 8.8 7.2 16 16 16H96c8.8 0 16-7.2 16-16V368c0-8.8-7.2-16-16-16H64c-8.8 0-16 7.2-16 16zm368-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V368c0-8.8-7.2-16-16-16H416zM48 240v32c0 8.8 7.2 16 16 16H96c8.8 0 16-7.2 16-16V240c0-8.8-7.2-16-16-16H64c-8.8 0-16 7.2-16 16zm368-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V240c0-8.8-7.2-16-16-16H416zM48 112v32c0 8.8 7.2 16 16 16H96c8.8 0 16-7.2 16-16V112c0-8.8-7.2-16-16-16H64c-8.8 0-16 7.2-16 16zM416 96c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V112c0-8.8-7.2-16-16-16H416zM160 128v64c0 17.7 14.3 32 32 32H320c17.7 0 32-14.3 32-32V128c0-17.7-14.3-32-32-32H192c-17.7 0-32 14.3-32 32zm32 160c-17.7 0-32 14.3-32 32v64c0 17.7 14.3 32 32 32H320c17.7 0 32-14.3 32-32V320c0-17.7-14.3-32-32-32H192z"/></svg>
+                            Film
+                            <span class="text-gray-500 ml-auto">34 articles</span>
+                            <i class='text-gray-500 bx bx-right-arrow-alt ml-1'></i>
+                        </a>
+                        </li>
+                        <li class="px-1 py-4 border-b border-t border-white hover:border-gray-200 transition duration-300">
+                        <a href="#" class="flex items-center text-gray-600 cursor-pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="16" width="20" class='mr-1' viewBox="0 0 640 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path d="M192 64C86 64 0 150 0 256S86 448 192 448H448c106 0 192-86 192-192s-86-192-192-192H192zM496 168a40 40 0 1 1 0 80 40 40 0 1 1 0-80zM392 304a40 40 0 1 1 80 0 40 40 0 1 1 -80 0zM168 200c0-13.3 10.7-24 24-24s24 10.7 24 24v32h32c13.3 0 24 10.7 24 24s-10.7 24-24 24H216v32c0 13.3-10.7 24-24 24s-24-10.7-24-24V280H136c-13.3 0-24-10.7-24-24s10.7-24 24-24h32V200z"/></svg>
+                            Games
+                            <span class="text-gray-500 ml-auto">9 articles</span>
+                            <i class='text-gray-500 bx bx-right-arrow-alt ml-1'></i>
+                        </a>
+                        </li>
+                        <li class="px-1 py-4 border-b border-t border-white hover:border-gray-200 transition duration-300">
+                        <a href="#" class="flex items-center text-gray-600 cursor-pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" class='mr-1' viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path d="M499.1 6.3c8.1 6 12.9 15.6 12.9 25.7v72V368c0 44.2-43 80-96 80s-96-35.8-96-80s43-80 96-80c11.2 0 22 1.6 32 4.6V147L192 223.8V432c0 44.2-43 80-96 80s-96-35.8-96-80s43-80 96-80c11.2 0 22 1.6 32 4.6V200 128c0-14.1 9.3-26.6 22.8-30.7l320-96c9.7-2.9 20.2-1.1 28.3 5z"/></svg>
+                            Music
+                            <span class="text-gray-500 ml-auto">9 articles</span>
+                            <i class='text-gray-500 bx bx-right-arrow-alt ml-1'></i>
+                        </a>
+                        </li>
+                        <li class="px-1 py-4 border-b border-t border-white hover:border-gray-200 transition duration-300">
+                        <a href="#" class="flex items-center text-gray-600 cursor-pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" class='mr-1' viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path d="M176 24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64c-35.3 0-64 28.7-64 64H24c-13.3 0-24 10.7-24 24s10.7 24 24 24H64v56H24c-13.3 0-24 10.7-24 24s10.7 24 24 24H64v56H24c-13.3 0-24 10.7-24 24s10.7 24 24 24H64c0 35.3 28.7 64 64 64v40c0 13.3 10.7 24 24 24s24-10.7 24-24V448h56v40c0 13.3 10.7 24 24 24s24-10.7 24-24V448h56v40c0 13.3 10.7 24 24 24s24-10.7 24-24V448c35.3 0 64-28.7 64-64h40c13.3 0 24-10.7 24-24s-10.7-24-24-24H448V280h40c13.3 0 24-10.7 24-24s-10.7-24-24-24H448V176h40c13.3 0 24-10.7 24-24s-10.7-24-24-24H448c0-35.3-28.7-64-64-64V24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64H280V24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64H176V24zM160 128H352c17.7 0 32 14.3 32 32V352c0 17.7-14.3 32-32 32H160c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32zm192 32H160V352H352V160z"/></svg>
+                            Technology
+                            <span class="text-gray-500 ml-auto">9 articles</span>
+                            <i class='text-gray-500 bx bx-right-arrow-alt ml-1'></i>
+                        </a>
+                        </li>
+                    </ul>
+                    </div>
+                </div>
+                </div>
+                                       
     <!-- main ends here -->
 
 
