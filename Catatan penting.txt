@@ -18,9 +18,19 @@ git add .
 git commit -m 'menyelesaikan bla bla bla '
 git push -u origin menambahkan_logic
 
-## yang harus di siapkan untuk API
 
-# by Ridho
+========== ## PENTING ## ==========
+
+Setiap Ada sesuatu yang harus di beri tahu seperti 
+contoh: penambahan suatu feature yang mengharuskan install sesuatu
+harap tambahkan di sini!
+
+========== ## PENTING ## ==========
+
+
+
+
+==== # by Ridho
 
 >> untuk database di .env buat seperti ini:
       DB_CONNECTION=mysql
@@ -30,8 +40,22 @@ git push -u origin menambahkan_logic
       DB_USERNAME=root  nama db anda
       DB_PASSWORD=      pw db anda
 
+## yang harus di siapkan untuk API
+
 >> install composer api:
       composer require nonsoniyi/the-guardian-api-client
 
 >> untuk api tambahkan ini di .env:
       GUARDIAN_API_KEY=c3c30a7c-75e9-4a61-989a-e08d2bd1e508
+
+==== # By Haykal
+
+// tulis di sini
+
+==== # By Syahidan
+
+// tulis di sini
+
+==== # By Adit
+
+// tulis di sini
