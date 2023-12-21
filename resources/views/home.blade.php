@@ -275,7 +275,7 @@
 
 
     <!-- Halaman Tengah -->
-    <h1 class="text-4xl font-semibold leading-9 text-center text-gray-800 dark:text-gray-50">Berita Terbaru Terkini</h1>
+    <h1 class="text-4xl font-semibold leading-9 text-center text-gray-800 dark:text-gray-50">Berita Terkini</h1>
     <main class="mt-20">
 
         <section class="dark:bg-gray-800 dark:text-gray-100">

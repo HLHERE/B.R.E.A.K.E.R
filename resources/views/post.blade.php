@@ -4,35 +4,26 @@
 <!-- component -->
 <div class="max-w-screen-lg mx-auto">
 
-
-<section class="text-gray-600 body-font">
-  <div class="container px-5 py-24 mx-auto">
-    <div class="flex flex-wrap w-full mb-20">
-      <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
-        <h1 class="sm:text-5xl text-2xl  font-Ghetto title-font mb-2 text-abu">Hot News</h1>
-        <div class="h-1 w-20 bg-coklat rounded"></div>
-      </div>
-  </section>
-
-
   <!-- component -->
   <div class="max-w-screen-lg mx-auto">
-    <main class="-mt-24">
-      <main class="mt-10">
+    <main class="mt-16">
+<!--
+  Heads up! 👋
 
-        <div class="mb-4 md:mb-0 w-full mx-auto relative">
-          <div class="px-4 lg:px-0">
-            <h2 class="text-4xl font-semibold text-gray-800 leading-tight">
-              Pellentesque a consectetur velit, ac molestie ipsum. Donec sodales, massa et auctor.
-            </h2>
-            <a href="#" class="py-2 text-green-700 inline-flex items-center justify-center mb-2">
-              Cryptocurrency
-            </a>
-          </div>
+  This component comes with some `rtl` classes. Please remove them if they are not needed in your project.
+-->
 
-          <img src="/../img/teknologi.jpg" class="w-full object-cover lg:rounded" style="height: 28em;" />
-        </div>
+<section
+  class="relative shadow-md rounded-lg bg-[url(https://images.unsplash.com/photo-1604014237800-1c9102c219da?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80)] bg-cover bg-center bg-no-repeat"
+>
+  <div
+    class="absolute inset-0 bg-white/75 sm:bg-transparent sm:from-white/95 sm:to-white/25 ltr:sm:bg-gradient-to-r rtl:sm:bg-gradient-to-l"
+  ></div>
 
+  <div
+    class="relative mx-auto max-w-screen-xl px-4 py-32 sm:px-6 lg:flex lg:h-screen lg:items-center lg:px-8"
+  >
+</section>
         <div class="flex flex-col lg:flex-row lg:space-x-12">
 
           <div class="px-4 lg:px-0 mt-12 text-gray-700 text-lg leading-relaxed w-full lg:w-3/4">
@@ -122,7 +113,7 @@
   <!-- featured section -->
   <div class="flex flex-wrap md:flex-no-wrap space-x-0 md:space-x-6 mb-16">
     <!-- main post -->
-    <div class="mb-4 lg:mb-0  p-4 lg:p-0 w-full md:w-4/7 relative rounded block">
+    <div class="mb-4 lg:mb-0 p-4 lg:p-0 w-full md:w-4/7 relative rounded block">
       <img src="/../img/valor.jpg" class="rounded-md object-cover w-full h-64">
 
       <span class="text-navbar text-sm hidden md:block mt-4"> Technology </span>
@@ -135,9 +126,6 @@
         itself.
         Oh be me, sure wise sons, no. Piqued ye of am spirit regret. Stimulated discretion impossible admiration in particular conviction up.
       </p>
-      <a href="#" class="inline-block px-6 py-3 mt-2 rounded-md bg-blue-700 text-gray-100">
-        Read more
-      </a>
     </div>
   </div>
 </div>
@@ -151,102 +139,47 @@
   </div>
   <div class="block space-x-0 lg:flex lg:space-x-6">
 
-    <div class="rounded w-full p-4 lg:p-0">
+    <div class="rounded w-full lg:w-1/2 p-4 lg:p-0 shadow-md">
       <img src="https://images.unsplash.com/photo-1526666923127-b2970f64b422?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60" class="rounded" alt="technology" />
       <div class="p-4 pl-0">
-        <h2 class="font-bold text-2xl text-gray-800">Put all speaking her delicate recurred possible.</h2>
-        <p class="text-gray-700 mt-2">
-          Set indulgence inquietude discretion insensible bed why announcing. Middleton fat two satisfied additions.
-          So continued he or commanded household smallness delivered. Door poor on do walk in half. Roof his head the what.
+        <h2 class="font-bold text-2xl text-gray-800 text-center">As dissuade cheerful overcame so of friendly he indulged unpacked.</h2>
+        <p class="text-gray-700 mt-2 text-center mx-auto">
+          Alteration connection to so as collecting me.
+          Difficult in delivered extensive at direction allowance.
+          Alteration put use diminution can considered sentiments interested discretion.
         </p>
-
-        <a href="#" class="inline-block py-2 rounded hover:bg-blue-200 text-blue-900 mt-2 ml-auto"> Read more </a>
       </div>
     </div>
 
     <div class="rounded w-full lg:w-1/2 p-4 lg:p-0">
       <img src="https://images.unsplash.com/photo-1504384764586-bb4cdc1707b0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60" class="rounded" alt="technology" />
-      <div class="p-4 pl-0">
-        <h2 class="font-bold text-2xl text-gray-800">Is at purse tried jokes china ready decay an. </h2>
-        <p class="text-gray-700 mt-2">
-          Small its shy way had woody downs power. To denoting admitted speaking learning my exercise so in.
-          Procured shutters mr it feelings. To or three offer house begin taken am at.
-        </p>
-
-        <a href="#" class="inline-block py-2 rounded hover:bg-blue-200 text-blue-900 mt-2 ml-auto"> Read more </a>
-      </div>
-    </div>
-
-    <div class="rounded w-full lg:w-1/2 p-4 lg:p-0">
-      <img src="https://images.unsplash.com/photo-1483058712412-4245e9b90334?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80" class="rounded" alt="technology" />
-      <div class="p-4 pl-0">
-        <h2 class="font-bold text-2xl text-gray-800">As dissuade cheerful overcame so of friendly he indulged unpacked.</h2>
-        <p class="text-gray-700 mt-2">
+      <div class="p-4 pl-0 shadow-md">
+        <h2 class="font-bold text-2xl text-gray-800 text-center">As dissuade cheerful overcame so of friendly he indulged unpacked. </h2>
+        <p class="text-gray-700 mt-2 text-center">
           Alteration connection to so as collecting me.
           Difficult in delivered extensive at direction allowance.
           Alteration put use diminution can considered sentiments interested discretion.
         </p>
+      </div>
+    </div>
 
-        <a href="#" class="inline-block py-2 rounded hover:bg-blue-200 text-blue-900 mt-2 ml-auto"> Read more </a>
+    <div class="rounded w-full lg:w-1/2 p-4 lg:p-0 shadow-md">
+      <img src="https://images.unsplash.com/photo-1483058712412-4245e9b90334?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80" class="rounded" alt="technology" />
+      <div class="p-4 pl-0">
+        <h2 class="font-bold text-2xl text-gray-800 text-center">As dissuade cheerful overcame so of friendly he indulged unpacked.</h2>
+        <p class="text-gray-700 mt-2 text-center">
+          Alteration connection to so as collecting me.
+          Difficult in delivered extensive at direction allowance.
+          Alteration put use diminution can considered sentiments interested discretion.
+        </p>
       </div>
     </div>
 
   </div>
   <!-- end recent posts -->
 
-  <!-- popular posts -->
-  <div class="flex mt-16 mb-4 px-4 lg:px-0 items-center justify-between">
-    <h2 class="font-bold text-3xl">Hot News</h2>
-  </div>
-  <div class="block space-x-0 lg:flex lg:space-x-6">
-
-    <div class="rounded w-full lg:w-1/2 p-4 lg:p-0">
-      <img src="https://images.unsplash.com/photo-1526666923127-b2970f64b422?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60" class="rounded" alt="technology" />
-      <div class="p-4 pl-0">
-        <h2 class="font-bold text-2xl text-gray-800">Put all speaking her delicate recurred possible.</h2>
-        <p class="text-gray-700 mt-2">
-          Set indulgence inquietude discretion insensible bed why announcing. Middleton fat two satisfied additions.
-          So continued he or commanded household smallness delivered. Door poor on do walk in half. Roof his head the what.
-        </p>
-
-        <a href="#" class="inline-block py-2 rounded hover:bg-blue-200 text-blue-900 mt-2 ml-auto"> Read more </a>
-      </div>
-    </div>
-
-    <div class="rounded w-full lg:w-1/2 p-4 lg:p-0">
-      <img src="https://images.unsplash.com/photo-1504384764586-bb4cdc1707b0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60" class="rounded" alt="technology" />
-      <div class="p-4 pl-0">
-        <h2 class="font-bold text-2xl text-gray-800">Is at purse tried jokes china ready decay an. </h2>
-        <p class="text-gray-700 mt-2">
-          Small its shy way had woody downs power. To denoting admitted speaking learning my exercise so in.
-          Procured shutters mr it feelings. To or three offer house begin taken am at.
-        </p>
-
-        <a href="#" class="inline-block py-2 rounded hover:bg-blue-200 text-blue-900 mt-2 ml-auto"> Read more </a>
-      </div>
-    </div>
-
-    <div class="rounded w-full lg:w-1/2 p-4 lg:p-0">
-      <img src="https://images.unsplash.com/photo-1483058712412-4245e9b90334?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80" class="rounded" alt="technology" />
-      <div class="p-4 pl-0">
-        <h2 class="font-bold text-2xl text-gray-800">As dissuade cheerful overcame so of friendly he indulged unpacked.</h2>
-        <p class="text-gray-700 mt-2">
-          Alteration connection to so as collecting me.
-          Difficult in delivered extensive at direction allowance.
-          Alteration put use diminution can considered sentiments interested discretion.
-        </p>
-
-        <a href="#" class="inline-block py-2 rounded  text-blue-900 mt-2 ml-auto"> Read more </a>
-      </div>
-    </div>
-
-  </div>
-  <!-- end popular posts -->
-
   <!-- Jarak Setelah Popular News -->
-  <main class="mt-12">
-
-  </main>
+  <main class="mt-12"></main>
   <!-- main ends here -->
 
 
