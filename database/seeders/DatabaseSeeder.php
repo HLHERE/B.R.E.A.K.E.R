@@ -6,6 +6,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Post;
+use App\Models\Category;
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,9 +19,33 @@ class DatabaseSeeder extends Seeder
 
         Post::factory(10)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        Category::create([
+            'name' => 'Art & Design',
+            'slug' => 'art & design'
+        ]);
+
+        Category::create([
+            'name' => 'Cartoon',
+            'slug' => 'cartoon'
+        ]);
+
+        Category::create([
+            'name' => 'Film',
+            'slug' => 'film'
+        ]);
+
+        Category::create([
+            'name' => 'Game',
+            'slug' => 'game'
+        ]);
+        Category::create([
+            'name' => 'Music',
+            'slug' => 'music'
+        ]);
+
+        Category::create([
+            'name' => 'Technology',
+            'slug' => 'technology'
+        ]);
     }
 }

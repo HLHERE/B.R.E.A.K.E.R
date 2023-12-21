@@ -31,7 +31,7 @@
                     {{$post->title}}
                 </td>
                 <td class="px-6 py-4">
-                    {{$post->category}}
+                    {{$post->category->name}}
                 </td>   
                 <td class="px-6 py-4 flex items-center space-x-1">
                     <a href="/dashboard/posts/{{$post->slug}}" class="font-Arial text-blue-700 dark:text-blue-500 hover:underline w-8">view</a>
