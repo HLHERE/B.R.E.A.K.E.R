@@ -16,6 +16,8 @@ class PostController extends Controller
 
     private $api;
     private array $meterAPI = ['relevance', 'published', 'newest', 'first-publication'];
+    private $rdmImgUser = 'https://picsum.photos/100/80';
+    private $rdmImgPost = 'https://picsum.photos/300/150';
 
 
     public function __construct()
@@ -25,7 +27,7 @@ class PostController extends Controller
 
     /**
      * Display a listing of the resource.
-     * film,gadgets,games,music,art & design,cartoons,tech
+     * 
      * @return \Illuminate\Http\Response
      */
     public function index()
@@ -35,7 +37,6 @@ class PostController extends Controller
         $author = User::firstWhere('username', request('author'));
 
         $posts = Post::with(['author', 'category'])->latest()->take(7)->get();
-        // dd($posts);
 
         $popular = Post::with('author', 'category')->orderBy('views', 'desc')->take(5)->get();
 
@@ -46,7 +47,7 @@ class PostController extends Controller
         $categoryName = 'sport';
         $categoryContent = $this->getNews(5, $categoryName, '', '');
 
-        // Menggabungkan data dari sumber lokal dan API
+        // Fungsi Menggabungkan
         $processedPopular = $this->mergeProcessedData($popular, $popularContentAPI);
         $processedPosts = $this->mergeProcessedData($posts, $randomContentAPI);
 
@@ -80,18 +81,15 @@ class PostController extends Controller
         ]);
     }
 
-    // Semua pengambilan data api
+    // Semua pengambilan data
 
     public function getNews($isi, $categoryQuery, $orderBy, $useDate)
     {
         try {
             $response = $this->api->content()
                 ->setQuery($categoryQuery)
-                // ->setFromDate(new \DateTimeImmutable("01/01/2023"))
-                // ->setToDate(new \DateTimeImmutable())
                 ->setOrderBy($orderBy)
                 ->setUseDate($useDate)
-                // ->setShowTags(implode(',', $tagIds)) // Gunakan tag yang diperoleh untuk menyaring konten
                 ->setShowTags("contributor,blog,keyword")
                 ->setShowFields("headline,thumbnail,short-url,publication,body,all")
                 ->setShowReferences("author,isbn,opta-cricket-match")
@@ -105,8 +103,6 @@ class PostController extends Controller
                 $processedItems = collect($results)->random($isi)->map(function ($item) {
                     return $this->processNewsItem($item);
                 });
-
-                // dd($processedItems);
                 return $processedItems;
             } else {
                 return [];
@@ -134,8 +130,6 @@ class PostController extends Controller
             'cartegory' => $item->sectionName,
             'published' => $formattedDate,
         ];
-
-        // dd($processedItem);
         return $processedItem;
     }
 
@@ -147,7 +141,7 @@ class PostController extends Controller
             } elseif (isset($item->tags[0]->bylineImageUrl)) {
                 return $item->tags[0]->bylineImageUrl;
             } else {
-                return 'https://picsum.photos/200/300'; // Gambar Random
+                return $this->rdmImgUser;
             }
         }
 
@@ -169,12 +163,10 @@ class PostController extends Controller
 
     public function mergeProcessedData($localData, $apiData)
     {
-        // Ubah struktur data lokal ke struktur yang seragam
         $localProcessed = $localData->map(function ($item) {
             return $this->processLocalData($item);
         });
 
-        // Gabungkan data lokal dan data API
         $mergedData = $apiData->merge($localProcessed);
 
         return $mergedData;
@@ -186,9 +178,9 @@ class PostController extends Controller
 
         $processedItem = [
             'webTitle' => $item->title,
-            'thumbnail' => $item->postImg != '' ? $item->postImg : 'https://picsum.photos/100/80',
+            'thumbnail' => $item->postImg != '' ? $item->postImg : $this->rdmImgUser,
             'publication' => $item->views,
-            'authorImage' => $item->author->userImg != '' ? $item->author->userImg : 'https://picsum.photos/100/80',
+            'authorImage' => $item->author->userImg != '' ? $item->author->userImg : $this->rdmImgPost,
             'authorName' => $item->author->name,
             'body' => Str::limit(strip_tags($item->body), 200),
             'shortUrl' => null,
