@@ -44,6 +44,15 @@ class PostController extends Controller
 
         $randomContentAPI = $this->getNews(5, '', $this->meterAPI[2], $this->meterAPI[3]);
 
+        $categoryList = Category::withCount('posts')->get();
+
+        // Tambahkan 10 ke setiap nilai posts_count
+        $categoryList->transform(function ($category) {
+            $category->posts_count += 10;
+            return $category;
+        });
+
+
         $categoryName = 'sport';
         $categoryContent = $this->getNews(5, $categoryName, '', '');
 
@@ -55,8 +64,9 @@ class PostController extends Controller
         return view('home', [
             "popular" => $processedPopular,
             "posts" => $processedPosts, $author, $category,
-            'categoryContent' => $categoryContent,
-            'cartegoryName' => $categoryName
+            "categoryList" => $categoryList
+            // 'categoryContent' => $categoryContent,
+            // 'cartegoryName' => $categoryName
         ]);
     }
 

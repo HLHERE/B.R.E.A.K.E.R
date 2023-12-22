@@ -1,10 +1,15 @@
 @extends('layouts.main')
 
 @section('container')
-    API Data
-
+    <hr>
     <ul>
-        <h1>Random News</h1>
+        @foreach ($categoryList as $item)
+            <li>{{ $item->name }} : {{ $item->posts_count }}</li>
+        @endforeach
+    </ul>
+    <hr><br>
+    <ul>
+        <h1><b>Random News</b></h1>
         @foreach ($posts as $item)
             <li>
                 <strong>{{ $item['webTitle'] }}</strong><br>
@@ -26,7 +31,7 @@
     </ul>
 
     <ul>
-        <h1>Everyting about {{ $cartegoryName }}</h1>
+        <h1><b>Popular Content</b></h1>
         @foreach ($popular as $item)
             <li>
                 <strong>{{ $item['webTitle'] }}</strong><br>
@@ -47,55 +52,6 @@
         @endforeach
     </ul>
 
-    {{-- Akhir API --}}
-
-    <!-- Halaman Atas -->
-    <!-- component -->
-    {{-- Contoh Menampilakan data berdasarkan yang sering di lihat --}}
-
-    {{-- <!-- resources/views/posts/popular.blade.php -->
-    <h1><b> =========== Popular Posts =========== </b></h1>
-    @foreach ($popular as $item)
-        <hr>
-        <img src="{{ $item->postImg != '' ? $item->postImg : 'https://picsum.photos/100/80' }}" alt="{{ $item->title }}">
-        <h2><b>Judul: </b>{{ $item->title }}</h2>
-        <img src="{{ $item->author->userImg != '' ? $item->author->userImg : 'https://picsum.photos/100/80' }}"
-            alt="{{ $item->author->name }}">
-        <p><b>Author: </b>{{ $item->author->name }}</p>
-        <p><b>Cartegory: </b>{{ $item->category->name }}</p>
-        <p><b>Excerpt: </b>{!! Str::limit($item->body, 30, ' ') !!}
-            <a href="#">Read More...</a>
-        </p>
-        <p><b>Body: </b>{!! $item->body !!}</p>
-        <p><b>Terakhir update: </b>{{ $item->created_at->diffForHumans() }}</p>
-        <p><b>Banyak pengunjung: </b>Views: {{ $item->views }}</p>
-        <hr>
-    @endforeach
-
-    {{-- End popular --}}
-
-    {{-- Contoh Menampilakan data berdasarkan yang sering di lihat --}}
-
-    {{-- <!-- resources/views/posts/popular.blade.php -->
-    <h1><b> =========== Hot Posts =========== </b></h1>
-    @foreach ($posts as $item)
-        <hr>
-        <img src="{{ $item->postImg != '' ? $item->postImg : 'https://picsum.photos/100/80' }}" alt="{{ $item->title }}">
-        <h2><b>Judul: </b>{{ $item->title }}</h2>
-        <img src="{{ $item->author->userImg != '' ? $item->author->userImg : 'https://picsum.photos/100/80' }}"
-            alt="{{ $item->author->name }}">
-        <p><b>Author: </b>{{ $item->author->name }}</p>
-        <p><b>Cartegory: </b>{{ $item->category->name }}</p>
-        <p><b>Excerpt: </b>{!! Str::limit($item->body, 30, ' ') !!}
-            <a href="#">Read More...</a>
-        </p>
-        <p><b>Body: </b>{!! $item->body !!}</p>
-        <p><b>Terakhir update: </b>{{ $item->created_at->diffForHumans() }}</p>
-        <p><b>Banyak pengunjung: </b>Views: {{ $item->views }}</p>
-        <hr>
-    @endforeach --}}
-
-    {{-- End popular --}}
     <div class="max-w-screen-xl mx-auto ">
 
         <section class="text-abu body-font mt-3  ">
