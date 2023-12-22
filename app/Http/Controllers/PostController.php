@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\User;
-use App\Http\Requests\StorePostRequest;
-use App\Http\Requests\UpdatePostRequest;
+use App\Models\Category;
 use Guardian\GuardianAPI;
 use Illuminate\Support\Str;
 use Illuminate\Support\Carbon;
@@ -16,6 +15,8 @@ class PostController extends Controller
 {
 
     private $api;
+    private array $meterAPI = ['relevance', 'published', 'newest', 'first-publication'];
+
 
     public function __construct()
     {
@@ -23,55 +24,39 @@ class PostController extends Controller
     }
 
     /**
-     * Tampilkan daftar sumber daya.
-     * 
      * Display a listing of the resource.
-     *
+     * film,gadgets,games,music,art & design,cartoons,tech
      * @return \Illuminate\Http\Response
      */
-    // film,gadgets,games,music,art & design,cartoons,tech
     public function index()
     {
-        // Mengambil data author dari table users by username
+        $category = Category::firstWhere('slug', request('category'));
+
         $author = User::firstWhere('username', request('author'));
 
-        // Tampilkan daftar sumber daya yang sering di lihat.
-        $popular = Post::with('author')->orderBy('views', 'desc')->take(5)->get();
+        $posts = Post::with(['author', 'category'])->latest()->take(7)->get();
+        // dd($posts);
 
-        // Tampilkan daftar sumber daya 7 saja
-        $posts = Post::with(['author'])->latest()->take(7)->get();
+        $popular = Post::with('author', 'category')->orderBy('views', 'desc')->take(5)->get();
 
-        // 
+        $popularContentAPI = $this->getNews(5, '', $this->meterAPI[0], $this->meterAPI[1]);
 
-        $randomContent = $this->getNews(5, '');
+        $randomContentAPI = $this->getNews(5, '', $this->meterAPI[2], $this->meterAPI[3]);
 
-        // Get category content
-        $categoryName = 'sport'; // Ganti dengan kategori yang sesuai
-        $categoryContent = $this->getNews(5, $categoryName);
+        $categoryName = 'sport';
+        $categoryContent = $this->getNews(5, $categoryName, '', '');
+
+        // Menggabungkan data dari sumber lokal dan API
+        $processedPopular = $this->mergeProcessedData($popular, $popularContentAPI);
+        $processedPosts = $this->mergeProcessedData($posts, $randomContentAPI);
+
 
         return view('home', [
-            "popular" => $popular,
-            "posts" => $posts, $author,
-            'randomContent' => $randomContent,
+            "popular" => $processedPopular,
+            "posts" => $processedPosts, $author, $category,
             'categoryContent' => $categoryContent,
             'cartegoryName' => $categoryName
         ]);
-    }
-
-    /**
-     * Tunjukkan formulir untuk membuat sumber daya baru.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Simpan sumber daya yang baru dibuat dalam penyimpanan.
-     */
-    public function store(StorePostRequest $request)
-    {
-        //
     }
 
     /**
@@ -81,66 +66,40 @@ class PostController extends Controller
     {
         // Temukan post berdasarkan ID
         $post = Post::find($post);
-
         // Periksa apakah post ditemukan
         if (!$post) {
-            abort(404); // atau lakukan penanganan ketika post tidak ditemukan
+            abort(404);
         }
-
         // Tingkatkan jumlah tampilan
         $post->views += 1;
-
         // Simpan perubahan ke database
         $post->save();
-
         // Tampilkan post dalam view
         return view('posts.show', [
             'post' => $post
         ]);
     }
 
-    /**
-     * Tunjukkan formulir untuk mengedit sumber daya yang ditentukan.
-     */
-    public function edit(Post $post)
-    {
-        //
-    }
-
-    /**
-     * Perbarui sumber daya yang ditentukan dalam penyimpanan.
-     */
-    public function update(UpdatePostRequest $request, Post $post)
-    {
-        //
-    }
-
-    /**
-     * Hapus sumber daya yang ditentukan dari penyimpanan.
-     */
-    public function destroy(Post $post)
-    {
-        //
-    }
-
     // Semua pengambilan data api
 
-    public function getNews($isi, $categoryQuery)
+    public function getNews($isi, $categoryQuery, $orderBy, $useDate)
     {
         try {
             $response = $this->api->content()
                 ->setQuery($categoryQuery)
-                ->setFromDate(new \DateTimeImmutable("01/01/2023"))
-                ->setToDate(new \DateTimeImmutable())
+                // ->setFromDate(new \DateTimeImmutable("01/01/2023"))
+                // ->setToDate(new \DateTimeImmutable())
+                ->setOrderBy($orderBy)
+                ->setUseDate($useDate)
                 // ->setShowTags(implode(',', $tagIds)) // Gunakan tag yang diperoleh untuk menyaring konten
-                ->setShowTags("contributor,blog")
-                ->setShowFields("headline,thumbnail,short-url,publication,body,score")
+                ->setShowTags("contributor,blog,keyword")
+                ->setShowFields("headline,thumbnail,short-url,publication,body,all")
                 ->setShowReferences("author,isbn,opta-cricket-match")
                 ->fetch();
 
             $results = $response->response->results;
 
-            // dd($results);
+            // dd($response);
 
             if (count($results) > 0) {
                 $processedItems = collect($results)->random($isi)->map(function ($item) {
@@ -159,8 +118,6 @@ class PostController extends Controller
             return [];
         }
     }
-
-
 
     public function processNewsItem($item)
     {
@@ -208,5 +165,37 @@ class PostController extends Controller
         }
 
         return 'Anonimous';
+    }
+
+    public function mergeProcessedData($localData, $apiData)
+    {
+        // Ubah struktur data lokal ke struktur yang seragam
+        $localProcessed = $localData->map(function ($item) {
+            return $this->processLocalData($item);
+        });
+
+        // Gabungkan data lokal dan data API
+        $mergedData = $apiData->merge($localProcessed);
+
+        return $mergedData;
+    }
+
+    public function processLocalData($item)
+    {
+        $formattedDate = Carbon::parse($item->created_at)->isoFormat('LL LT');
+
+        $processedItem = [
+            'webTitle' => $item->title,
+            'thumbnail' => $item->postImg != '' ? $item->postImg : 'https://picsum.photos/100/80',
+            'publication' => $item->views,
+            'authorImage' => $item->author->userImg != '' ? $item->author->userImg : 'https://picsum.photos/100/80',
+            'authorName' => $item->author->name,
+            'body' => Str::limit(strip_tags($item->body), 200),
+            'shortUrl' => null,
+            'cartegory' => $item->category->name,
+            'published' => $formattedDate,
+        ];
+
+        return $processedItem;
     }
 }

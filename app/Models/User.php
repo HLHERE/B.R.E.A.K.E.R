@@ -18,6 +18,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'userImg',
         'name',
         'username',
         'email',
@@ -25,7 +26,7 @@ class User extends Authenticatable
         'google_id'
     ];
 
-    // protected $guarded = ['id'];
+    protected $guarded = ['id'];
 
     /**
      * The attributes that should be hidden for serialization.

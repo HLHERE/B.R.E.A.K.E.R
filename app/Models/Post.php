@@ -8,7 +8,7 @@ use Cviebrock\EloquentSluggable\Sluggable;
 
 class Post extends Model
 {
-    use HasFactory , Sluggable;
+    use HasFactory, Sluggable;
 
     // ini adalah yang tidak boleh di isi oleh user
     protected $guarded = ['id', 'views'];
@@ -18,9 +18,9 @@ class Post extends Model
     /* 
      *Logic tentang satu postingan punya satu author
     */
-    public function category(){
+    public function category()
+    {
         return $this->belongsTo(Category::class);
-
     }
 
 
@@ -29,7 +29,8 @@ class Post extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function getRouteKeyName() {
+    public function getRouteKeyName()
+    {
         return 'slug';
     }
 
@@ -37,7 +38,7 @@ class Post extends Model
     {
         return [
             'slug' => [
-            'source' => 'title'
+                'source' => 'title'
             ]
         ];
     }
