@@ -44,7 +44,7 @@
                     <button type="button" onclick="window.location.href='/dashboard/posts/{{$post->slug}}'" class="text-white bg-green-500 hover:bg-green-300 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1.5 me-1 mb-1 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
                         View
                     </button>
-                    <button type="button" class="text-white bg-yellow-300 hover:bg-yellow-200 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1.5 me-1 mb-1 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Edit</button>
+                    <button onclick="window.location.href='/dashboard/posts/{{$post->slug}}/edit'" type="button" class="text-white bg-yellow-300 hover:bg-yellow-200 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1.5 me-1 mb-1 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Edit</button>
                     <form action="/dashboard/posts/{{$post->slug}}" method="post">
                         @method('delete')
                         @csrf
