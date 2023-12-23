@@ -1,0 +1,23 @@
+{
+  "hash": "c91f75f8",
+  "browserHash": "b2d8c27a",
+  "optimized": {
+    "axios": {
+      "src": "../../node_modules/axios/index.js",
+      "file": "axios.js",
+      "fileHash": "db27b118",
+      "needsInterop": false
+    },
+    "flowbite": {
+      "src": "../../node_modules/flowbite/lib/esm/index.js",
+      "file": "flowbite.js",
+      "fileHash": "6c78f153",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-SSYGV25P": {
+      "file": "chunk-SSYGV25P.js"
+    }
+  }
+}
