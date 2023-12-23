@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Models\Category;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
+use iluminate\Support\Str;
 
 class DashboardPostController extends Controller
 {
@@ -46,7 +47,19 @@ class DashboardPostController extends Controller
             'category_id' => 'required',
             'body' =>'required',
         ]);
+    
+        $validatedData['user_id'] = auth()->user()->id;
+    
+        // Hapus baris berikut untuk menghilangkan 'excerpt' dari data yang dikirimkan
+        // $validatedData['excerpt'] = Str::limit($request->body, 200);
+    
+        // Simpan data ke model atau tempat penyimpanan yang sesuai
+        Post::create($validatedData);
+    
+        // Redirect atau berikan respons sesuai kebutuhan aplikasi Anda
+        return redirect('dashboard/posts')->with('success', 'news has been added'); // Gantilah 'nama.route' sesuai dengan route yang sesuai.
     }
+    
 
     /**
      * Display the specified resource.
@@ -81,7 +94,8 @@ class DashboardPostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        Post::destroy($post->id);
+        return redirect('/dashboard/posts')->with('success' , 'news has been deleted!');
     }
 
     public function checkSlug(Request $request) {
