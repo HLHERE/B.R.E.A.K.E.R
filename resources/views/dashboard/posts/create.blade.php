@@ -5,29 +5,46 @@
 <form method="post" action="/dashboard/posts" class="relative top-[125px] w-[900px] ">
   @csrf
   <h1 class="font-Arial text-2xl mb-4 text-navbar">Create Form</h1>
+
   <div class="mb-5">
   <label for="title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Title</label>
-  <input type="text" id="title" name="title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-navbar focus:border-navbar block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-navbar dark:focus:border-navbar" required>
+  <input type="text" id="title" name="title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-navbar focus:border-navbar block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-navbar dark:focus:border-navbar @error('title') @enderror" required value="{{ old('title')}}">
+    @error('title')
+      <div class="text-red-500">
+        {{$message}}
+      </div>
+    @enderror
 </div>
 
   <div class="mb-5">
     <label for="slug" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white ">Slug</label>
     <input type="text" id="slug" name="slug" readonly
-           class="bg-gray-300 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-navbar focus:border-navbar block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-navbar dark:focus:border-navbar readonly:pointer-events-none">
-    
+           class="bg-gray-300 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-navbar focus:border-navbar block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-navbar dark:focus:border-navbar readonly:pointer-events-none @error('slug') @enderror " value="{{old('slug')}}">
+           @error('slug')
+           <div class="text-red-500">
+             {{$message}}
+           </div>
+         @enderror
+
+  </div>
     <div class="mb-5">
       <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
       <select id="category" name="category_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-navbar focus:border-navbar block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-navbar dark:focus:border-navbar">
-        @foreach ( $categories as $category )
-        <option value="{{$category->id}} "> {{$category-> name}}</option>
-        @endforeach
+        @foreach ($categories as $category)
+        @if (old('category_id') == $category->id)
+            <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
+        @else
+            <option value="{{ $category->id }}">{{ $category->name }}</option>
+        @endif
+    @endforeach
+    
     </select>
 </div>
   
   <div class="mb-5">
     <label for="body" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Blog</label>
-    <input type="hidden" name="body" id="body">
-    <trix-editor input="body"></trix-editor>
+    <input type="hidden" name="body" id="body" class="bg-white" value="{{old('body')}}">
+    <trix-editor input="body" class="bg-white"></trix-editor>
   </div>
 
   <button type="submit" class="mt-4 mb-5 text-putih bg-navbar hover:bg-orange_muda focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-orange_muda dark:hover:bg-navbar dark:focus:ring-white">Create Post!</button>

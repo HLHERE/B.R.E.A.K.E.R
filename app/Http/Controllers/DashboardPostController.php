@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Models\Category;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
+use illuminate\Support\Str;
 
 class DashboardPostController extends Controller
 {
@@ -30,8 +31,10 @@ class DashboardPostController extends Controller
      */
     public function create()
     {
+        $showButton = true;
         return view('dashboard.posts.create' , [
-            'categories' => Category::all()
+            'categories' => Category::all(),
+            'showButton' => $showButton,
         ]);
     }
 
@@ -40,12 +43,20 @@ class DashboardPostController extends Controller
      */
     public function store(Request $request)
     {
+
         $validatedData = $request->validate([
             'title' => 'required|max:255',
             'slug' => 'required|unique:posts',
             'category_id' => 'required',
             'body' =>'required',
         ]);
+
+        $validatedData['user_id'] = auth()->user()->id;
+        // $validatedData['excerpt'] = Str::limit(strip_tags($request->body, 100));
+
+        Post::create($validatedData);
+        
+        return redirect('/dashboard/posts')->with('success','News has been added');
     }
 
     /**

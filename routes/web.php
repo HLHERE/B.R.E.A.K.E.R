@@ -5,7 +5,6 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardPostController;
-use App\Http\Controllers\DashboardAdminController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardUserController;
 use App\Http\Controllers\GoogleController;
@@ -69,5 +68,4 @@ Route::get('/{post:slug}', [PostController::class, 'show']);
 
 Route::get('/dashboard/posts/checkSlug' , [DashboardPostController::class,'checkSlug'])->middleware('auth');
 Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('auth');
-Route::resource('/dashboard/admin', DashboardAdminController::class)->middleware('auth');
 Route::resource('/dashboard/user',DashboardUserController::class)->middleware('auth');

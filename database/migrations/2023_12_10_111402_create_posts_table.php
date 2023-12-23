@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('user_id');
             $table->string('title');
             $table->string('slug')->unique();
-            // $table->text('excerpt');
+            $table->text('excerpt')->default('');
             $table->text('body');
             $table->integer('views')->default(0); // table tentang post yang sering di lihat
             $table->timestamp('published_at')->nullable();

@@ -1,7 +1,11 @@
 @extends('dashboard.layout.main')
 
 @section('container')
-
+@if (session->has('success'))
+<div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+    <span class="font-medium">{{session ('success')}}</span>
+</div>
+@endif
 <div class="relative top-[125px] w-[900px]  overflow-x-auto shadow-md sm:rounded-lg table-auto"> <!-- Tambahkan class 'mx-auto' di sini -->
     <table class="relative w-full overflow-x-auto shadow-md sm:rounded-lg ">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
