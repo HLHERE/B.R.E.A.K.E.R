@@ -18,11 +18,36 @@ class PostController extends Controller
     private array $meterAPI = ['relevance', 'published', 'newest', 'first-publication'];
     private $rdmImgUser = 'https://picsum.photos/100/80';
     private $rdmImgPost = 'https://picsum.photos/300/150';
+    public $category, $author, $title;
 
 
     public function __construct()
     {
         $this->api = new GuardianAPI(env('GUARDIAN_API_KEY'));
+    }
+
+    public function logicSearch()
+    {
+        $this->title = '';
+        if (request('category')) {
+            $this->category = Category::firstWhere('slug', request('category'));
+            $this->title = ' in ' . $this->category->name;
+        }
+
+        if (request('author')) {
+            $this->author = User::firstWhere('username', request('author'));
+            $this->title = ' by ' . $this->author->name;
+        }
+
+        $getData = Post::latest()->filter(request(['search', 'category', 'author']))
+            ->paginate(7)->withQueryString();
+
+        $search = 'sport'; // cari cara mengirim data dari blade ke PostController
+        $searchResult = $this->getNews(5, $search, '', '');
+
+        return view('posts', [
+            "posts" => $getData, $searchResult
+        ]);
     }
 
     /**
@@ -32,10 +57,6 @@ class PostController extends Controller
      */
     public function index()
     {
-        $category = Category::firstWhere('slug', request('category'));
-
-        $author = User::firstWhere('username', request('author'));
-
         $posts = Post::with(['author', 'category'])->latest()->take(7)->get();
 
         $popular = Post::with('author', 'category')->orderBy('views', 'desc')->take(5)->get();
@@ -53,8 +74,6 @@ class PostController extends Controller
         });
 
 
-        $categoryName = 'sport';
-        $categoryContent = $this->getNews(5, $categoryName, '', '');
 
         // Fungsi Menggabungkan
         $processedPopular = $this->mergeProcessedData($popular, $popularContentAPI);
@@ -63,7 +82,7 @@ class PostController extends Controller
 
         return view('home', [
             "popular" => $processedPopular,
-            "posts" => $processedPosts, $author, $category,
+            "posts" => $processedPosts, $this->author, $this->category,
             "categoryList" => $categoryList
             // 'categoryContent' => $categoryContent,
             // 'cartegoryName' => $categoryName
