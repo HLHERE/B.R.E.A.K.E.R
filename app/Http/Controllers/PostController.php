@@ -9,6 +9,7 @@ use Guardian\GuardianAPI;
 use Illuminate\Support\Str;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Client\RequestException;
 
 class PostController extends Controller
@@ -17,7 +18,7 @@ class PostController extends Controller
     private $api;
     private array $meterAPI = ['relevance', 'published', 'newest', 'first-publication'];
     private $rdmImgUser = 'https://picsum.photos/100/80';
-    private $rdmImgPost = 'https://picsum.photos/300/150';
+    private $rdmImgPost = 'https://picsum.photos/800/300';
     public $category, $author, $title;
 
 
@@ -57,11 +58,11 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::with(['author', 'category'])->latest()->take(7)->get();
+        $posts = Post::with(['author', 'category'])->latest()->take(2)->get();
 
-        $popular = Post::with('author', 'category')->orderBy('views', 'desc')->take(5)->get();
+        $popular = Post::with('author', 'category')->orderBy('views', 'desc')->take(2)->get();
 
-        $popularContentAPI = $this->getNews(5, '', $this->meterAPI[0], $this->meterAPI[1]);
+        $popularContentAPI = $this->getNews(3, '', $this->meterAPI[0], $this->meterAPI[1]);
 
         $randomContentAPI = $this->getNews(5, '', $this->meterAPI[2], $this->meterAPI[3]);
 
@@ -92,10 +93,32 @@ class PostController extends Controller
     /**
      * Tampilkan sumber daya yang ditentukan.
      */
+    // public function show(Post $post)
+    // {
+    //     // Jika parameter adalah URL
+    //     if (filter_var($post->slug, FILTER_VALIDATE_URL)) {
+
+    //         // Ambil bagian yang sesuai dari URL
+    //         $urlParts = parse_url($post->slug);
+    //         $postUrl = $urlParts['path'];
+    //     } else {
+    //         // Jika parameter adalah slug, gunakan secara langsung
+    //         $postUrl = $post->slug;
+    //     }
+
+    //     // Redirect ke URL yang sesuai
+    //     return Redirect::to($postUrl);
+    // }
+
+    /**
+     * Tampilkan sumber daya yang ditentukan.
+     */
     public function show(Post $post)
     {
+        // $gt = $post->slug;
+
         // Temukan post berdasarkan ID
-        $post = Post::find($post);
+        // $post = Post::find($post);
         // Periksa apakah post ditemukan
         if (!$post) {
             abort(404);
@@ -105,7 +128,7 @@ class PostController extends Controller
         // Simpan perubahan ke database
         $post->save();
         // Tampilkan post dalam view
-        return view('posts.show', [
+        return view('post', [
             'post' => $post
         ]);
     }
@@ -212,7 +235,7 @@ class PostController extends Controller
             'authorImage' => $item->author->userImg != '' ? $item->author->userImg : $this->rdmImgPost,
             'authorName' => $item->author->name,
             'body' => Str::limit(strip_tags($item->body), 200),
-            'shortUrl' => null,
+            'shortUrl' => $item->slug,
             'cartegory' => $item->category->name,
             'published' => $formattedDate,
         ];

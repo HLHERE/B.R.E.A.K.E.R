@@ -24,7 +24,7 @@
                 <p>Cartegory: {{ $item['cartegory'] }}</p>
                 <em>By {{ $item['authorName'] }}</em><br>
                 <article>{!! $item['body'] !!}</article>
-                <a href="{{ $item['shortUrl'] }}" target="_blank">Read more</a>
+                <a href="post/{{ $item['shortUrl'] }}" target="_blank">Read more</a>
             </li>
             <hr><br>
         @endforeach
@@ -67,25 +67,37 @@
                 </div>
         </section>
 
+        {{-- <a class="block rounded w-full lg:flex mb-10"
+        href="{{ filter_var($item['shortUrl'], FILTER_VALIDATE_URL) ? $item['shortUrl'] : url('post', $item['shortUrl']) }}"
+        {{ filter_var($item['shortUrl'], FILTER_VALIDATE_URL) ? "" : " target = '_blank'" }}> --}}
+
         <main class="mt-0">
             <div class="block md:flex md:space-x-2 px-2 lg:p-0">
-                <a class="mb-4 md:mb-0 w-full md:w-2/3 relative rounded inline-block" style="height: 24em;" href="#">
+                <a class="mb-4 md:mb-0 w-full md:w-2/3 relative rounded inline-block" style="height: 24em;"
+                    href="{{ filter_var($popular[0]['shortUrl'], FILTER_VALIDATE_URL) ? $popular[0]['shortUrl'] : url('post', $popular[0]['shortUrl']) }}"
+                    {{ filter_var($popular[0]['shortUrl'], FILTER_VALIDATE_URL) ? '' : " target = '_blank'" }}>
                     <div class="absolute left-0 bottom-0 w-full h-full z-10"
                         style="background-image: linear-gradient(180deg,transparent,rgba(0,0,0,.7));"></div>
-                    <img src="/../img/valor.jpg" class="absolute left-0 top-0 w-full h-full rounded z-0 object-cover" />
+                    @if (!empty($popular[0]['thumbnail']))
+                        <img src="{{ $popular[0]['thumbnail'] }}"
+                            class="absolute left-0 top-0 w-full h-full rounded z-0 object-cover" />
+                    @endif
                     <div class="p-4 absolute bottom-0 left-0 z-20">
                         <h2 class="text-4xl font-semibold text-gray-100 leading-tight ">
-                            {{-- {!! $posts[0]->title !!} --}}
+                            {{ $popular[0]['webTitle'] }}
                         </h2>
                     </div>
                 </a>
 
-                <a class="w-full md:w-1/3 relative rounded" style="height: 24em;" href="#">
+                <a class="w-full md:w-1/3 relative rounded" style="height: 24em;" href="{{ $popular[1]['shortUrl'] }}">
                     <div class="absolute left-0 top-0 w-full h-full z-10"
                         style="background-image: linear-gradient(180deg,transparent,rgba(0,0,0,.7));"></div>
-                    <img src="/../img/teknologi.jpg" class="absolute left-0 top-0 w-full h-full rounded z-0 object-cover" />
+                    @if (!empty($popular[1]['thumbnail']))
+                        <img src="{{ $popular[1]['thumbnail'] }}"
+                            class="absolute left-0 top-0 w-full h-full rounded z-0 object-cover" />
+                    @endif
                     <div class="p-4 absolute bottom-0 left-0 z-20">
-                        <h2 class="text-3xl font-semibold text-gray-100 leading-tight">safddadsa</h2>
+                        <h2 class="text-3xl font-semibold text-gray-100 leading-tight">{{ $popular[1]['webTitle'] }}</h2>
                     </div>
             </div>
             </a>
@@ -94,86 +106,39 @@
                 <!-- post cards -->
                 <div class="w-full lg:w-2/3">
 
-                    <a class="block rounded w-full lg:flex mb-10" href="#">
-                        <div class="h-48 lg:w-48 flex-none bg-cover text-center overflow-hidden opacity-75"
-                            style="background-image: url('https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80')"
-                            title="deit is very important">
-                        </div>
-                        <div class="bg-putih rounded px-4 flex flex-col justify-between leading-normal">
-                            <div>
-                                <div class="mt-3 md:mt-0 text-gray-700 font-bold text-2xl mb-2">
-                                    {{-- {!! $posts[0]->title !!} --}}
+                    @foreach ($popular->skip(2) as $item)
+                        <a class="block rounded w-full lg:flex mb-10"
+                            href="{{ filter_var($item['shortUrl'], FILTER_VALIDATE_URL) ? $item['shortUrl'] : url('post', $item['shortUrl']) }}"
+                            {{ filter_var($item['shortUrl'], FILTER_VALIDATE_URL) ? '' : " target = '_blank'" }}>
+                            @if (!empty($item['thumbnail']))
+                                <div class="h-48 lg:w-48 flex-none bg-cover text-center overflow-hidden opacity-75"
+                                    style="background-image: url('{{ $item['thumbnail'] }}')"
+                                    title="deit is very important">
                                 </div>
-                                <p class="text-gray-700 text-base">
-                                    Duis euismod est quis lacus elementum, eu laoreet dolor consectetur.
-                                    Pellentesque sed neque vel tellus lacinia elementum. Proin consequat ullamcorper
-                                    eleifend.
-                                </p>
-                            </div>
-                            <div class="flex mt-3">
-                                <img src="https://randomuser.me/api/portraits/men/86.jpg"
-                                    class="h-10 w-10 rounded-full mr-2 object-cover" />
+                            @endif
+                            <div class="bg-putih rounded px-4 flex flex-col justify-between leading-normal">
                                 <div>
-                                    <p class="font-semibold text-gray-700 text-sm capitalize"> eduard franz </p>
-                                    <p class="text-gray-600 text-xs"> 14 Aug </p>
+                                    <div class="mt-3 md:mt-0 text-gray-700 font-bold text-2xl mb-2">
+                                        {{ $item['webTitle'] }}
+                                    </div>
+                                    <p class="text-gray-700 text-base">
+                                        {!! $item['body'] !!}
+                                    </p>
+                                </div>
+                                <div class="flex mt-3">
+                                    @if (!empty($item['authorImage']))
+                                        <img src="{{ $item['authorImage'] }}"
+                                            class="h-10 w-10 rounded-full mr-2 object-cover" />
+                                    @endif
+                                    <div>
+                                        <p class="font-semibold text-gray-700 text-sm capitalize">
+                                            {{ $item['authorName'] }} </p>
+                                        <p class="text-gray-600 text-xs"> {{ $item['published'] }} </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </a>
-
-                    <div class="rounded w-full lg:flex mb-10">
-                        <div class="h-48 lg:w-48 flex-none bg-cover text-center overflow-hidden opacity-75"
-                            style="background-image: url('https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80')"
-                            title="deit is very important">
-                        </div>
-                        <div class="bg-putih rounded px-4 flex flex-col justify-between leading-normal">
-                            <div>
-                                <div class="mt-3 md:mt-0 text-gray-700 font-bold text-2xl mb-2">
-                                    {{-- {!! $posts[0]->title !!} --}}
-                                </div>
-                                <p class="text-gray-700 text-base">
-                                    Nam malesuada aliquet metus, ac commodo augue mollis sit amet.
-                                    Nam bibendum risus sit amet metus semper consectetur.
-                                    Proin consequat ullamcorper eleifend.
-                                    Nam bibendum risus sit amet metus semper consectetur.
-                                </p>
-                            </div>
-                            <div class="flex mt-3">
-                                <img src="https://randomuser.me/api/portraits/women/54.jpg"
-                                    class="h-10 w-10 rounded-full mr-2 object-cover" />
-                                <div>
-                                    <p class="font-semibold text-gray-700 text-sm capitalize"> Serenity Hughes </p>
-                                    <p class="text-gray-600 text-xs"> 14 Aug </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="rounded w-full lg:flex mb-10">
-                        <div class="h-48 lg:w-48 flex-none bg-cover text-center overflow-hidden opacity-75"
-                            style="background-image: url('https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80')"
-                            title="deit is very important">
-                        </div>
-                        <div class="bg-putih rounded px-4 flex flex-col justify-between leading-normal">
-                            <div>
-                                <div class="mt-3 md:mt-0 text-gray-700 font-bold text-2xl mb-2">
-                                    Suspendisse varius justo eu risus laoreet fermentum non aliquam dolor
-                                </div>
-                                <p class="text-gray-700 text-base">
-                                    Mauris porttitor, velit at tempus vulputate, odio turpis facilisis dui,
-                                    vitae eleifend odio ipsum at odio. Phasellus luctus scelerisque felis eget suscipit.
-                                </p>
-                            </div>
-                            <div class="flex mt-3">
-                                <img src="https://randomuser.me/api/portraits/men/86.jpg"
-                                    class="h-10 w-10 rounded-full mr-2 object-cover" />
-                                <div>
-                                    <p class="font-semibold text-gray-700 text-sm capitalize"> eduard franz </p>
-                                    <p class="text-gray-600 text-xs"> 14 Aug </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        </a>
+                    @endforeach
 
                 </div>
 
@@ -191,8 +156,8 @@
                                         <path
                                             d="M339.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L568.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S517.7-4.4 499.1 9.6L262.4 187.2c-24 18-38.2 46.1-38.4 76.1L339.3 367.1zm-19.6 25.4l-116-104.4C143.9 290.3 96 339.6 96 400c0 3.9 .2 7.8 .6 11.6C98.4 429.1 86.4 448 68.8 448H64c-17.7 0-32 14.3-32 32s14.3 32 32 32H208c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z" />
                                     </svg>
-                                    Art & Design
-                                    <span class="text-gray-500 ml-auto">23 articles</span>
+                                    {{ $categoryList[0]->name }}
+                                    <span class="text-gray-500 ml-auto">{{ $categoryList[0]->posts_count }} articles</span>
                                     <i class='text-gray-500 bx bx-right-arrow-alt ml-1'></i>
                                 </a>
                             </li>
@@ -204,8 +169,9 @@
                                         <path
                                             d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm130.7 57.9c-4.2-13.6 7.1-25.9 21.3-25.9H364.5c14.2 0 25.5 12.4 21.3 25.9C369 368.4 318.2 408 258.2 408s-110.8-39.6-127.5-94.1zm2.8-183.3l89.9 47.9c10.7 5.7 10.7 21.1 0 26.8l-89.9 47.9c-7.9 4.2-17.5-1.5-17.5-10.5c0-2.8 1-5.5 2.8-7.6l36-43.2-36-43.2c-1.8-2.1-2.8-4.8-2.8-7.6c0-9 9.6-14.7 17.5-10.5zM396 141.1c0 2.8-1 5.5-2.8 7.6l-36 43.2 36 43.2c1.8 2.1 2.8 4.8 2.8 7.6c0 9-9.6 14.7-17.5 10.5l-89.9-47.9c-10.7-5.7-10.7-21.1 0-26.8l89.9-47.9c7.9-4.2 17.5 1.5 17.5 10.5z" />
                                     </svg>
-                                    Cartoons
-                                    <span class="text-gray-500 ml-auto">18 articles</span>
+                                    {{ $categoryList[1]->name }}
+                                    <span class="text-gray-500 ml-auto">{{ $categoryList[1]->posts_count }}
+                                        articles</span>
                                     <i class='text-gray-500 bx bx-right-arrow-alt ml-1'></i>
                                 </a>
                             </li>
@@ -217,8 +183,9 @@
                                         <path
                                             d="M0 96C0 60.7 28.7 32 64 32H448c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96zM48 368v32c0 8.8 7.2 16 16 16H96c8.8 0 16-7.2 16-16V368c0-8.8-7.2-16-16-16H64c-8.8 0-16 7.2-16 16zm368-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V368c0-8.8-7.2-16-16-16H416zM48 240v32c0 8.8 7.2 16 16 16H96c8.8 0 16-7.2 16-16V240c0-8.8-7.2-16-16-16H64c-8.8 0-16 7.2-16 16zm368-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V240c0-8.8-7.2-16-16-16H416zM48 112v32c0 8.8 7.2 16 16 16H96c8.8 0 16-7.2 16-16V112c0-8.8-7.2-16-16-16H64c-8.8 0-16 7.2-16 16zM416 96c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V112c0-8.8-7.2-16-16-16H416zM160 128v64c0 17.7 14.3 32 32 32H320c17.7 0 32-14.3 32-32V128c0-17.7-14.3-32-32-32H192c-17.7 0-32 14.3-32 32zm32 160c-17.7 0-32 14.3-32 32v64c0 17.7 14.3 32 32 32H320c17.7 0 32-14.3 32-32V320c0-17.7-14.3-32-32-32H192z" />
                                     </svg>
-                                    Film
-                                    <span class="text-gray-500 ml-auto">34 articles</span>
+                                    {{ $categoryList[2]->name }}
+                                    <span class="text-gray-500 ml-auto">{{ $categoryList[2]->posts_count }}
+                                        articles</span>
                                     <i class='text-gray-500 bx bx-right-arrow-alt ml-1'></i>
                                 </a>
                             </li>
@@ -230,8 +197,9 @@
                                         <path
                                             d="M192 64C86 64 0 150 0 256S86 448 192 448H448c106 0 192-86 192-192s-86-192-192-192H192zM496 168a40 40 0 1 1 0 80 40 40 0 1 1 0-80zM392 304a40 40 0 1 1 80 0 40 40 0 1 1 -80 0zM168 200c0-13.3 10.7-24 24-24s24 10.7 24 24v32h32c13.3 0 24 10.7 24 24s-10.7 24-24 24H216v32c0 13.3-10.7 24-24 24s-24-10.7-24-24V280H136c-13.3 0-24-10.7-24-24s10.7-24 24-24h32V200z" />
                                     </svg>
-                                    Games
-                                    <span class="text-gray-500 ml-auto">9 articles</span>
+                                    {{ $categoryList[3]->name }}
+                                    <span class="text-gray-500 ml-auto">{{ $categoryList[3]->posts_count }}
+                                        articles</span>
                                     <i class='text-gray-500 bx bx-right-arrow-alt ml-1'></i>
                                 </a>
                             </li>
@@ -243,8 +211,9 @@
                                         <path
                                             d="M499.1 6.3c8.1 6 12.9 15.6 12.9 25.7v72V368c0 44.2-43 80-96 80s-96-35.8-96-80s43-80 96-80c11.2 0 22 1.6 32 4.6V147L192 223.8V432c0 44.2-43 80-96 80s-96-35.8-96-80s43-80 96-80c11.2 0 22 1.6 32 4.6V200 128c0-14.1 9.3-26.6 22.8-30.7l320-96c9.7-2.9 20.2-1.1 28.3 5z" />
                                     </svg>
-                                    Music
-                                    <span class="text-gray-500 ml-auto">9 articles</span>
+                                    {{ $categoryList[4]->name }}
+                                    <span class="text-gray-500 ml-auto">{{ $categoryList[4]->posts_count }}
+                                        articles</span>
                                     <i class='text-gray-500 bx bx-right-arrow-alt ml-1'></i>
                                 </a>
                             </li>
@@ -256,8 +225,9 @@
                                         <path
                                             d="M176 24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64c-35.3 0-64 28.7-64 64H24c-13.3 0-24 10.7-24 24s10.7 24 24 24H64v56H24c-13.3 0-24 10.7-24 24s10.7 24 24 24H64v56H24c-13.3 0-24 10.7-24 24s10.7 24 24 24H64c0 35.3 28.7 64 64 64v40c0 13.3 10.7 24 24 24s24-10.7 24-24V448h56v40c0 13.3 10.7 24 24 24s24-10.7 24-24V448h56v40c0 13.3 10.7 24 24 24s24-10.7 24-24V448c35.3 0 64-28.7 64-64h40c13.3 0 24-10.7 24-24s-10.7-24-24-24H448V280h40c13.3 0 24-10.7 24-24s-10.7-24-24-24H448V176h40c13.3 0 24-10.7 24-24s-10.7-24-24-24H448c0-35.3-28.7-64-64-64V24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64H280V24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64H176V24zM160 128H352c17.7 0 32 14.3 32 32V352c0 17.7-14.3 32-32 32H160c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32zm192 32H160V352H352V160z" />
                                     </svg>
-                                    Technology
-                                    <span class="text-gray-500 ml-auto">9 articles</span>
+                                    {{ $categoryList[5]->name }}
+                                    <span class="text-gray-500 ml-auto">{{ $categoryList[5]->posts_count }}
+                                        articles</span>
                                     <i class='text-gray-500 bx bx-right-arrow-alt ml-1'></i>
                                 </a>
                             </li>
@@ -276,117 +246,39 @@
 
                 <section class="dark:bg-gray-800 dark:text-gray-100">
                     <div class="container max-w-6xl p-6 mx-auto space-y-6 sm:space-y-12">
-                        <a rel="noopener noreferrer" href="#"
+                        <a rel="noopener noreferrer"href="{{ filter_var($posts[0]['shortUrl'], FILTER_VALIDATE_URL) ? $posts[0]['shortUrl'] : url('post', $posts[0]['shortUrl']) }}"
+                            {{ filter_var($posts[0]['shortUrl'], FILTER_VALIDATE_URL) ? '' : " target = '_blank'" }}
                             class="block max-w-sm gap-3 mx-auto sm:max-w-full group hover:no-underline focus:no-underline lg:grid lg:grid-cols-12 dark:bg-gray-900">
-                            <img src="/../img/anthem.jpg" alt=""
-                                class="object-cover w-full h-64 rounded sm:h-96 lg:col-span-7 dark:bg-gray-500">
+                            @if (!empty($posts[0]['thumbnail']))
+                                <img src="{{ $posts[0]['thumbnail'] }}" alt="{{ $posts[0]['webTitle'] }}"
+                                    class="object-cover w-full h-64 rounded sm:h-96 lg:col-span-7 dark:bg-gray-500">
+                            @endif
                             <div class="p-6 space-y-2 lg:col-span-5">
                                 <h3 class="text-2xl font-semibold sm:text-4xl group-hover:underline group-focus:underline">
-                                    Noster
-                                    tincidunt reprimique ad pro</h3>
-                                <span class="text-xs dark:text-gray-400">February 19, 2021</span>
-                                <p>Ei delenit sensibus liberavisse pri. Quod suscipit no nam. Est in graece fuisset, eos
-                                    affert
-                                    putent doctus id.</p>
+                                    {{ $posts[0]['webTitle'] }}</h3>
+                                <span class="text-xs dark:text-gray-400">{{ $posts[0]['published'] }}</span>
+                                <p>{!! $posts[0]['body'] !!}</p>
                             </div>
                         </a>
                         <div class="grid justify-center grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                            <a rel="noopener noreferrer" href="#"
-                                class="max-w-sm mx-auto group hover:no-underline focus:no-underline dark:bg-gray-900">
-                                <img src="/../img/anthem.jpg" class="object-cover w-full rounded h-44 dark:bg-gray-500"
-                                    src="https://source.unsplash.com/random/480x360?1">
-                                <div class="p-6 space-y-2">
-                                    <h3 class="text-2xl font-semibold group-hover:underline group-focus:underline">In usu
-                                        laoreet
-                                        repudiare legendos</h3>
-                                    <span class="text-xs dark:text-gray-400">January 21, 2021</span>
-                                    <p>Mei ex aliquid eleifend forensibus, quo ad dicta apeirian neglegentur, ex has tantas
-                                        percipit
-                                        perfecto. At per tempor albucius perfecto, ei probatus consulatu patrioque mea, ei
-                                        vocent
-                                        delicata indoctum pri.</p>
-                                </div>
-                            </a>
-                            <a rel="noopener noreferrer" href="#"
-                                class="max-w-sm mx-auto group hover:no-underline focus:no-underline dark:bg-gray-900">
-                                <img src="/../img/anthem.jpg" class="object-cover w-full rounded h-44 dark:bg-gray-500"
-                                    src="https://source.unsplash.com/random/480x360?2">
-                                <div class="p-6 space-y-2">
-                                    <h3 class="text-2xl font-semibold group-hover:underline group-focus:underline">In usu
-                                        laoreet
-                                        repudiare legendos</h3>
-                                    <span class="text-xs dark:text-gray-400">January 22, 2021</span>
-                                    <p>Mei ex aliquid eleifend forensibus, quo ad dicta apeirian neglegentur, ex has tantas
-                                        percipit
-                                        perfecto. At per tempor albucius perfecto, ei probatus consulatu patrioque mea, ei
-                                        vocent
-                                        delicata indoctum pri.</p>
-                                </div>
-                            </a>
-                            <a rel="noopener noreferrer" href="#"
-                                class="max-w-sm mx-auto group hover:no-underline focus:no-underline dark:bg-gray-900">
-                                <img src="/../img/anthem.jpg" class="object-cover w-full rounded h-44 dark:bg-gray-500"
-                                    src="https://source.unsplash.com/random/480x360?3">
-                                <div class="p-6 space-y-2">
-                                    <h3 class="text-2xl font-semibold group-hover:underline group-focus:underline">In usu
-                                        laoreet
-                                        repudiare legendos</h3>
-                                    <span class="text-xs dark:text-gray-400">January 23, 2021</span>
-                                    <p>Mei ex aliquid eleifend forensibus, quo ad dicta apeirian neglegentur, ex has tantas
-                                        percipit
-                                        perfecto. At per tempor albucius perfecto, ei probatus consulatu patrioque mea, ei
-                                        vocent
-                                        delicata indoctum pri.</p>
-                                </div>
-                            </a>
-                            <a rel="noopener noreferrer" href="#"
-                                class="max-w-sm mx-auto group hover:no-underline focus:no-underline dark:bg-gray-900 hidden sm:block">
-                                <img src="/../img/anthem.jpg" class="object-cover w-full rounded h-44 dark:bg-gray-500"
-                                    src="https://source.unsplash.com/random/480x360?4">
-                                <div class="p-6 space-y-2">
-                                    <h3 class="text-2xl font-semibold group-hover:underline group-focus:underline">In usu
-                                        laoreet
-                                        repudiare legendos</h3>
-                                    <span class="text-xs dark:text-gray-400">January 24, 2021</span>
-                                    <p>Mei ex aliquid eleifend forensibus, quo ad dicta apeirian neglegentur, ex has tantas
-                                        percipit
-                                        perfecto. At per tempor albucius perfecto, ei probatus consulatu patrioque mea, ei
-                                        vocent
-                                        delicata indoctum pri.</p>
-                                </div>
-                            </a>
-                            <a rel="noopener noreferrer" href="#"
-                                class="max-w-sm mx-auto group hover:no-underline focus:no-underline dark:bg-gray-900 hidden sm:block">
-                                <img src="/../img/anthem.jpg" class="object-cover w-full rounded h-44 dark:bg-gray-500"
-                                    src="https://source.unsplash.com/random/480x360?5">
-                                <div class="p-6 space-y-2">
-                                    <h3 class="text-2xl font-semibold group-hover:underline group-focus:underline">In usu
-                                        laoreet
-                                        repudiare legendos</h3>
-                                    <span class="text-xs dark:text-gray-400">January 25, 2021</span>
-                                    <p>Mei ex aliquid eleifend forensibus, quo ad dicta apeirian neglegentur, ex has tantas
-                                        percipit
-                                        perfecto. At per tempor albucius perfecto, ei probatus consulatu patrioque mea, ei
-                                        vocent
-                                        delicata indoctum pri.</p>
-                                </div>
-                            </a>
-                            <a rel="noopener noreferrer" href="#"
-                                class="max-w-sm mx-auto group hover:no-underline focus:no-underline dark:bg-gray-900 hidden sm:block">
-                                <img src="/../img/anthem.jpg" class="object-cover w-full rounded h-44 dark:bg-gray-500"
-                                    src="https://source.unsplash.com/random/480x360?6">
-                                <div class="p-6 space-y-2">
-                                    <h3 class="text-2xl font-semibold group-hover:underline group-focus:underline">In usu
-                                        laoreet
-                                        repudiare legendos</h3>
-                                    <span class="text-xs dark:text-gray-400">January 26, 2021</span>
-                                    <p>Mei ex aliquid eleifend forensibus, quo ad dicta apeirian neglegentur, ex has tantas
-                                        percipit
-                                        perfecto. At per tempor albucius perfecto, ei probatus consulatu patrioque mea, ei
-                                        vocent
-                                        delicata indoctum pri.</p>
-                                </div>
-                            </a>
+                            @foreach ($posts->skip(1) as $item)
+                                <a rel="noopener noreferrer"
+                                    href="{{ filter_var($item['shortUrl'], FILTER_VALIDATE_URL) ? $item['shortUrl'] : url('post', $item['shortUrl']) }}"
+                                    {{ filter_var($item['shortUrl'], FILTER_VALIDATE_URL) ? '' : " target = '_blank'" }}
+                                    class="max-w-sm mx-auto group hover:no-underline focus:no-underline dark:bg-gray-900">
+                                    @if (!empty($item['thumbnail']))
+                                        <img src="{{ $item['thumbnail'] }}"{{-- "/../img/anthem.jpg" --}}
+                                            class="object-cover w-full rounded h-44 dark:bg-gray-500"
+                                            alt="{{ $item['webTitle'] }}">
+                                    @endif
+                                    <div class="p-6 space-y-2">
+                                        <h3 class="text-2xl font-semibold group-hover:underline group-focus:underline">In
+                                            {{ $item['webTitle'] }}</h3>
+                                        <span class="text-xs dark:text-gray-400">{{ $item['published'] }}</span>
+                                        <p>{!! $item['body'] !!}</p>
+                                    </div>
+                                </a>
+                            @endforeach
                         </div>
                 </section>
 

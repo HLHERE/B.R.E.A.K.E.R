@@ -26,16 +26,16 @@ use App\Http\Controllers\DashboardUserController;
 
 
 Route::get('/posts', function () {
-    return view ('posts');
+    return view('posts');
 });
 
 // Route::get('/posts', [PostController::class, 'index']);
 
-Route::get('/post', function () {
-    return view ('post');
-});
+// Route::get('/post', function () {
+//     return view('post');
+// });
 Route::get('/merchandise', function () {
-    return view ('merchandise');
+    return view('merchandise');
 });
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
@@ -58,14 +58,14 @@ Route::post('/register', [RegisterController::class, 'store']);
 
 
 Route::get('/about', function () {
-    return view ('about');
+    return view('about');
 });
 
 Route::get('/', [PostController::class, 'index']);
-Route::get('/{post:slug}', [PostController::class, 'show']);
+Route::get('/post/{post:slug}', [PostController::class, 'show']);
 
-Route::get('/dashboard/posts/checkSlug' , [DashboardPostController::class,'checkSlug'])->middleware('auth');
+Route::get('/dashboard/posts/checkSlug', [DashboardPostController::class, 'checkSlug'])->middleware('auth');
 Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('auth');
 Route::resource('/dashboard/admin', DashboardAdminController::class)->middleware('auth');
 
-Route::resource('/dashboard/user',DashboardUserController::class)->middleware('auth');
+Route::resource('/dashboard/user', DashboardUserController::class)->middleware('auth');
