@@ -75,7 +75,7 @@
             <div class="block md:flex md:space-x-2 px-2 lg:p-0">
                 <a class="mb-4 md:mb-0 w-full md:w-2/3 relative rounded inline-block" style="height: 24em;"
                     href="{{ filter_var($popular[0]['shortUrl'], FILTER_VALIDATE_URL) ? $popular[0]['shortUrl'] : url('post', $popular[0]['shortUrl']) }}"
-                    {{ filter_var($popular[0]['shortUrl'], FILTER_VALIDATE_URL) ? '' : " target = '_blank'" }}>
+                    {{ filter_var($popular[0]['shortUrl'], FILTER_VALIDATE_URL) ? " target = '_blank'" : '' }}>
                     <div class="absolute left-0 bottom-0 w-full h-full z-10"
                         style="background-image: linear-gradient(180deg,transparent,rgba(0,0,0,.7));"></div>
                     @if (!empty($popular[0]['thumbnail']))
@@ -89,7 +89,9 @@
                     </div>
                 </a>
 
-                <a class="w-full md:w-1/3 relative rounded" style="height: 24em;" href="{{ $popular[1]['shortUrl'] }}">
+                <a class="w-full md:w-1/3 relative rounded" style="height: 24em;"
+                    href="{{ filter_var($popular[1]['shortUrl'], FILTER_VALIDATE_URL) ? $popular[1]['shortUrl'] : url('post', $popular[1]['shortUrl']) }}"
+                    {{ filter_var($popular[1]['shortUrl'], FILTER_VALIDATE_URL) ? " target = '_blank'" : '' }}>
                     <div class="absolute left-0 top-0 w-full h-full z-10"
                         style="background-image: linear-gradient(180deg,transparent,rgba(0,0,0,.7));"></div>
                     @if (!empty($popular[1]['thumbnail']))
@@ -109,7 +111,7 @@
                     @foreach ($popular->skip(2) as $item)
                         <a class="block rounded w-full lg:flex mb-10"
                             href="{{ filter_var($item['shortUrl'], FILTER_VALIDATE_URL) ? $item['shortUrl'] : url('post', $item['shortUrl']) }}"
-                            {{ filter_var($item['shortUrl'], FILTER_VALIDATE_URL) ? '' : " target = '_blank'" }}>
+                            {{ filter_var($item['shortUrl'], FILTER_VALIDATE_URL) ? " target = '_blank'" : '' }}>
                             @if (!empty($item['thumbnail']))
                                 <div class="h-48 lg:w-48 flex-none bg-cover text-center overflow-hidden opacity-75"
                                     style="background-image: url('{{ $item['thumbnail'] }}')"
@@ -246,8 +248,9 @@
 
                 <section class="dark:bg-gray-800 dark:text-gray-100">
                     <div class="container max-w-6xl p-6 mx-auto space-y-6 sm:space-y-12">
-                        <a rel="noopener noreferrer"href="{{ filter_var($posts[0]['shortUrl'], FILTER_VALIDATE_URL) ? $posts[0]['shortUrl'] : url('post', $posts[0]['shortUrl']) }}"
-                            {{ filter_var($posts[0]['shortUrl'], FILTER_VALIDATE_URL) ? '' : " target = '_blank'" }}
+                        <a rel="noopener noreferrer"
+                            href="{{ filter_var($posts[0]['shortUrl'], FILTER_VALIDATE_URL) ? $posts[0]['shortUrl'] : url('post', $posts[0]['shortUrl']) }}"
+                            {{ filter_var($posts[0]['shortUrl'], FILTER_VALIDATE_URL) ? " target = '_blank'" : '' }}
                             class="block max-w-sm gap-3 mx-auto sm:max-w-full group hover:no-underline focus:no-underline lg:grid lg:grid-cols-12 dark:bg-gray-900">
                             @if (!empty($posts[0]['thumbnail']))
                                 <img src="{{ $posts[0]['thumbnail'] }}" alt="{{ $posts[0]['webTitle'] }}"
@@ -264,7 +267,7 @@
                             @foreach ($posts->skip(1) as $item)
                                 <a rel="noopener noreferrer"
                                     href="{{ filter_var($item['shortUrl'], FILTER_VALIDATE_URL) ? $item['shortUrl'] : url('post', $item['shortUrl']) }}"
-                                    {{ filter_var($item['shortUrl'], FILTER_VALIDATE_URL) ? '' : " target = '_blank'" }}
+                                    {{ filter_var($item['shortUrl'], FILTER_VALIDATE_URL) ? " target = '_blank'" : '' }}
                                     class="max-w-sm mx-auto group hover:no-underline focus:no-underline dark:bg-gray-900">
                                     @if (!empty($item['thumbnail']))
                                         <img src="{{ $item['thumbnail'] }}"{{-- "/../img/anthem.jpg" --}}
