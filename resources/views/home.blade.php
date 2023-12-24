@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('container')
-    <hr>
+    {{-- <hr> Note: Ini jangan di hapus dulu, bisi ada apa2 ini buat patokan
     <ul>
         @foreach ($categoryList as $item)
             <li>{{ $item->name }} : {{ $item->posts_count }}</li>
@@ -50,7 +50,7 @@
             </li>
             <hr><br>
         @endforeach
-    </ul>
+    </ul> --}}
 
     <div class="max-w-screen-xl mx-auto ">
 
