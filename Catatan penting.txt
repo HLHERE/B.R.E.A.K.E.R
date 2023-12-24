@@ -54,7 +54,13 @@ harap tambahkan di sini!
 
 ==== # By Syahidan
 
-// tulis di sini
+>> install composer Google Api
+composer require laravel/Socialite
+
+>> untuk di .env :
+GOOGLE_CLIENT_ID=905383239738-4qnlo6gq1o5ipaaklcdl1stljgc1r212.apps.googleusercontent.com
+GOOGLE_CLIENT_SECRET=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
+GOOGLE_CLIENT_REDIRECT=http://127.0.0.1:8000/auth/google/callback
 
 ==== # By Adit
 
