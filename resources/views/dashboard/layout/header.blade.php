@@ -27,6 +27,8 @@
 
         <!-- Tombol Logout (ujung kanan) -->
         <div class="ml-auto">
+        <form action="/logout" method="post">
+            @csrf
             <button  onclick="window.location.href='/'" type="button" class="flex items-center text-putih shadow-lg bg-navbar hover:bg-orange_muda focus:outline-none focus:ring-4 focus:ring-orange_muda font-Arial rounded-full text-base px-5 py-2.5 text-center dark:bg-orange-200 dark:hover:bg-orange_muda dark:focus:ring-navbar">
                 <svg class="h-8 w-8 text-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" />
@@ -35,6 +37,7 @@
                 </svg>
                 Logout
             </button>
+        </form>
         </div>
     </div>
 </header>
