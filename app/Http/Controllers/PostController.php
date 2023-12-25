@@ -50,6 +50,7 @@ class PostController extends Controller
         ]);
     }
 
+
     // Fungsi ambil data Popular
     private function getPopularData($local, $Api)
     {
