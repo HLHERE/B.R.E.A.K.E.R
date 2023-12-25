@@ -16,8 +16,8 @@ class PostController extends Controller
 
     private $api;
     private array $meterAPI = ['relevance', 'published', 'newest', 'first-publication'];
-    private $rdmImgUser = 'https://picsum.photos/100/80';
-    private $rdmImgPost = 'https://picsum.photos/300/150';
+    private $rdmImgUser = '/../img/randomUser.png';
+    private $rdmImgPost = '/../img/randomPost.png';
     public $category, $author, $title;
 
 
@@ -50,21 +50,31 @@ class PostController extends Controller
         ]);
     }
 
-    /**
-     * Display a listing of the resource.
-     * 
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+
+    // Fungsi ambil data Popular
+    private function getPopularData($local, $Api)
     {
-        $posts = Post::with(['author', 'category'])->latest()->take(7)->get();
+        $popular = Post::with('author', 'category')->orderBy('views', 'desc')->take($local)->get();
+        $popularContentAPI = $this->getNews($Api, '', $this->meterAPI[0], $this->meterAPI[1]);
 
-        $popular = Post::with('author', 'category')->orderBy('views', 'desc')->take(5)->get();
+        $processedPopular = $this->mergeProcessedData($popular, $popularContentAPI);
+        return $processedPopular;
+    }
 
-        $popularContentAPI = $this->getNews(5, '', $this->meterAPI[0], $this->meterAPI[1]);
+    // Fungsi ambil data Random
+    private function getPostRandom($local, $Api)
+    {
+        $posts = Post::with(['author', 'category'])->latest()->take($local)->get();
+        $randomContentAPI = $this->getNews($Api, '', $this->meterAPI[2], $this->meterAPI[3]);
 
-        $randomContentAPI = $this->getNews(5, '', $this->meterAPI[2], $this->meterAPI[3]);
+        $processedPosts = $this->mergeProcessedData($posts, $randomContentAPI);
 
+        return $processedPosts;
+    }
+
+    // Fungsi ambil data category
+    private function getCategoryList()
+    {
         $categoryList = Category::withCount('posts')->get();
 
         // Tambahkan 10 ke setiap nilai posts_count
@@ -73,45 +83,100 @@ class PostController extends Controller
             return $category;
         });
 
+        return $categoryList;
 
+        // return [
+        // "popular" => $this->getPopularData(2, 1),
+        // "posts" => $this->getPostRandom(2, 5),
+        // "author" => $this->author, // Sesuaikan dengan properti yang sesuai
+        // "category" => $this->category, // Sesuaikan dengan properti yang sesuai
+        // "categoryList" => $categoryList
+        // ];
+    }
 
-        // Fungsi Menggabungkan
-        $processedPopular = $this->mergeProcessedData($popular, $popularContentAPI);
-        $processedPosts = $this->mergeProcessedData($posts, $randomContentAPI);
-
+    // route data ke halaman Home
+    public function index()
+    {
+        $popular = $this->getPopularData(2, 1);
+        $postss = $this->getPostRandom(2, 5);
+        $categoryList = $this->getCategoryList();
 
         return view('home', [
-            "popular" => $processedPopular,
-            "posts" => $processedPosts, $this->author, $this->category,
+            "popular" => $popular,
+            "posts" => $postss,
             "categoryList" => $categoryList
-            // 'categoryContent' => $categoryContent,
-            // 'cartegoryName' => $categoryName
+        ]);
+    }
+
+    // route data ke halaman Posts
+    public function posts()
+    {
+        $popular = $this->getPopularData(2, 1);
+        $postss = $this->getPostRandom(2, 5);
+
+        return view('home', [
+            "popular" => $popular,
+            "posts" => $postss
         ]);
     }
 
     /**
-     * Tampilkan sumber daya yang ditentukan.
+     * Display a listing of the resource.
+     * 
+     * @return \Illuminate\Http\Response
      */
+    // public function index()
+    // {
+    //     $posts = Post::with(['author', 'category'])->latest()->take(2)->get();
+
+    //     $popular = Post::with('author', 'category')->orderBy('views', 'desc')->take(2)->get();
+
+    //     $popularContentAPI = $this->getNews(3, '', $this->meterAPI[0], $this->meterAPI[1]);
+
+    //     $randomContentAPI = $this->getNews(5, '', $this->meterAPI[2], $this->meterAPI[3]);
+
+    //     $categoryList = Category::withCount('posts')->get();
+
+    //     // Tambahkan 10 ke setiap nilai posts_count
+    //     $categoryList->transform(function ($category) {
+    //         $category->posts_count += 10;
+    //         return $category;
+    //     });
+
+    //     // Fungsi Menggabungkan
+    //     $processedPopular = $this->mergeProcessedData($popular, $popularContentAPI);
+    //     $processedPosts = $this->mergeProcessedData($posts, $randomContentAPI);
+
+    //     return view('home', [
+    //         "popular" => $processedPopular,
+    //         "posts" => $processedPosts, $this->author, $this->category,
+    //         "categoryList" => $categoryList
+    //         // 'categoryContent' => $categoryContent,
+    //         // 'cartegoryName' => $categoryName
+    //     ]);
+    // }
+
+    // route data ke halaman show
     public function show(Post $post)
     {
-        // Temukan post berdasarkan ID
-        $post = Post::find($post);
-        // Periksa apakah post ditemukan
         if (!$post) {
             abort(404);
         }
-        // Tingkatkan jumlah tampilan
-        $post->views += 1;
-        // Simpan perubahan ke database
-        $post->save();
-        // Tampilkan post dalam view
-        return view('posts.show', [
-            'post' => $post
+
+        $post->views += 1; // Tingkatkan jumlah tampilan
+
+        $post->save(); // Simpan perubahan ke database
+
+        // dd($post);
+        $popular = $this->getPopularData(2, 1);
+
+        return view('post', [
+            'post' => $post,
+            'popular' => $popular
         ]);
     }
 
-    // Semua pengambilan data
-
+    // Semua pengambilan data API
     public function getNews($isi, $categoryQuery, $orderBy, $useDate)
     {
         try {
@@ -207,12 +272,12 @@ class PostController extends Controller
 
         $processedItem = [
             'webTitle' => $item->title,
-            'thumbnail' => $item->postImg != '' ? $item->postImg : $this->rdmImgUser,
+            'thumbnail' => $item->postImg != '' ? $item->postImg : $this->rdmImgPost,
             'publication' => $item->views,
-            'authorImage' => $item->author->userImg != '' ? $item->author->userImg : $this->rdmImgPost,
+            'authorImage' => $item->author->userImg != '' ? $item->author->userImg : $this->rdmImgUser,
             'authorName' => $item->author->name,
             'body' => Str::limit(strip_tags($item->body), 200),
-            'shortUrl' => null,
+            'shortUrl' => $item->slug,
             'cartegory' => $item->category->name,
             'published' => $formattedDate,
         ];
