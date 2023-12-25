@@ -8,7 +8,7 @@ use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\DashboardAdminController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardUserController;
-
+use App\Http\Controllers\GoogleController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -61,11 +61,14 @@ Route::get('/about', function () {
     return view('about');
 });
 
+Route::get('/auth/google', [GoogleController::class, 'redirectToGoogle'])->name('google.login');
+Route::get('/auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
+
 Route::get('/', [PostController::class, 'index']);
 Route::get('/post/{post:slug}', [PostController::class, 'show']);
 
 Route::get('/dashboard/posts/checkSlug', [DashboardPostController::class, 'checkSlug'])->middleware('auth');
 Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('auth');
 Route::resource('/dashboard/admin', DashboardAdminController::class)->middleware('auth');
-
 Route::resource('/dashboard/user', DashboardUserController::class)->middleware('auth');
+

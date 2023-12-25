@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Models\Category;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
+use iluminate\Support\Str;
 
 class DashboardPostController extends Controller
 {
@@ -40,8 +41,30 @@ class DashboardPostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required|max:255',
+            'slug' => 'required|unique:posts',
+            'category_id' => 'required',
+            'postImg' => 'image|file|max:12582912', // 12 MB in bytes
+            'body' =>'required',
+        ]);
+    
+        if($request->file('postImg')) {
+            $validatedData['postImg'] = $request->file('postImg')->store('post-images');
+        }
+
+        $validatedData['user_id'] = auth()->user()->id;
+    
+        // Hapus baris berikut untuk menghilangkan 'excerpt' dari data yang dikirimkan
+        // $validatedData['excerpt'] = Str::limit($request->body, 200);
+    
+        // Simpan data ke model atau tempat penyimpanan yang sesuai
+        Post::create($validatedData);
+    
+        // Redirect atau berikan respons sesuai kebutuhan aplikasi Anda
+        return redirect('dashboard/posts')->with('success', 'news has been added'); // Gantilah 'nama.route' sesuai dengan route yang sesuai.
     }
+    
 
     /**
      * Display the specified resource.
@@ -60,7 +83,10 @@ class DashboardPostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('dashboard.posts.edit' , [
+            'post' => $post,
+            'categories'=> Category::all()
+        ]);
     }
 
     /**
@@ -68,7 +94,23 @@ class DashboardPostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $rules = [
+            'title' => 'required|max:255',
+            'category_id' => 'required',
+            'body' =>'required',
+        ];
+
+        if($request->slug != $post->slug) {
+            $rules['slug'] = 'required|unique:posts';
+        }
+
+        $validatedData = $request->validate($rules);   
+        $validatedData['user_id'] = auth()->user()->id;
+
+        Post::where('id', $post->id)->update($validatedData);
+
+        return redirect('dashboard/posts')->with('success', 'news has been edit'); // Gantilah 'nama.route' sesuai dengan route yang sesuai.
+
     }
 
     /**
@@ -76,7 +118,8 @@ class DashboardPostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        Post::destroy($post->id);
+        return redirect('/dashboard/posts')->with('success' , 'news has been deleted!');
     }
 
     public function checkSlug(Request $request) {

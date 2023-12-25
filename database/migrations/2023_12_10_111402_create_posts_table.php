@@ -9,22 +9,21 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
-    {
-        Schema::create('posts', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('category_id');
-            $table->foreignId('user_id');
-            $table->string('title');
-            $table->string('postImg')->default('');
-            $table->string('slug')->unique();
-            // $table->text('excerpt');
-            $table->text('body');
-            $table->integer('views')->default(0); // table tentang post yang sering di lihat
-            $table->timestamp('published_at')->nullable();
-            $table->timestamps();
-        });
-    }
+        public function up(): void
+        {
+            Schema::create('posts', function (Blueprint $table) {
+                $table->id();
+                $table->foreignId('category_id');
+                $table->foreignId('user_id');
+                $table->string('title');
+                $table->string('slug')->unique();
+                $table->string('postImg')->nullable();
+                $table->text('body');
+                $table->integer('views')->default(0); // table tentang post yang sering di lihat
+                $table->timestamp('published_at')->nullable();
+                $table->timestamps();
+            });
+        }
 
     /**
      * Reverse the migrations.
