@@ -175,6 +175,7 @@
             {{-- href="{{ filter_var($item['shortUrl'], FILTER_VALIDATE_URL) ? $item['shortUrl'] : url('post', $item['shortUrl']) }}"
                             {{ filter_var($item['shortUrl'], FILTER_VALIDATE_URL) ? " target = '_blank'" : '' }} --}}
             @foreach ($popular as $item)
+                {{-- tag a ini tadi nya div --}}
                 <a href="{{ filter_var($item['shortUrl'], FILTER_VALIDATE_URL) ? $item['shortUrl'] : url('post', $item['shortUrl']) }}"
                     {{ filter_var($item['shortUrl'], FILTER_VALIDATE_URL) ? " target = '_blank'" : '' }}
                     class="rounded w-full lg:w-1/2 p-4 lg:p-0 shadow-md">
