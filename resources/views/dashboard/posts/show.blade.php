@@ -16,8 +16,15 @@
                 {{$post->category->name}}
               </a>
             </div>
-    
-            <img src="/../img/teknologi.jpg" class="w-full object-cover lg:rounded" style="height: 28em;"/>
+            @if ($post->postImg)
+            <img src="{{asset('storage/' . $post->postImg)}}" class="w-full object-cover lg:rounded" style="height: 28em;"/>
+
+            @else
+              
+            <img src="https://source.unsplash.com/1200x400?{{$post->category->name}}" class="w-full object-cover lg:rounded" style="height: 28em;"/>
+            @endif
+
+
           </div>
     
           <div class="flex flex-col lg:flex-row lg:space-x-12">

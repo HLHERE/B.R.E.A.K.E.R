@@ -41,14 +41,14 @@
                     {{$post->category->name}}
                 </td>   
                 <td class="px-6 py-4 flex items-center space-x-1">
-                    <button type="button" onclick="window.location.href='/dashboard/posts/{{$post->slug}}'" class="text-white bg-green-500 hover:bg-green-300 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1.5 me-1 mb-1 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                    <button type="button" onclick="window.location.href='/dashboard/posts/{{$post->slug}}'" class="text-white bg-blue-700 hover:bg-blue-300 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1.5 me-1 mb-1 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
                         View
                     </button>
                     <button onclick="window.location.href='/dashboard/posts/{{$post->slug}}/edit'" type="button" class="text-white bg-yellow-300 hover:bg-yellow-200 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1.5 me-1 mb-1 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Edit</button>
                     <form action="/dashboard/posts/{{$post->slug}}" method="post">
                         @method('delete')
                         @csrf
-                        <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1.5 me-1 mb-1 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" onclick="return confirm('Are you sure want to delete this?')">Delete</button>
+                        <button type="submit" class="text-white bg-red-700 hover:bg-red-300 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1.5 me-1 mb-1 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" onclick="return confirm('Are you sure want to delete this?')">Delete</button>
                     </form>
                 </td>
             </tr>
