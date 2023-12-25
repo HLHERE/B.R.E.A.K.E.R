@@ -13,7 +13,7 @@
 ## Cara push 
 
 git branch menambahkan_logic
-git checkout menambahkan_logic
+git checkout menambahkan_logic 
 git add .
 git commit -m 'menyelesaikan bla bla bla '
 git push -u origin menambahkan_logic
