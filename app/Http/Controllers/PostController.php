@@ -26,35 +26,11 @@ class PostController extends Controller
         $this->api = new GuardianAPI(env('GUARDIAN_API_KEY'));
     }
 
-    public function logicSearch()
-    {
-        $this->title = '';
-        if (request('category')) {
-            $this->category = Category::firstWhere('slug', request('category'));
-            $this->title = ' in ' . $this->category->name;
-        }
-
-        if (request('author')) {
-            $this->author = User::firstWhere('username', request('author'));
-            $this->title = ' by ' . $this->author->name;
-        }
-
-        $getData = Post::latest()->filter(request(['search', 'category', 'author']))
-            ->paginate(7)->withQueryString();
-
-        $search = 'sport'; // cari cara mengirim data dari blade ke PostController
-        $searchResult = $this->getNews(5, $search, '', '');
-
-        return view('posts', [
-            "posts" => $getData, $searchResult
-        ]);
-    }
-
-
     // Fungsi ambil data Popular
     private function getPopularData($local, $Api)
     {
-        $popular = Post::with('author', 'category')->orderBy('views', 'desc')->take($local)->get();
+        $popular = Post::latest()->filter(request(['search', 'category', 'author']))
+            ->paginate($local)->withQueryString();
         $popularContentAPI = $this->getNews($Api, '', $this->meterAPI[0], $this->meterAPI[1]);
 
         $processedPopular = $this->mergeProcessedData($popular, $popularContentAPI);
@@ -84,77 +60,53 @@ class PostController extends Controller
         });
 
         return $categoryList;
-
-        // return [
-        // "popular" => $this->getPopularData(2, 1),
-        // "posts" => $this->getPostRandom(2, 5),
-        // "author" => $this->author, // Sesuaikan dengan properti yang sesuai
-        // "category" => $this->category, // Sesuaikan dengan properti yang sesuai
-        // "categoryList" => $categoryList
-        // ];
     }
 
     // route data ke halaman Home
     public function index()
     {
-        $popular = $this->getPopularData(2, 1);
+        $popular = $this->getPopularData(2, 3);
         $postss = $this->getPostRandom(2, 5);
         $categoryList = $this->getCategoryList();
 
         return view('home', [
             "popular" => $popular,
             "posts" => $postss,
-            "categoryList" => $categoryList
+            "categoryList" => $categoryList,
+            // "category" => Category::all()
         ]);
     }
 
-    // route data ke halaman Posts
-    public function posts()
+    public function logicSearchPosts()
     {
-        $popular = $this->getPopularData(2, 1);
-        $postss = $this->getPostRandom(2, 5);
+        $title = '';
+        $search = '';
 
-        return view('home', [
-            "popular" => $popular,
-            "posts" => $postss
+        if (request('category')) {
+            $category = Category::firstWhere('slug', request('category'));
+            $title = ' in ' . $category->name;
+            $search = $category->name;
+        }
+
+        if (request('author')) {
+            $author = User::firstWhere('username', request('author'));
+            $title = ' by ' . $author->name;
+            $search = $author->name;
+        }
+
+        $getData = Post::latest()->filter(request(['search', 'category', 'author']))
+            ->paginate(10)->withQueryString();
+
+        // dd($getData);
+        $searchResult = $this->getNews(10, $search, '', '');
+
+        $mix = $this->mergeProcessedData($getData, $searchResult);
+
+        return view('posts', [
+            "judul" => $title,
+            "posts" => $mix
         ]);
     }
-
-    /**
-     * Display a listing of the resource.
-     * 
-     * @return \Illuminate\Http\Response
-     */
-    // public function index()
-    // {
-    //     $posts = Post::with(['author', 'category'])->latest()->take(2)->get();
-
-    //     $popular = Post::with('author', 'category')->orderBy('views', 'desc')->take(2)->get();
-
-    //     $popularContentAPI = $this->getNews(3, '', $this->meterAPI[0], $this->meterAPI[1]);
-
-    //     $randomContentAPI = $this->getNews(5, '', $this->meterAPI[2], $this->meterAPI[3]);
-
-    //     $categoryList = Category::withCount('posts')->get();
-
-    //     // Tambahkan 10 ke setiap nilai posts_count
-    //     $categoryList->transform(function ($category) {
-    //         $category->posts_count += 10;
-    //         return $category;
-    //     });
-
-    //     // Fungsi Menggabungkan
-    //     $processedPopular = $this->mergeProcessedData($popular, $popularContentAPI);
-    //     $processedPosts = $this->mergeProcessedData($posts, $randomContentAPI);
-
-    //     return view('home', [
-    //         "popular" => $processedPopular,
-    //         "posts" => $processedPosts, $this->author, $this->category,
-    //         "categoryList" => $categoryList
-    //         // 'categoryContent' => $categoryContent,
-    //         // 'cartegoryName' => $categoryName
-    //     ]);
-    // }
 
     // route data ke halaman show
     public function show(Post $post)
@@ -184,8 +136,8 @@ class PostController extends Controller
                 ->setQuery($categoryQuery)
                 ->setOrderBy($orderBy)
                 ->setUseDate($useDate)
-                ->setShowTags("contributor,blog,keyword")
-                ->setShowFields("headline,thumbnail,short-url,publication,body,all")
+                ->setShowTags("contributor,blog")
+                ->setShowFields("headline,thumbnail,short-url,publication,body")
                 ->setShowReferences("author,isbn,opta-cricket-match")
                 ->fetch();
 
@@ -229,6 +181,7 @@ class PostController extends Controller
 
     public function getAuthorImage($item)
     {
+
         if (!empty($item->tags)) {
             if (isset($item->tags[0]->bylineLargeImageUrl)) {
                 return $item->tags[0]->bylineLargeImageUrl;
@@ -238,7 +191,6 @@ class PostController extends Controller
                 return $this->rdmImgUser;
             }
         }
-
         return null;
     }
 
@@ -274,6 +226,7 @@ class PostController extends Controller
             'webTitle' => $item->title,
             'thumbnail' => $item->postImg != '' ? $item->postImg : $this->rdmImgPost,
             'publication' => $item->views,
+            // 'authorImage' => $this->getAuthorImageLocal($item),
             'authorImage' => $item->author->userImg != '' ? $item->author->userImg : $this->rdmImgUser,
             'authorName' => $item->author->name,
             'body' => Str::limit(strip_tags($item->body), 200),

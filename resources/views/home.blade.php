@@ -52,6 +52,15 @@
         @endforeach
     </ul> --}}
 
+    {{-- <form action="/posts">
+        @if (request('category'))
+            <input type="hidden" name="category" value="{{ request('category') }}">
+        @endif
+        @if (request('author'))
+            <input type="hidden" name="author" value="{{ request('author') }}">
+        @endif
+    </form> --}}
+
     <div class="max-w-screen-xl mx-auto ">
 
         <section class="text-abu body-font mt-3  ">
@@ -152,7 +161,8 @@
                         <ul>
                             <li
                                 class="px-1 py-4 border-b border-t border-white hover:border-gray-200 transition duration-300">
-                                <a href="#" class="flex items-center text-gray-600 cursor-pointer">
+                                <a href="/posts?category={{ $categoryList[0]->slug }}"
+                                    class="flex items-center text-gray-600 cursor-pointer">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="16" width="18" class='mr-1'
                                         viewBox="0 0 576 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
                                         <path
@@ -165,7 +175,8 @@
                             </li>
                             <li
                                 class="px-1 py-4 border-b border-t border-white hover:border-gray-200 transition duration-300">
-                                <a href="#" class="flex items-center text-gray-600 cursor-pointer">
+                                <a href="/posts?category={{ $categoryList[1]->slug }}"
+                                    class="flex items-center text-gray-600 cursor-pointer">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="17" width="17" class='mr-1'
                                         viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
                                         <path
@@ -179,7 +190,8 @@
                             </li>
                             <li
                                 class="px-1 py-4 border-b border-t border-white hover:border-gray-200 transition duration-300">
-                                <a href="#" class="flex items-center text-gray-600 cursor-pointer">
+                                <a href="/posts?category={{ $categoryList[2]->slug }}"
+                                    class="flex items-center text-gray-600 cursor-pointer">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="17" width="17" class='mr-2  '
                                         viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
                                         <path
@@ -193,7 +205,8 @@
                             </li>
                             <li
                                 class="px-1 py-4 border-b border-t border-white hover:border-gray-200 transition duration-300">
-                                <a href="#" class="flex items-center text-gray-600 cursor-pointer">
+                                <a href="/posts?category={{ $categoryList[3]->slug }}"
+                                    class="flex items-center text-gray-600 cursor-pointer">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="16" width="20" class='mr-1'
                                         viewBox="0 0 640 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
                                         <path
@@ -207,7 +220,8 @@
                             </li>
                             <li
                                 class="px-1 py-4 border-b border-t border-white hover:border-gray-200 transition duration-300">
-                                <a href="#" class="flex items-center text-gray-600 cursor-pointer">
+                                <a href="/posts?category={{ $categoryList[4]->slug }}"
+                                    class="flex items-center text-gray-600 cursor-pointer">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" class='mr-1'
                                         viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
                                         <path
@@ -221,7 +235,8 @@
                             </li>
                             <li
                                 class="px-1 py-4 border-b border-t border-white hover:border-gray-200 transition duration-300">
-                                <a href="#" class="flex items-center text-gray-600 cursor-pointer">
+                                <a href="/posts?category={{ $categoryList[5]->slug }}"
+                                    class="flex items-center text-gray-600 cursor-pointer">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" class='mr-1'
                                         viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
                                         <path
