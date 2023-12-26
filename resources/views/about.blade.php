@@ -13,6 +13,7 @@ Include Tailwind JIT CDN compiler
 More info: https://beyondco.de/blog/tailwind-jit-compiler-via-cdn
 -->
 <main class="-mt-52">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
 <script src="https://unpkg.com/tailwindcss-jit-cdn"></script>
 <!-- Snippet -->   
 <main class="-mt-">     
@@ -54,17 +55,27 @@ More info: https://beyondco.de/blog/tailwind-jit-compiler-via-cdn
     <div class="flex flex-wrap -m-4">
       <div class="xl:w-1/4 md:w-1/2 p-4">
         <div class="bg-gray-300 p-6 rounded-lg">
-          <img class="h-40 rounded w-full object-cover object-center mb-6" src="/../img/gojo.jpg" alt="content">
+          <img class="h-40 rounded w-full object-cover object-center mb-6" src="/../img/haykal.jpg" alt="content">
           <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font">Project Manager</h3>
           <h2 class="text-lg text-gray-900 font-medium title-font mb-4">M Haykal Alvegio H</h2>
+          <a href="https://github.com/HLHERE">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-github mx-24" viewBox="0 0 16 16">
+  <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
+</svg>
+</a>
         </div>
       </div>
 
       <div class="xl:w-1/4 md:w-1/2 p-4">
-        <div class="bg-gray-300 p-6 rounded-lg">
-          <img class="h-40 rounded w-full object-cover object-center mb-6" src="/../img/gojo.jpg" alt="content">
+        <div class="bg-gray-300 p-6 rounded-lg shadow-md">
+          <img class="h-40 rounded w-full object-cover object-center mb-6" src="/../img/adit.jpg" alt="content">
           <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font">Front End</h3>
           <h2 class="text-lg text-gray-900 font-medium title-font mb-4">M Deandra Adhitya</h2>
+          <a href="https://github.com/DeandraAdhitya">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-github mx-24" viewBox="0 0 16 16">
+  <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
+</svg>
+</a>
         </div>
       </div>
 
