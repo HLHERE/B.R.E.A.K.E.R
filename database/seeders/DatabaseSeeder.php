@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
 
         Category::create([
             'name' => 'Art & Design',
-            'slug' => 'art & design'
+            'slug' => 'art-dan-design'
         ]);
 
         Category::create([
