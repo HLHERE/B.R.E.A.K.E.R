@@ -32,7 +32,10 @@ More info: https://beyondco.de/blog/tailwind-jit-compiler-via-cdn
                         <a class="text-navbar transition duration-150 ease-in-out">GlamGroove Entertainment.</a>
                     </h3>
                 </header>
-                <p class="text-lg text-abu flex-grow">"Glam Groove Entertainment" bisa diartikan sebagai perusahaan atau entitas yang berfokus pada penyediaan hiburan dengan sentuhan glamor dan groove. Web ini berisi konten tentang Teknologi, Game, Anime, Musik, Film, dan Gadgets.</p>
+                <p class="text-lg text-abu flex-grow">
+                  Hey Groovers! Welcome to Glam Groove Entertainment – your friendly hub for all things cool. 
+                  From tech and gaming to artsy vibes, music, movies, and cartoons – we've got the glam and the groove. 
+                  Join the fun at Glam Groove for a fab entertainment experience! </p>
             </div>
         </article>    
     </div>
@@ -52,7 +55,7 @@ More info: https://beyondco.de/blog/tailwind-jit-compiler-via-cdn
       <div class="xl:w-1/4 md:w-1/2 p-4">
         <div class="bg-gray-300 p-6 rounded-lg">
           <img class="h-40 rounded w-full object-cover object-center mb-6" src="/../img/gojo.jpg" alt="content">
-          <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font">Front End & Back End</h3>
+          <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font">Project Manager</h3>
           <h2 class="text-lg text-gray-900 font-medium title-font mb-4">M Haykal Alvegio H</h2>
         </div>
       </div>

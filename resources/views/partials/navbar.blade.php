@@ -22,12 +22,12 @@
             </div>
             <ul class="md:px-2 ml-auto md:flex md:space-x-2 absolute md:relative top-full left-0 right-0 ">
                 <li>
-                    <a href="#" class="flex md:inline-flex p-4 items-center">
+                    <a href="/" class="flex md:inline-flex p-4 items-center">
                         <span class="text-putih">Home</span>
                     </a>
                 </li>
                 <li>
-                    <a href="" class="flex md:inline-flex p-4 items-center">
+                    <a href="/about" class="flex md:inline-flex p-4 items-center">
                         <span class="text-putih">About</span>
                     </a>
                 </li>
