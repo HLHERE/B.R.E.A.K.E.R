@@ -17,22 +17,35 @@ class DashboardPostController extends Controller
     {
         $tampilButton = true;
         $showButton = true;
+        $printButton = true;
 
         return view('dashboard.posts.index',[
             // 'posts' => Post::where('id' ,auth()->user()->id)->get()
             'posts' => Post::all(),
             'tampilButton' => $tampilButton,
             'showButton' => $showButton,
+            'printButton' => $printButton
         ]);
     }
 
+
+    public function print() {
+        return view('dashboard.posts.print', [
+            'posts' => Post::all()
+        ]); 
+    }
+
+
+   
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
+        $showButton = true;
         return view('dashboard.posts.create' , [
-            'categories' => Category::all()
+            'categories' => Category::all(),
+            'showButton' => $showButton,
         ]);
     }
 
@@ -45,14 +58,9 @@ class DashboardPostController extends Controller
             'title' => 'required|max:255',
             'slug' => 'required|unique:posts',
             'category_id' => 'required',
-            'postImg' => 'image|file|max:12582912', // 12 MB in bytes
             'body' =>'required',
         ]);
     
-        if($request->file('postImg')) {
-            $validatedData['postImg'] = $request->file('postImg')->store('post-images');
-        }
-
         $validatedData['user_id'] = auth()->user()->id;
     
         // Hapus baris berikut untuk menghilangkan 'excerpt' dari data yang dikirimkan

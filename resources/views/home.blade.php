@@ -61,9 +61,9 @@
                         <h1 class="text-7xl font-Ghetto title-font mb-2 text-abu">Hot News</h1>
                         <div class="h-1 w-20 bg-coklat rounded"></div>
                     </div>
-                    <p class="lg:w-1/2 w-full leading-relaxed text-gray-500">Whatever cardigan tote bag tumblr hexagon
-                        brooklyn asymmetrical gentrify, subway tile poke farm-to-table. Franzen you probably haven't heard
-                        of them man bun deep jianbing selfies heirloom prism food truck ugh squid celiac humblebrag.</p>
+                    <p class="lg:w-1/2 w-full leading-relaxed text-gray-500">"Dive into the pulse of the latest headlines with Glam Groove News! From captivating global events to exclusive narratives, 
+                        Glam Groove brings you the hottest stories in a unique blend of sophistication. Experience news like never before — where every headline is a celebration of the extraordinary. 
+                        Stay tuned for the epitome of sophistication and style, exclusively at Glam Groove."</p>
                 </div>
         </section>
 

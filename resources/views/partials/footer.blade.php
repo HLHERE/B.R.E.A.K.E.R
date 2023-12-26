@@ -50,12 +50,6 @@
 		<div class="grid justify-center pt-6 lg:justify-between text-putih">
 			<div class="flex flex-col self-center text-sm text-center md:block lg:col-start-1 md:space-x-6">
 				<span>GlamGroove 2023 All rights reserved</span>
-				<a rel="noopener noreferrer" href="#">
-					<span>Privacy policy</span>
-				</a>
-				<a rel="noopener noreferrer" href="#">
-					<span>Terms of service</span>
-				</a>
 			</div>
 		</div>
 	</div>
