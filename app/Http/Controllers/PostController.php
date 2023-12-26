@@ -130,7 +130,7 @@ class PostController extends Controller
         try {
             $response = $this->api->content()
                 ->setQuery($categoryQuery)
-                ->setFromDate(new \DateTimeImmutable("01/01/2023"))
+                ->setFromDate(new \DateTimeImmutable("01/01/2022"))
                 ->setToDate(new \DateTimeImmutable())
                 // ->setShowTags(implode(',', $tagIds)) // Gunakan tag yang diperoleh untuk menyaring konten
                 ->setShowTags("contributor,blog")

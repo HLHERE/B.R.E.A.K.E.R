@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('container')
-    {{-- API Data
+    API Data
 
     <ul>
         <h1>Random News</h1>
@@ -45,7 +45,7 @@
             </li>
             <hr><br>
         @endforeach
-    </ul> --}}
+    </ul>
 
     {{-- Akhir API --}}
 
