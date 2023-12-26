@@ -25,9 +25,11 @@ use App\Http\Controllers\GoogleController;
 // });
 
 
-Route::get('/posts', function () {
-    return view('posts');
-});
+// Route::get('/posts', function () {
+//     return view('posts');
+// });
+
+Route::get('/posts', [PostController::class, 'logicSearchPosts']);
 
 // Route::get('/posts', [PostController::class, 'index']);
 
