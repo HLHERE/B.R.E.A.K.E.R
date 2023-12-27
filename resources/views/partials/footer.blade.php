@@ -13,13 +13,13 @@
 				<p class="pb-1 text-xl font-Arial">Features</p>
 				<ul>
 					<li>
-						<a rel="noopener noreferrer" href="#" class="hover:dark:text-violet-400">Hot News</a>
+						<a rel="noopener noreferrer" href="/" class="hover:dark:text-violet-400">Hot News</a>
 					</li>
 					<li>
 						<a rel="noopener noreferrer" href="#" class="hover:dark:text-violet-400">News</a>
 					</li>
 					<li>
-						<a rel="noopener noreferrer" href="#" class="hover:dark:text-violet-400">About</a>
+						<a rel="noopener noreferrer" href="/about" class="hover:dark:text-violet-400">About</a>
 					</li>
 				</ul>
 			</div>
