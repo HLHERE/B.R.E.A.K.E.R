@@ -89,6 +89,7 @@
                             </a>
                         </li>
                         @endcan
+                        
                         <form action="/logout" method="post">
                             @csrf
                                 <button type="submit" class="text-left pl-5 pr-32 py-2.5 hover:bg-coklat " >Logout</button>
