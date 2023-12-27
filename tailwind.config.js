@@ -26,14 +26,14 @@ module.exports = {
             coklat: "#6C5F5B",
             coklat_muda: "#887A77",
             abu: "#4F4A45",
-            abu_muda:"#6B6663",
+            abu_muda: "#6B6663",
             putih: "#F6F1EE",
-            for_card:"#D9D4D0",
+            for_card: "#D9D4D0",
             hijau: "#219C90",
         },
         fontFamily: {
-            Ghetto : ['FunGhetto'] ,
-            Arial :['ArialRounded']
+            Ghetto: ["FunGhetto"],
+            Arial: ["ArialRounded"],
         },
     },
 };
