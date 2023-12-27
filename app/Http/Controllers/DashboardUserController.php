@@ -4,16 +4,28 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Services\CategoryService;
+use Illuminate\Support\Facades\View;
 
 class DashboardUserController extends Controller
 {
+    protected $categoryService;
+
+    public function __construct(CategoryService $categoryService)
+    {
+        $this->categoryService = $categoryService;
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
+        $categoryList = $this->categoryService->getCategoryList();
+        View::share('categoryList', $categoryList);
+
         $showButton = true;
-        return view('dashboard.user.index' , [
+        return view('dashboard.user.index', [
             // 'posts' => Post::where('id' ,auth()->user()->id)->get()
             'users' => User::all(),
             'showButton' => $showButton,

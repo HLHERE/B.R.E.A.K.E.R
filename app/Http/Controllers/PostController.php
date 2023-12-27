@@ -8,7 +8,9 @@ use App\Models\Category;
 use Guardian\GuardianAPI;
 use Illuminate\Support\Str;
 use Illuminate\Support\Carbon;
+use App\Services\CategoryService;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\View;
 use Illuminate\Http\Client\RequestException;
 
 class PostController extends Controller
@@ -20,10 +22,12 @@ class PostController extends Controller
     private $rdmImgPost = '/../img/randomPost.png';
     public $category, $author, $title;
 
+    protected $categoryService;
 
-    public function __construct()
+    public function __construct(CategoryService $categoryService)
     {
         $this->api = new GuardianAPI(env('GUARDIAN_API_KEY'));
+        $this->categoryService = $categoryService;
     }
 
     // Fungsi ambil data Popular
@@ -48,18 +52,34 @@ class PostController extends Controller
         return $processedPosts;
     }
 
-    // Fungsi ambil data category
-    private function getCategoryList()
+    // // Fungsi ambil data category
+    // private function getCategoryList()
+    // {
+    //     $categoryList = $this->categoryService->getCategoryList();
+
+    //     // Tambahkan 10 ke setiap nilai posts_count
+    //     $categoryList->transform(function ($category) {
+    //         $category->posts_count += 10;
+    //         return $category;
+    //     });
+
+    //     return $categoryList;
+    // }
+
+    public function navbar()
     {
-        $categoryList = Category::withCount('posts')->get();
+        // $categoryList = $this->getCategoryList();
+        $categoryList = $this->categoryService->getCategoryList();
 
-        // Tambahkan 10 ke setiap nilai posts_count
-        $categoryList->transform(function ($category) {
-            $category->posts_count += 10;
-            return $category;
-        });
+        // dd($categoryList);
+        // Share $categoryList to both views
+        View::share('categoryList', $categoryList);
+        // // return view('partials.navbar', [
+        // //     "categoryList" => $categoryList,
+        // // ]);
 
-        return $categoryList;
+        // return view('partials.navbar');
+        return view('partials.navbar');
     }
 
     // route data ke halaman Home
@@ -67,18 +87,24 @@ class PostController extends Controller
     {
         $popular = $this->getPopularData(2, 3);
         $postss = $this->getPostRandom(2, 5);
-        $categoryList = $this->getCategoryList();
+
+        $categoryList = $this->categoryService->getCategoryList();
+        View::share('categoryList', $categoryList);
+
 
         return view('home', [
             "popular" => $popular,
             "posts" => $postss,
-            "categoryList" => $categoryList,
-            // "category" => Category::all()
+
         ]);
     }
 
+
+
     public function logicSearchPosts()
     {
+        $categoryList = $this->categoryService->getCategoryList();
+        View::share('categoryList', $categoryList);
         $title = '';
         $search = '';
 
@@ -97,20 +123,23 @@ class PostController extends Controller
         $getData = Post::latest()->filter(request(['search', 'category', 'author']))
             ->paginate(10)->withQueryString();
 
-        // dd($getData);
+        // dd($category);
         $searchResult = $this->getNews(10, $search, '', '');
 
         $mix = $this->mergeProcessedData($getData, $searchResult);
 
         return view('posts', [
             "judul" => $title,
-            "posts" => $mix
+            "posts" => $mix,
+            // "categoryList" => $category
         ]);
     }
 
     // route data ke halaman show
     public function show(Post $post)
     {
+        $categoryList = $this->categoryService->getCategoryList();
+        View::share('categoryList', $categoryList);
         if (!$post) {
             abort(404);
         }

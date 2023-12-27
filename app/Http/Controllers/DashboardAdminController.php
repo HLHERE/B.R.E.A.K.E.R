@@ -4,16 +4,26 @@ namespace App\Http\Controllers;
 
 use App\Models\Admin;
 use Illuminate\Http\Request;
+use App\Services\CategoryService;
+use Illuminate\Support\Facades\View;
 
 class DashboardAdminController extends Controller
 {
+    protected $categoryService;
+
+    public function __construct(CategoryService $categoryService)
+    {
+        $this->categoryService = $categoryService;
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
+        $categoryList = $this->categoryService->getCategoryList();
+        View::share('categoryList', $categoryList);
         $showButton = true;
-       return view('dashboard.admin.index');
+        return view('dashboard.admin.index');
     }
 
     /**

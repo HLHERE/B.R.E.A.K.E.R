@@ -4,20 +4,32 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Category;
-use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
+use App\Services\CategoryService;
+use Illuminate\Support\Facades\View;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class DashboardPostController extends Controller
 {
+    protected $categoryService;
+
+    public function __construct(CategoryService $categoryService)
+    {
+        $this->categoryService = $categoryService;
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
+        $categoryList = $this->categoryService->getCategoryList();
+        View::share('categoryList', $categoryList);
+
         $tampilButton = true;
         $showButton = true;
 
-        return view('dashboard.posts.index',[
+        return view('dashboard.posts.index', [
             // 'posts' => Post::where('id' ,auth()->user()->id)->get()
             'posts' => Post::all(),
             'tampilButton' => $tampilButton,
@@ -30,7 +42,10 @@ class DashboardPostController extends Controller
      */
     public function create()
     {
-        return view('dashboard.posts.create' , [
+        $categoryList = $this->categoryService->getCategoryList();
+        View::share('categoryList', $categoryList);
+
+        return view('dashboard.posts.create', [
             'categories' => Category::all()
         ]);
     }
@@ -48,8 +63,11 @@ class DashboardPostController extends Controller
      */
     public function show(Post $post)
     {
+        $categoryList = $this->categoryService->getCategoryList();
+        View::share('categoryList', $categoryList);
+
         $showButton = true;
-        return view ('dashboard.posts.show' , [
+        return view('dashboard.posts.show', [
             'post' => $post,
             'showButton' => $showButton,
         ]);
@@ -79,9 +97,12 @@ class DashboardPostController extends Controller
         //
     }
 
-    public function checkSlug(Request $request) {
-        $slug = SlugService::createSlug(Post::class,'slug' , $request->title );
-        return response()->json(['slug' => $slug]);
- }
+    public function checkSlug(Request $request)
+    {
+        $categoryList = $this->categoryService->getCategoryList();
+        View::share('categoryList', $categoryList);
 
+        $slug = SlugService::createSlug(Post::class, 'slug', $request->title);
+        return response()->json(['slug' => $slug]);
+    }
 }
