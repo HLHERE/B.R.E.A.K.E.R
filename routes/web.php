@@ -44,7 +44,7 @@ Route::get('/post', function () {
     return view ('post');
 });
 
-    Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('admin');
 
 
     // Route::get('/login', function () {
@@ -73,9 +73,9 @@ Route::get('/post', function () {
     Route::get('/', [PostController::class, 'index']);
     Route::get('/{post:slug}', [PostController::class, 'show']);
     
-    Route::get('/dashboard/posts/checkSlug' , [DashboardPostController::class,'checkSlug'])->middleware('auth');
-    Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('auth');
-    Route::resource('/dashboard/user',DashboardUserController::class)->middleware('auth');
+    Route::get('/dashboard/posts/checkSlug' , [DashboardPostController::class,'checkSlug'])->middleware('admin');
+    Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('admin');
+    Route::resource('/dashboard/user',DashboardUserController::class)->middleware('admin');
 
     Route::get('/dashboard/print',[DashboardPostController::class, 'print']);
     
