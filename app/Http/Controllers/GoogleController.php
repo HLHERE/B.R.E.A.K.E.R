@@ -20,13 +20,14 @@ class GoogleController extends Controller
             $finduser = User::where('google_id', $user->getId())->first();
             if($finduser) {
                 Auth::login($finduser);
-                return redirect()->intended('/');
+                return redirect()->intended('/')->with('loginSuccess', 'Login Successfully, Your password now has 123456');
             }else {
                 $newUser = User::create([
                     'name' => $user->name,
                     // 'username' => $user->username,
                     'email' => $user->email,
                     'google_id' => $user->id,
+                    'password' => bcrypt('123456')
                 ]);
 
                 Auth::login($newUser);
@@ -34,7 +35,7 @@ class GoogleController extends Controller
             }
 
         } catch (\Throwable $th) {
-            dd($th);
+            // dd($th);
         }
     }
 }
