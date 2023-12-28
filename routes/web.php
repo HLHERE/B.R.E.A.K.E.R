@@ -77,5 +77,5 @@ Route::get('/post', function () {
     Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('admin');
     Route::resource('/dashboard/user',DashboardUserController::class)->middleware('admin');
 
-    Route::get('/dashboard/print',[DashboardPostController::class, 'print']);
+    Route::get('/dashboard/print',[DashboardPostController::class, 'print'])->middleware('admin');
     

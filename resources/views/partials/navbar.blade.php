@@ -82,18 +82,15 @@
                           </svg>
                         </a>
                     <ul class="child transition duration-300 md:absolute top-full right-0 md:w-48 bg-putih md:shadow-lg md:rounded-b ">
-                       @can('admin')                  
                         <li>
                             <a href="/dashboard" class="flex px-4 py-3 hover:bg-coklat ">
                                 Dashboard
                             </a>
-                        </li>
-                        @endcan
-                        
                         <form action="/logout" method="post">
                             @csrf
                                 <button type="submit" class="text-left pl-5 pr-32 py-2.5 hover:bg-coklat " >Logout</button>
                         </form>
+                        </li>
                     </ul>
                 </li>
 
