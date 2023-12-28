@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\User;
+use App\Services\CategoryService;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 // use Illuminate\Support\Facades\Gate;
@@ -15,7 +16,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->singleton(CategoryService::class, function () {
+            return new CategoryService();
+        });
     }
 
     /**

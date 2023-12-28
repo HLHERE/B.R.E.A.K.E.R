@@ -43,12 +43,14 @@
                 </a>
                 <ul
                     class="child transition duration-300 md:absolute top-full right-0 md:w-48 bg-putih md:shadow-lg md:rounded-b ">
-                    <li>
-                        <a href="#" class="flex px-4 py-3 hover:bg-coklat ">
-                            Art & Design
-                        </a>
-                    </li>
-                    <li>
+                    @foreach ($categoryList as $item)
+                        <li>
+                            <a href="/posts?category={{ $item->slug }}" class="flex px-4 py-3 hover:bg-coklat">
+                                {{ $item->name }}
+                            </a>
+                        </li>
+                    @endforeach
+                    {{-- <li>
                         <a href="#" class="flex px-4 py-3 hover:bg-coklat ">
                             Cartoons
                         </a>
@@ -72,7 +74,7 @@
                         <a href="#" class="flex px-4 py-3 hover:bg-coklat ">
                             Technology
                         </a>
-                    </li>
+                    </li> --}}
                 </ul>
             </li>
             <li>
