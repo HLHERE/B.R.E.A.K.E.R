@@ -7,6 +7,7 @@ use App\Models\Category;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
 use iluminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class DashboardPostController extends Controller
 {
@@ -58,16 +59,21 @@ class DashboardPostController extends Controller
             'title' => 'required|max:255',
             'slug' => 'required|unique:posts',
             'category_id' => 'required',
+            'postImg' => 'image|file|max:12582912', // 12 MB in bytes
             'body' =>'required',
         ]);
     
         $validatedData['user_id'] = auth()->user()->id;
-    
+        
+        if($request->file('postImg')) {
+            $validatedData['postImg'] = $request->file('postImg')->store('post-images');
+        }
         // Hapus baris berikut untuk menghilangkan 'excerpt' dari data yang dikirimkan
         // $validatedData['excerpt'] = Str::limit($request->body, 200);
     
         // Simpan data ke model atau tempat penyimpanan yang sesuai
         Post::create($validatedData);
+
     
         // Redirect atau berikan respons sesuai kebutuhan aplikasi Anda
         return redirect('dashboard/posts')->with('success', 'news has been added'); // Gantilah 'nama.route' sesuai dengan route yang sesuai.
@@ -105,14 +111,26 @@ class DashboardPostController extends Controller
         $rules = [
             'title' => 'required|max:255',
             'category_id' => 'required',
+            'postImg' => 'image|file|max:12582912', // 12 MB in bytes
             'body' =>'required',
         ];
+
+        
 
         if($request->slug != $post->slug) {
             $rules['slug'] = 'required|unique:posts';
         }
 
         $validatedData = $request->validate($rules);   
+
+        if ($request->file('postImg')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+
+            $validatedData['postImg'] = $request->file('postImg')->store('post-images');
+        }
+
         $validatedData['user_id'] = auth()->user()->id;
 
         Post::where('id', $post->id)->update($validatedData);
@@ -126,6 +144,9 @@ class DashboardPostController extends Controller
      */
     public function destroy(Post $post)
     {
+       if($post->postImg) {
+            Storage::delete($post->postImg);
+       }
         Post::destroy($post->id);
         return redirect('/dashboard/posts')->with('success' , 'news has been deleted!');
     }

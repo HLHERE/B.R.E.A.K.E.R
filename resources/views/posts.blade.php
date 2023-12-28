@@ -39,7 +39,7 @@
             <div class="container px-5 py-24 mx-auto -mt-14">
                 <div class="flex flex-wrap w-full mb-20">
                     <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
-                        <h1 class="sm:text-5xl text-2xl font-normal font-Arial title-font mb-2 text-abu">
+                        <h1 class="sm:text-5xl text-2xl font-normal font-Ghetto title-font mb-2 text-abu">
                             {{ $judul }}</h1>
                         <div class="h-1 w-20 bg-coklat_muda rounded"></div>
                     </div>
@@ -48,7 +48,7 @@
                 <section class="text-gray-600 body-font">
                     <div class="container px-5 py-24 mx-auto -mt-32">
                         <div class="flex flex-wrap -m-4">
-                            {{--  --}}
+                            {{-- simpen disini foreeach nya  --}}
                             <div class="p-4 md:w-1/3">
                                 <div
                                     class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden shadow-md">
@@ -74,7 +74,7 @@
                                     </div>
                                 </div>
                             </div>
-                            {{--  --}}
+                            {{--                             
                             <div class="p-4 md:w-1/3">
                                 <div
                                     class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden shadow-md">
@@ -295,8 +295,8 @@
                 </section>
             </div>
         </section>
-    </div>
+    </div> --}}
 
-    <!-- Jarak Setelah Popular News -->
-    <main class="-mt-28"> </main>
-@endsection
+                            <!-- Jarak Setelah Popular News -->
+                            <main class="-mt-28"> </main>
+                        @endsection
