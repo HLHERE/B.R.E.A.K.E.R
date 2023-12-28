@@ -13,9 +13,10 @@ class DashboardController extends Controller
 
     public function index()
     {
-
+        $tombolback = true;
         return view('dashboard.index', [
-            'totaluser' => User::all()->count()
+            'totaluser' => User::all()->count(),
+            'tombolback' => $tombolback
         ]);
     }
 
