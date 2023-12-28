@@ -8,8 +8,11 @@ use App\Models\Category;
 use Guardian\GuardianAPI;
 use Illuminate\Support\Str;
 use Illuminate\Support\Carbon;
+use App\Services\CategoryService;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\View;
 use Illuminate\Http\Client\RequestException;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class PostController extends Controller
 {
@@ -20,10 +23,19 @@ class PostController extends Controller
     private $rdmImgPost = '/../img/randomPost.png';
     public $category, $author, $title;
 
+    protected $categoryService;
 
-    public function __construct()
+    public function __construct(CategoryService $categoryService)
     {
+        $this->categoryService = $categoryService;
         $this->api = new GuardianAPI(env('GUARDIAN_API_KEY'));
+    }
+
+    public function navbar()
+    {
+        $categoryList = $this->categoryService->getCategoryList();
+
+        return view('partials.navbar', compact('categoryList'));
     }
 
     // Fungsi ambil data Popular
@@ -48,38 +60,58 @@ class PostController extends Controller
         return $processedPosts;
     }
 
-    // Fungsi ambil data category
-    private function getCategoryList()
+    public function dataAbout()
     {
-        $categoryList = Category::withCount('posts')->get();
+        $categoryList = $this->categoryService->getCategoryList();
+        View::share('categoryList', $categoryList);
+        return view('about');
+    }
 
-        // Tambahkan 10 ke setiap nilai posts_count
-        $categoryList->transform(function ($category) {
-            $category->posts_count += 10;
-            return $category;
-        });
+    // route data ke halaman show
+    public function show(Post $post)
+    {
+        // dd($post);
+        $categoryList = $this->categoryService->getCategoryList();
+        View::share('categoryList', $categoryList);
 
-        return $categoryList;
+        // if (!$post) {
+        //     abort(404);
+        // }
+
+        $post->views += 1; // Tingkatkan jumlah tampilan
+
+        $post->save(); // Simpan perubahan ke database
+
+        $popular = $this->getPopularData(2, 1);
+
+        // dd($post);
+        return view('post', [
+            'post' => $post,
+            'popular' => $popular
+        ]);
     }
 
     // route data ke halaman Home
     public function index()
     {
+        $categoryList = $this->categoryService->getCategoryList();
+        View::share('categoryList', $categoryList);
+
         $popular = $this->getPopularData(2, 3);
         $postss = $this->getPostRandom(2, 5);
-        $categoryList = $this->getCategoryList();
 
         return view('home', [
             "popular" => $popular,
             "posts" => $postss,
-            "categoryList" => $categoryList,
-            // "category" => Category::all()
         ]);
     }
 
     public function logicSearchPosts()
     {
-        $title = '';
+        $categoryList = $this->categoryService->getCategoryList();
+        View::share('categoryList', $categoryList);
+
+        $title = 'All Post';
         $search = '';
 
         if (request('category')) {
@@ -95,38 +127,32 @@ class PostController extends Controller
         }
 
         $getData = Post::latest()->filter(request(['search', 'category', 'author']))
-            ->paginate(10)->withQueryString();
+            ->get();
 
-        // dd($getData);
         $searchResult = $this->getNews(10, $search, '', '');
 
-        $mix = $this->mergeProcessedData($getData, $searchResult);
+        $mergedPosts = $this->mergeProcessedData($getData, $searchResult);
+
+        // Atur paginasi secara manual
+        $totalItems = count($mergedPosts);
+        $perPage = 9;
+
+        $currentPage = LengthAwarePaginator::resolveCurrentPage();
+        $startIndex = ($currentPage - 1) * $perPage;
+        $items = array_slice($mergedPosts->all(), $startIndex, $perPage);
+
+        $posts = new LengthAwarePaginator($items, $totalItems, $perPage, $currentPage, [
+            'path' => LengthAwarePaginator::resolveCurrentPath(),
+            'pageName' => 'page',
+        ]);
 
         return view('posts', [
             "judul" => $title,
-            "posts" => $mix
+            "posts" => $posts
         ]);
     }
 
-    // route data ke halaman show
-    public function show(Post $post)
-    {
-        if (!$post) {
-            abort(404);
-        }
 
-        $post->views += 1; // Tingkatkan jumlah tampilan
-
-        $post->save(); // Simpan perubahan ke database
-
-        // dd($post);
-        $popular = $this->getPopularData(2, 1);
-
-        return view('post', [
-            'post' => $post,
-            'popular' => $popular
-        ]);
-    }
 
     // Semua pengambilan data API
     public function getNews($isi, $categoryQuery, $orderBy, $useDate)
@@ -142,8 +168,6 @@ class PostController extends Controller
                 ->fetch();
 
             $results = $response->response->results;
-
-            // dd($response);
 
             if (count($results) > 0) {
                 $processedItems = collect($results)->random($isi)->map(function ($item) {
@@ -166,12 +190,12 @@ class PostController extends Controller
         $formattedDate = Carbon::parse($item->webPublicationDate)->isoFormat('LL LT');
 
         $processedItem = [
-            'webTitle' => $item->webTitle,
+            'webTitle' => Str::limit(strip_tags($item->webTitle), 44),
             'thumbnail' => isset($item->fields->thumbnail) ? $item->fields->thumbnail : null,
             'publication' => $item->fields->publication,
             'authorImage' => $this->getAuthorImage($item),
             'authorName' => $this->getAuthorName($item),
-            'body' => Str::limit(strip_tags($item->fields->body), 200),
+            'body' => Str::limit(strip_tags($item->fields->body), 150),
             'shortUrl' => $item->fields->shortUrl,
             'cartegory' => $item->sectionName,
             'published' => $formattedDate,
@@ -209,13 +233,18 @@ class PostController extends Controller
 
     public function mergeProcessedData($localData, $apiData)
     {
+        // Proses data lokal
         $localProcessed = $localData->map(function ($item) {
             return $this->processLocalData($item);
         });
 
+        // Gabungkan kedua set data
         $mergedData = $apiData->merge($localProcessed);
 
-        return $mergedData;
+        // Acak urutan data
+        $shuffledData = $mergedData->shuffle();
+
+        return $shuffledData;
     }
 
     public function processLocalData($item)
@@ -223,13 +252,12 @@ class PostController extends Controller
         $formattedDate = Carbon::parse($item->created_at)->isoFormat('LL LT');
 
         $processedItem = [
-            'webTitle' => $item->title,
+            'webTitle' => Str::limit(strip_tags($item->title), 44),
             'thumbnail' => $item->postImg != '' ? $item->postImg : $this->rdmImgPost,
             'publication' => $item->views,
-            // 'authorImage' => $this->getAuthorImageLocal($item),
             'authorImage' => $item->author->userImg != '' ? $item->author->userImg : $this->rdmImgUser,
             'authorName' => $item->author->name,
-            'body' => Str::limit(strip_tags($item->body), 200),
+            'body' => Str::limit(strip_tags($item->body), 150),
             'shortUrl' => $item->slug,
             'cartegory' => $item->category->name,
             'published' => $formattedDate,
