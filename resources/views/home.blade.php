@@ -63,15 +63,17 @@
 
     <div class="max-w-screen-xl mx-auto ">
 
-        <section class="text-abu body-font mt-3  ">
+        <section class="text-abu body-font mt-5">
             <div class="container px-5 py-24 mx-auto">
                 <div class="flex flex-wrap w-full mb-20">
                     <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
                         <h1 class="text-7xl font-Ghetto title-font mb-2 text-abu">Hot News</h1>
                         <div class="h-1 w-20 bg-coklat rounded"></div>
                     </div>
-                    <p class="lg:w-1/2 w-full leading-relaxed text-gray-500">"Dive into the pulse of the latest headlines with Glam Groove News! From captivating global events to exclusive narratives, 
-                        Glam Groove brings you the hottest stories in a unique blend of sophistication. Experience news like never before — where every headline is a celebration of the extraordinary. 
+                    <p class="lg:w-1/2 w-full leading-relaxed text-gray-500">"Dive into the pulse of the latest headlines
+                        with Glam Groove News! From captivating global events to exclusive narratives,
+                        Glam Groove brings you the hottest stories in a unique blend of sophistication. Experience news like
+                        never before — where every headline is a celebration of the extraordinary.
                         Stay tuned for the epitome of sophistication and style, exclusively at Glam Groove."</p>
                 </div>
         </section>
