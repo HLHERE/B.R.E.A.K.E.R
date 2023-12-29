@@ -63,7 +63,7 @@
 
     <div class="max-w-screen-xl mx-auto ">
 
-        <section class="text-abu body-font mt-3  ">
+        <section class="text-abu body-font mt-5">
             <div class="container px-5 py-24 mx-auto">
                 <div class="flex flex-wrap w-full mb-20">
                     <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
