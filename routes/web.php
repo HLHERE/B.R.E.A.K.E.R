@@ -1,8 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PostsController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
@@ -20,8 +23,6 @@ use App\Http\Controllers\DashboardUserController;
 |
 */
 
-Route::get('/posts', [PostController::class, 'logicSearchPosts']);
-
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('admin');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
@@ -31,14 +32,13 @@ Route::post('/logout', [LoginController::class, 'logout']);
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
 
-Route::get('/about', [PostController::class, 'dataAbout']);
-
 Route::get('/auth/google', [GoogleController::class, 'redirectToGoogle'])->name('google.login');
 Route::get('/auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 
-Route::get('/', [PostController::class, 'index']);
+Route::get('/', [HomeController::class, 'index']);
 Route::get('/post/{post:slug}', [PostController::class, 'show']);
-
+Route::get('/posts', [PostsController::class, 'index']);
+Route::get('/about', [AboutController::class, 'index']);
 
 Route::get('/dashboard/posts/checkSlug', [DashboardPostController::class, 'checkSlug'])->middleware('admin');
 Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('admin');
