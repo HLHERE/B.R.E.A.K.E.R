@@ -21,6 +21,8 @@ class PostsController extends Controller
 
         $getData = $this->postsService->postsService();
 
+        dd($getData);
+
         return view('posts', [
             "judul" => $getData->title,
             "posts" => $getData->posts
