@@ -16,7 +16,7 @@
                         <a rel="noopener noreferrer" href="/" class="hover:dark:text-violet-400">Hot News</a>
                     </li>
                     <li>
-                        <a rel="noopener noreferrer" href="#" class="hover:dark:text-violet-400">News</a>
+                        <a rel="noopener noreferrer" href="/posts" class="hover:dark:text-violet-400">News</a>
                     </li>
                     <li>
                         <a rel="noopener noreferrer" href="/about" class="hover:dark:text-violet-400">About</a>
