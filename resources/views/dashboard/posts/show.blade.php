@@ -28,7 +28,7 @@
                 <div class="flex flex-col lg:flex-row lg:space-x-12">
 
                     <div class="px-4 lg:px-0 mt-12 text-gray-700 text-lg leading-relaxed w-full lg:w-3/4">
-                        <p class="pb-6">{{ $post->body }}</p>
+                        <p class="pb-6">{!! $post->body !!}</p>
 
                     </div>
 

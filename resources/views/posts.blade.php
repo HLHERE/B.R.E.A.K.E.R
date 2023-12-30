@@ -10,6 +10,7 @@
                         <h1 class="sm:text-5xl text-2xl font-normal font-Ghetto title-font mb-2 text-abu">
                             {{ $judul }}</h1>
                         <div class="h-1 w-20 bg-coklat_muda rounded"></div>
+
                         <!-- Tombol Search -->
                         <div class="flex mt-5">
                             <form action="/posts">
@@ -50,7 +51,8 @@
                                         class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden shadow-md">
                                         @if (!empty($item['authorImage']))
                                             <img class="lg:h-48 md:h-36 w-full object-cover object-center"
-                                                src="{{ $item['thumbnail'] }}" alt="{{ $item['webTitle'] }}">
+                                                src="{{ filter_var($item['thumbnail'], FILTER_VALIDATE_URL) ? $item['thumbnail'] : asset('storage/' . $item['thumbnail']) }}"
+                                                alt="{{ $item['webTitle'] }}">
                                         @endif
                                         <div class="p-6">
                                             <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
