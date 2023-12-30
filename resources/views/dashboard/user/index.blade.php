@@ -9,7 +9,8 @@
       </div>
         
     @endif
-    <table class="relative w-full overflow-x-auto shadow-md sm:rounded-lg ">
+    @livewire('user-dashboard')
+    {{-- <table class="relative w-full overflow-x-auto shadow-md sm:rounded-lg ">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
                 <th scope="col" class="px-6 py-3 text-left w-12">
@@ -58,5 +59,5 @@
             
         @endforeach
     </table>
-</div>
+</div> --}}
 @endsection

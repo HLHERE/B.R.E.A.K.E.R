@@ -2,15 +2,34 @@
 
 @section('container')
 
+@livewireStyles
+@livewireScripts
 
-<div class="relative top-[125px] w-[900px]  overflow-x-auto shadow-md sm:rounded-lg table-auto"> <!-- Tambahkan class 'mx-auto' di sini -->
+
+{{-- <div class="relative top-[125px] w-[900px]  overflow-x-auto shadow-md sm:rounded-lg table-auto"> <!-- Tambahkan class 'mx-auto' di sini -->
+    <!-- Tombol Search -->
+    <div class="flex mt-5 mb-5">
+       <form method="GET">
+           <div class="relative text-gray-600 focus-within:text-gray-400">
+           <span class="absolute inset-y-0 left-0 flex items-center pl-2">
+               <button type="submit" class="p-1 focus:outline-none focus:shadow-outline">
+                   <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-6 h-6"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+               </button>
+           </span>
+               <input type="text" name="search" id="search" class="py-3 text-sm pr-52 text-white rounded-md pl-16 focus:outline-none focus:bg-white focus:text-gray-900" placeholder="Search..." autocomplete="off">
+           </div>
+
+       </form>
+    </div>
+    <!-- End Tombol Search --> --}}
     @if (session()->has('success'))
     <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
         <span class="font-medium">{{session('success')}}</span>
       </div>
-        
-    @endif
-    <table class="relative w-full overflow-x-auto shadow-md sm:rounded-lg ">
+      
+      @endif
+      @livewire('post-dashboard')
+    {{-- <table class="relative w-full overflow-x-auto shadow-md sm:rounded-lg ">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
                 <th scope="col" class="px-6 py-3 text-left">
@@ -54,6 +73,6 @@
             </tr>
             @endforeach
         </tbody>
-    </table>
+    </table> --}}
 </div>
 @endsection
