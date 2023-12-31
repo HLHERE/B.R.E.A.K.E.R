@@ -18,14 +18,15 @@ class RegisterController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'username' => ['required', 'min:3', 'max:255', 'unique:users'],
-            'email' => 'required|email:dns|unique:users',
-            'password' => 'required|min:5|max:255'
+            'email' => 'required|email:dns|unique:users,email', // Fix the unique rule
+            'password' => 'required|min:5|max:255',
         ]);
-
+    
         $validatedData['password'] = Hash::make($validatedData['password']);
-
+    
         User::create($validatedData);
-
-        return redirect('/login')->with('success', 'Registrasion successfully. Please Login!!');
+    
+        return redirect('/login')->with('success', 'Registration successful. Please login.');
     }
+    
 }
