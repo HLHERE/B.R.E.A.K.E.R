@@ -3,16 +3,6 @@
 @section('container')
     <!-- component -->
     <div class="max-w-screen-lg mx-auto">
-        {{-- Hidden Request, query category by search --}}
-        <form action="/posts">
-            @if (request('category'))
-                <input type="hidden" name="category" value="{{ request('category') }}">
-            @endif
-            @if (request('author'))
-                <input type="hidden" name="author" value="{{ request('author') }}">
-            @endif
-        </form>
-
         <section class="text-gray-600 body-font">
             <div class="container px-5 py-24 mx-auto mt-1">
                 <div class="flex flex-wrap w-full mb-20">
@@ -20,7 +10,6 @@
                         <h1 class="sm:text-5xl text-2xl font-normal font-Ghetto title-font mb-2 text-abu">
                             {{ $judul }}</h1>
                         <div class="h-1 w-20 bg-coklat_muda rounded"></div>
-   
                     </div>
                 </div>
 
@@ -35,7 +24,8 @@
                                         class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden shadow-md">
                                         @if (!empty($item['authorImage']))
                                             <img class="lg:h-48 md:h-36 w-full object-cover object-center"
-                                                src="{{ $item['thumbnail'] }}" alt="{{ $item['webTitle'] }}">
+                                                src="{{ filter_var($item['thumbnail'], FILTER_VALIDATE_URL) ? $item['thumbnail'] : asset('storage/' . $item['thumbnail']) }}"
+                                                alt="{{ $item['webTitle'] }}">
                                         @endif
                                         <div class="p-6">
                                             <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">

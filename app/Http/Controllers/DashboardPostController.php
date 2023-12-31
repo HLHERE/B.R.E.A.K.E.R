@@ -115,8 +115,6 @@ class DashboardPostController extends Controller
             'body' =>'required',
         ];
 
-        
-
         if($request->slug != $post->slug) {
             $rules['slug'] = 'required|unique:posts';
         }
@@ -157,4 +155,3 @@ class DashboardPostController extends Controller
     }
 
 
-}

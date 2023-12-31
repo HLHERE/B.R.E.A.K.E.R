@@ -20,7 +20,6 @@ class PostsController extends Controller
         $this->shareCategoryList();
 
         $getData = $this->postsService->postsService();
-
         return view('posts', [
             "judul" => $getData->title,
             "posts" => $getData->posts

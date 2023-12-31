@@ -44,5 +44,6 @@ Route::get('/dashboard/posts/checkSlug', [DashboardPostController::class, 'check
 Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('admin');
 Route::resource('/dashboard/user', DashboardUserController::class)->middleware('admin');
 
+Route::get('/search', [DashboardPostController::class , 'search'])->middleware('admin');
 Route::get('/dashboard/print', [DashboardPostController::class, 'print'])->middleware('admin');
 // Route::get('/search', [DashboardPostController::class, 'search'])->middleware('admin');
