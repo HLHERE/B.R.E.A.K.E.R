@@ -20,7 +20,7 @@
                         <h1 class="sm:text-5xl text-2xl font-normal font-Ghetto title-font mb-2 text-abu">
                             {{ $judul }}</h1>
                         <div class="h-1 w-20 bg-coklat_muda rounded"></div>
-    <!-- Tombol Search -->
+                       <!-- Tombol Search -->
     <div class="flex mt-5">
         <form method="GET">
             <div class="relative text-gray-600 focus-within:text-gray-400">
