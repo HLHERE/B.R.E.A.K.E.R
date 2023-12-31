@@ -260,7 +260,7 @@
 
 
             <!-- Halaman Tengah -->
-            <h1 class="text-4xl font-semibold leading-9 text-center text-gray-800 dark:text-gray-50">Berita Terkini</h1>
+            <h1 class="text-4xl font-semibold leading-9 text-center text-gray-800 dark:text-gray-50">Fresh News</h1>
             <main class="mt-20">
                 <section class="dark:bg-gray-800 dark:text-gray-100">
                     <div class="container max-w-6xl p-6 mx-auto space-y-6 sm:space-y-12">
