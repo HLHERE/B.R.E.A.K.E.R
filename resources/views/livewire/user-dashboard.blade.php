@@ -1,4 +1,4 @@
-{{-- <div>
+<div>
     <!-- Search Form -->
     <div class="flex mt-5 mb-5">
         <form wire:submit.prevent="searchPosts" method="GET">
@@ -74,4 +74,4 @@
         
         {{ $users->links() }}
     </div>
-</div> --}}
+</div>
