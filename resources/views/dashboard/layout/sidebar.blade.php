@@ -54,7 +54,7 @@
                 @if (isset($showButton) && $showButton)
                     <li class="mt-2">
                         <a href="/dashboard/"
-                            class="flex items-center   bg-putih hover:bg-coklat rounded-full font-bold text-sm text-gray-900 hover:text-putih py-3 px-4 my-24 text-center">
+                            class="flex items-center   bg-putih hover:bg-coklat rounded-full font-bold text-sm text-gray-900 hover:text-putih py-3 px-4 my-20 text-center">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
                                 stroke="currentColor" class="w-5 h-5 font-bold">
                                 <path strokeLinecap="round" strokeLinejoin="round"
