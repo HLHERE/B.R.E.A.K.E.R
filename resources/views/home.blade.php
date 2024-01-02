@@ -89,8 +89,8 @@
                     {{ filter_var($popular[0]['shortUrl'], FILTER_VALIDATE_URL) ? " target = '_blank'" : '' }}>
                     <div class="absolute left-0 bottom-0 w-full h-full z-10"
                         style="background-image: linear-gradient(180deg,transparent,rgba(0,0,0,.7));"></div>
-                    @if (!empty($popular[0]['thumbnail']))
-                        <img src="{{ $popular[0]['thumbnail'] }}"
+                    @if (!empty($popular[1]['thumbnail']))
+                        <img src="{{ filter_var($popular[1]['thumbnail'], FILTER_VALIDATE_URL) ? $popular[1]['thumbnail'] : asset('storage/' . $popular[1]['thumbnail']) }}"
                             class="absolute left-0 top-0 w-full h-full rounded z-0 object-cover" />
                     @endif
                     <div class="p-4 absolute bottom-0 left-0 z-20">
@@ -106,7 +106,7 @@
                     <div class="absolute left-0 top-0 w-full h-full z-10"
                         style="background-image: linear-gradient(180deg,transparent,rgba(0,0,0,.7));"></div>
                     @if (!empty($popular[1]['thumbnail']))
-                        <img src="{{ $popular[1]['thumbnail'] }}"
+                        <img src="{{ filter_var($popular[1]['thumbnail'], FILTER_VALIDATE_URL) ? $popular[1]['thumbnail'] : asset('storage/' . $popular[1]['thumbnail']) }}"
                             class="absolute left-0 top-0 w-full h-full rounded z-0 object-cover" />
                     @endif
                     <div class="p-4 absolute bottom-0 left-0 z-20">
@@ -123,9 +123,9 @@
                         <a class="block rounded w-full lg:flex mb-10"
                             href="{{ filter_var($item['shortUrl'], FILTER_VALIDATE_URL) ? $item['shortUrl'] : url('post', $item['shortUrl']) }}"
                             {{ filter_var($item['shortUrl'], FILTER_VALIDATE_URL) ? " target = '_blank'" : '' }}>
-                            @if (!empty($item['thumbnail']))
+                            @if (isset($item['thumbnail']) && !empty($item['thumbnail']))
                                 <div class="h-48 lg:w-48 flex-none bg-cover text-center overflow-hidden opacity-75"
-                                    style="background-image: url('{{ $item['thumbnail'] }}')"
+                                    style="background-image: url('{{ filter_var($item['thumbnail'], FILTER_VALIDATE_URL) ? $item['thumbnail'] : asset('storage/' . $item['thumbnail']) }}')"
                                     title="deit is very important">
                                 </div>
                             @endif
@@ -260,22 +260,23 @@
 
 
             <!-- Halaman Tengah -->
-            <h1 class="text-4xl font-semibold leading-9 text-center text-gray-800 dark:text-gray-50">Berita Terkini</h1>
+            <h1 class="text-4xl font-semibold leading-9 text-center text-gray-800 dark:text-gray-50">Fresh News</h1>
             <main class="mt-20">
-
                 <section class="dark:bg-gray-800 dark:text-gray-100">
                     <div class="container max-w-6xl p-6 mx-auto space-y-6 sm:space-y-12">
                         <a rel="noopener noreferrer"
                             href="{{ filter_var($posts[0]['shortUrl'], FILTER_VALIDATE_URL) ? $posts[0]['shortUrl'] : url('post', $posts[0]['shortUrl']) }}"
-                            {{ filter_var($posts[0]['shortUrl'], FILTER_VALIDATE_URL) ? " target = '_blank'" : '' }}
+                            {{ filter_var($posts[0]['shortUrl'], FILTER_VALIDATE_URL) ? " target='_blank'" : '' }}
                             class="block max-w-sm gap-3 mx-auto sm:max-w-full group hover:no-underline focus:no-underline lg:grid lg:grid-cols-12 dark:bg-gray-900">
-                            @if (!empty($posts[0]['thumbnail']))
-                                <img src="{{ $posts[0]['thumbnail'] }}" alt="{{ $posts[0]['webTitle'] }}"
+                            @if (isset($posts[0]['thumbnail']) && !empty($posts[0]['thumbnail']))
+                                {{-- <img src="{{ asset('storage/' . $posts[0]['thumbnail']) }}" --}}
+                                <img src="{{ filter_var($posts[0]['thumbnail'], FILTER_VALIDATE_URL) ? $posts[0]['thumbnail'] : asset('storage/' . $posts[0]['thumbnail']) }}"
                                     class="object-cover w-full h-64 rounded sm:h-96 lg:col-span-7 dark:bg-gray-500">
                             @endif
                             <div class="p-6 space-y-2 lg:col-span-5">
                                 <h3 class="text-2xl font-semibold sm:text-4xl group-hover:underline group-focus:underline">
-                                    {{ $posts[0]['webTitle'] }}</h3>
+                                    {{ $posts[0]['webTitle'] }}
+                                </h3>
                                 <span class="text-xs dark:text-gray-400">{{ $posts[0]['published'] }}</span>
                                 <p>{!! $posts[0]['body'] !!}</p>
                             </div>
@@ -284,23 +285,36 @@
                             @foreach ($posts->skip(1) as $item)
                                 <a rel="noopener noreferrer"
                                     href="{{ filter_var($item['shortUrl'], FILTER_VALIDATE_URL) ? $item['shortUrl'] : url('post', $item['shortUrl']) }}"
-                                    {{ filter_var($item['shortUrl'], FILTER_VALIDATE_URL) ? " target = '_blank'" : '' }}
+                                    {{ filter_var($item['shortUrl'], FILTER_VALIDATE_URL) ? " target='_blank'" : '' }}
                                     class="max-w-sm mx-auto group hover:no-underline focus:no-underline dark:bg-gray-900">
                                     @if (!empty($item['thumbnail']))
-                                        <img src="{{ $item['thumbnail'] }}"{{-- "/../img/anthem.jpg" --}}
-                                            class="object-cover w-full rounded h-44 dark:bg-gray-500"
+                                        <img src="{{ filter_var($item['thumbnail'], FILTER_VALIDATE_URL) ? $item['thumbnail'] : asset('storage/' . $item['thumbnail']) }}"
+                                            {{-- Sesuaikan dengan struktur penyimpanan Anda --}} class="object-cover w-full rounded h-44 dark:bg-gray-500"
                                             alt="{{ $item['webTitle'] }}">
+                                    @else
+                                        @if (isset($item->category) && !empty($item->category->name))
+                                            <img src="https://source.unsplash.com/1200x400?{{ $item->category->name }}"
+                                                {{-- Menggunakan $item->category->name --}} alt="{{ $item->category->name }}"
+                                                class="w-full object-cover lg:rounded" style="height: 28em;" />
+                                        @else
+                                            {{-- Gantilah dengan gambar default atau logika yang sesuai --}}
+                                            <p>No Image or Category Available</p>
+                                        @endif
                                     @endif
+
                                     <div class="p-6 space-y-2">
-                                        <h3 class="text-2xl font-semibold group-hover:underline group-focus:underline">In
-                                            {{ $item['webTitle'] }}</h3>
+                                        <h3 class="text-2xl font-semibold group-hover:underline group-focus:underline">
+                                            In {{ $item['webTitle'] }}
+                                        </h3>
                                         <span class="text-xs dark:text-gray-400">{{ $item['published'] }}</span>
                                         <p>{!! $item['body'] !!}</p>
                                     </div>
                                 </a>
                             @endforeach
                         </div>
+                    </div>
                 </section>
+
 
                 <!-- component -->
                 <div class="flex justify-center items-center">
@@ -319,9 +333,6 @@
                                             <div class="absolute bottom-0 left-0 p-6">
                                                 <h2 class="text-xl font-semibold 5 text-white">
                                                     {{ $categoryList[0]->name }}</h2>
-                                                <p class="text-base leading-4 text-white mt-2">Rasakan kembali kekayaan
-                                                    alam
-                                                    Itomori</p>
                                                 <a href="/posts?category={{ $categoryList[0]->slug }}"
                                                     class="focus:outline-none focus:underline flex items-center mt-4 cursor-pointer text-white hover:text-gray-200 hover:underline">
                                                     <p class="pr-2 text-sm font-medium leading-none">Read More</p>
@@ -335,7 +346,7 @@
                                                 </a>
                                             </div>
                                         </div>
-                                        <img src="https://source.unsplash.com/1200x400?{{ $categoryList[0]->name }}"
+                                        <img src="https://source.unsplash.com/1080x1920?{{ $categoryList[0]->name }}"
                                             alt="hujan" class="w-full" alt="chair" />
                                     </div>
                                     <div class="sm:w-1/2 sm:mt-0 mt-4 relative">
@@ -345,9 +356,6 @@
                                             <div class="absolute bottom-0 left-0 p-6">
                                                 <h2 class="text-xl font-semibold 5 text-white">
                                                     {{ $categoryList[1]->name }}</h2>
-                                                <p class="text-base leading-4 text-white mt-2">Perjalanan Suzume dimulai
-                                                    dari
-                                                    sebuah kota di Kyushu</p>
                                                 <a href="/posts?category={{ $categoryList[1]->slug }}"
                                                     class="focus:outline-none focus:underline flex items-center mt-4 cursor-pointer text-white hover:text-gray-200 hover:underline">
                                                     <p class="pr-2 text-sm font-medium leading-none">Read More</p>
@@ -361,7 +369,7 @@
                                                 </a>
                                             </div>
                                         </div>
-                                        <img src="https://source.unsplash.com/1200x400?{{ $categoryList[1]->name }}"
+                                        <img src="https://source.unsplash.com/1080x1920?{{ $categoryList[1]->name }}"
                                             class="w-full" alt="gempa" class="w-full" />
                                     </div>
                                 </div>
@@ -373,8 +381,6 @@
                                         <div class="absolute bottom-0 left-0 md:p-10 p-6">
                                             <h2 class="text-xl font-semibold 5 text-white">{{ $categoryList[2]->name }}
                                             </h2>
-                                            <p class="text-base leading-4 text-white mt-2">7 Agent Terbaik Versi Team
-                                                Secret</p>
                                             <a href="/posts?category={{ $categoryList[2]->slug }}"
                                                 class="focus:outline-none focus:underline flex items-center mt-4 cursor-pointer text-white hover:text-gray-200 hover:underline">
                                                 <p class="pr-2 text-sm font-medium leading-none">Read More</p>
@@ -401,9 +407,6 @@
                                         <div class="absolute bottom-0 left-0 md:p-10 p-6">
                                             <h2 class="text-xl font-semibold 5 text-white">{{ $categoryList[3]->name }}
                                             </h2>
-                                            <p class="text-base leading-4 text-white mt-2">Perkembangan AI dapat berdampak
-                                                negatif
-                                            </p>
                                             <a href="/posts?category={{ $categoryList[3]->slug }}"
                                                 class="focus:outline-none focus:underline flex items-center mt-4 cursor-pointer text-white hover:text-gray-200 hover:underline">
                                                 <p class="pr-2 text-sm font-medium leading-none">Read More</p>
@@ -430,9 +433,6 @@
                                             <div class="absolute bottom-0 left-0 p-6">
                                                 <h2 class="text-xl font-semibold 5 text-white">
                                                     {{ $categoryList[4]->name }}</h2>
-                                                <p class="text-base leading-4 text-white mt-2">Pertarungan Gojo Satoru &
-                                                    Toji
-                                                    Fushiguro</p>
                                                 <a href="/posts?category={{ $categoryList[4]->slug }}"
                                                     class="focus:outline-none focus:underline flex items-center mt-4 cursor-pointer text-white hover:text-gray-200 hover:underline">
                                                     <p class="pr-2 text-sm font-medium leading-none">Read More</p>
@@ -446,7 +446,7 @@
                                                 </a>
                                             </div>
                                         </div>
-                                        <img src="https://source.unsplash.com/1200x400?{{ $categoryList[4]->name }}"
+                                        <img src="https://source.unsplash.com/1080x1920?{{ $categoryList[4]->name }}"
                                             class="w-full" alt="chair" />
                                     </div>
                                     <div class="relative w-full sm:mt-0 mt-4">
@@ -456,9 +456,6 @@
                                             <div class="absolute bottom-0 left-0 p-6">
                                                 <h2 class="text-xl font-semibold 5 text-white">
                                                     {{ $categoryList[5]->name }}</h2>
-                                                <p class="text-base leading-4 text-white mt-2">Anthem mengambil setting di
-                                                    sebuah
-                                                    dunia misterius</p>
                                                 <a href="/posts?category={{ $categoryList[5]->slug }}"
                                                     class="focus:outline-none focus:underline flex items-center mt-4 cursor-pointer text-white hover:text-gray-200 hover:underline">
                                                     <p class="pr-2 text-sm font-medium leading-none">Read More</p>
@@ -472,7 +469,7 @@
                                                 </a>
                                             </div>
                                         </div>
-                                        <img src="https://source.unsplash.com/1200x400?{{ $categoryList[5]->name }}"
+                                        <img src="https://source.unsplash.com/1080x1920?{{ $categoryList[5]->name }}"
                                             class="w-full" alt="wall design" />
                                     </div>
                                 </div>

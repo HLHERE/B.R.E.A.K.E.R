@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
     {
 
         User::create([
-            'name' => 'admin',
+            'name' => 'GlamGrooveAdmin',
             'username' => 'Admin1',
             'email' => 'admin@gmail.com',
             'email_verified_at' => now(),
