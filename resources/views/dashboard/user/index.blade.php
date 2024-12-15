@@ -2,14 +2,8 @@
 
 
 @section('container')
-<div class="relative top-[125px] w-[900px]  overflow-x-auto shadow-md sm:rounded-lg table-auto">
-    @if (session()->has('success'))
-    <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
-        <span class="font-medium">{{session('success')}}</span>
-      </div>
-        
-    @endif
-    <table class="relative w-full overflow-x-auto shadow-md sm:rounded-lg ">
+    @livewire('user-dashboard')
+    {{-- <table class="relative w-full overflow-x-auto shadow-md sm:rounded-lg ">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
                 <th scope="col" class="px-6 py-3 text-left w-12">
@@ -30,7 +24,7 @@
                 
             </tr>
         </thead>
-        @foreach ($users as $user )
+        @foreach ($users as $user)
         <tbody>
             <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
                 <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-900 dark:text-white">
@@ -58,5 +52,5 @@
             
         @endforeach
     </table>
-</div>
+</div> --}}
 @endsection

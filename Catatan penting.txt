@@ -50,7 +50,9 @@ harap tambahkan di sini!
 
 ==== # By Haykal
 
-// tulis di sini
+ composer require laravelcollective/html
+
+ sebelum git pull pake ini 
 
 ==== # By Syahidan
 
